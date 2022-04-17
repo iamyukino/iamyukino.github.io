@@ -679,6 +679,94 @@
 	if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
 	images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
 	if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="../../index/wp-content/rec/global/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js"></script>
+
+    <link rel="stylesheet" href="../../index/wp-includes/work/npm/aplayer/dist/APlayer.min.css">
+    <script src="../../index/wp-includes/work/npm/aplayer/dist/APlayer.min.js"></script>
+    <script src="../../index/wp-includes/work/npm/meting@2/dist/Meting.min.js"></script>
+    <style>
+        .aplayer .aplayer-lrc {
+            height: 35px
+        }
+
+        .aplayer .aplayer-lrc p {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 18px!important
+        }
+
+        .aplayer .aplayer-lrc p.aplayer-lrc-current {
+            color: #ff1493
+        }
+
+        .aplayer.aplayer-narrow .aplayer-body {
+            left: -66px!important
+        }
+
+        .aplayer.aplayer-fixed .aplayer-lrc {
+            display: none
+        }
+
+        .aplayer .aplayer-lrc.aplayer-lrc-hide {
+            display: none!important
+        }
+
+        .aplayer.aplayer-fixed .lrc-show {
+            display: block;
+            background: rgba(255,255,255,.8)
+        }
+    </style>
+    <meting-js id="2608803683" server="tencent" type="playlist" fixed="true" autoplay loop order="random" preload="none" volume="0.2" mutex="true"></meting-js>
+    <script>
+        $(function() {
+            $("body").on("click", ".aplayer", function() {
+                $(".aplayer-button").hasClass("aplayer-play") ? $(".aplayer-lrc").removeClass("lrc-show") : $(".aplayer-lrc").addClass("lrc-show")
+            })
+        })
+    </script>
+	    <link rel="stylesheet" href="../../index/wp-includes/work/npm/aplayer/dist/APlayer.min.css">
+    <script src="../../index/wp-includes/work/npm/aplayer/dist/APlayer.min.js"></script>
+    <script src="../../index/wp-includes/work/npm/meting@2/dist/Meting.min.js"></script>
+    <style>
+        .aplayer .aplayer-lrc {
+            height: 35px
+        }
+
+        .aplayer .aplayer-lrc p {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 18px!important
+        }
+
+        .aplayer .aplayer-lrc p.aplayer-lrc-current {
+            color: #ff1493
+        }
+
+        .aplayer.aplayer-narrow .aplayer-body {
+            left: -66px!important
+        }
+
+        .aplayer.aplayer-fixed .aplayer-lrc {
+            display: none
+        }
+
+        .aplayer .aplayer-lrc.aplayer-lrc-hide {
+            display: none!important
+        }
+
+        .aplayer.aplayer-fixed .lrc-show {
+            display: block;
+            background: rgba(255,255,255,.8)
+        }
+    </style>
+    <meting-js id="2608803683" server="tencent" type="playlist" fixed="true" autoplay loop order="random" preload="none" volume="0.2" mutex="true"></meting-js>
+    <script>
+        $(function() {
+            $("body").on("click", ".aplayer", function() {
+                $(".aplayer-button").hasClass("aplayer-play") ? $(".aplayer-lrc").removeClass("lrc-show") : $(".aplayer-lrc").addClass("lrc-show")
+            })
+        })
+    </script>
+	
 </body>
 </html>
 
