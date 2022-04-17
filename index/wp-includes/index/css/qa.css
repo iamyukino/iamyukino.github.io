@@ -1,0 +1,79 @@
+@charset "utf-8";
+/*qa*/
+
+.qa-container {
+  font: 18px/16px "Open Sans", Arial, sans-serif;
+  color: #666;
+  background-color: white;
+  padding: 20px;
+  margin: 0px auto;
+  border-radius: 5px;
+  
+}
+
+
+.hide {
+  display: none;
+}
+
+.qa {font-size: 19px;}
+
+dt {
+  font-size: 19px;
+  color: #4f8bae;
+  margin-bottom: 10px;
+  margin-left: 26px;
+  cursor: pointer;
+  line-height: 25px;
+}
+
+/* Triangle list item */
+dt:before {
+  content: "";
+  border-color: transparent #ccc;
+  border-style: solid;
+  border-width: 5px 0 5px 8px;
+  display: block;
+  height: 0;
+  width: 0;
+  left: -16px;
+  top: 17px;
+  position: relative;
+}
+
+dd {
+  padding: 20px;
+  background: rgba(77,141,173,0.1);
+  border-radius: 5px;
+  margin: 20px 0 30px;
+  position: relative;
+}
+
+/* Triangle in definition container */
+dd:after, dd:before {
+  bottom: 100%;
+  left: 6%;
+  border: solid transparent;
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+dd:after {
+  border-color: rgba(136, 183, 213, 0);
+  border-color: transparent;
+  border-bottom-color: rgba(77,141,173,0.0);
+  border-width: 15px;
+  margin-left: -15px;
+}
+
+dd:before {
+  border-color: rgba(194, 225, 245, 0);
+  border-color: transparent;
+  border-bottom-color: rgba(77,141,173,0.1);
+  border-width: 17px;
+  margin-left: -17px;
+}
+

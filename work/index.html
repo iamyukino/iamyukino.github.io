@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+
+    <title>雨宮雪乃の作業台</title>
+    <style>
+        * {
+            cursor: url("https://iamyukino.github.io/index/wp-content/global/images/mouse.png"), auto;
+        }
+    </style>
+    <link rel="shortcut icon" href="https://iamyukino.github.io/index/wp-content/global/images/favicon.png" type="image/png">
+
+    <link rel="stylesheet" type="text/css" href="../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu.css"/>
+    <script type="text/javascript" src="../index/wp-includes/index/js/jquery.min.js"></script>
+    <script src="../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/html2canvas.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../index/wp-includes/work/css/logo.css">
+    <link rel="stylesheet" type="text/css" href="../index/wp-includes/work/fonts/logo/logo.css">
+    <link rel="stylesheet" id="saukra_css-css" href="../index/wp-includes/work/css/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../index/wp-includes/work/css/lib.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../index/wp-includes/work/css/font.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../index/wp-includes/work/css/insight.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../index/wp-includes/work/css/jquery.fancybox.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../index/wp-includes/work/css/zoom.css" type="text/css" media="all">
+    <style>
+        .emoji-coda {
+            display: inline-block!important;
+            position: relative;
+            width: 45px;
+            top: 2px;
+            margin: -3px 3px!important;
+            padding: 0
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../index/wp-includes/work/css/sharejs.css">
+    <script type="text/javascript" src="../index/wp-includes/work/js/Valine.min.js"></script>
+    
+    <script>
+        var mashiro_option = new Object
+            , mashiro_global = new Object
+            , bg =
+                ( "../index/wp-content/work/images/cover/0.webp,"
+                + "../index/wp-content/work/images/cover/1.webp,"
+                + "../index/wp-content/work/images/cover/2.webp,"
+                + "../index/wp-content/work/images/cover/3.webp,"
+                + "../index/wp-content/work/images/cover/4.webp,"
+                + "../index/wp-content/work/images/cover/5.webp,"
+                + "../index/wp-content/work/images/cover/6.webp,"
+                + "../index/wp-content/work/images/cover/7.webp,"
+                + "../index/wp-content/work/images/cover/8.webp,"
+                + "../index/wp-content/work/images/cover/9.webp,"
+                + "../index/wp-content/work/images/cover/10.webp,"
+                + "../index/wp-content/work/images/cover/11.webp,"
+                + "../index/wp-content/work/images/cover/12.webp,"
+                + "../index/wp-content/work/images/cover/13.webp,"
+                + "../index/wp-content/work/images/cover/14.webp,"
+                + "../index/wp-content/work/images/cover/15.webp,"
+                + "../index/wp-content/work/images/cover/16.webp"). split(",")
+            , bgindex = Math.floor(Math.random() * bg.length);
+
+            mashiro_option.NProgressON = !0,
+            mashiro_option.email_domain = "iamyukino.github.io",
+            mashiro_option.email_name = "me",
+            mashiro_option.cookie_version_control = "",
+            mashiro_option.qzone_autocomplete = !1,
+            mashiro_option.site_name = "雨宮雪乃のサイト",
+            mashiro_option.author_name = "雨宮雪乃",
+            mashiro_option.site_url = "https://iamyukino.github.io/work",
+            mashiro_option.v_appId = "Hr0x4YCmviK0H7WMFGDa2bbb-gzGzoHsz",
+            mashiro_option.v_visitor = false,
+            mashiro_option.v_appKey = "Woqnw7ir7fohwvS8uk0MKDMP",
+            mashiro_option.v_serverURLs = "https://hr0x4ycm.lc-cn-n1-shared.com",
+            mashiro_option.mathjax = "0"
+    </script>
+    <style type="text/css">
+        .hljs-ln {
+            border-collapse: collapse
+        }
+        .hljs-ln td {
+            padding: 0
+        }
+        .hljs-ln-n:before {
+            content: attr(data-line-number)
+        }
+    </style>
+    <style type="text/css">
+        .site-top .lower nav {
+            display: block!important
+        }
+        #pagination a:hover,.author-profile i,.float-content i:hover,.post-content a:hover,.post-like a,.post-more i:hover,.post-share .show-share,.sub-text,.we-info a,span.sitename {
+            color: #ff82ab
+        }
+        .ar-time i,.comment .comment-reply-link,.download,.feature i,.links ul li:before,.navigator i:hover,.object,.siren-checkbox-radio:checked+.siren-checkbox-radioInput:after,span.ar-circle {
+            background: #ff82ab
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff82ab
+        }
+        #pagination a:hover,.comment-respond input[type=submit]:hover,.download,.link-title,.links ul li:hover,.navigator i:hover {
+            border-color: #ff82ab
+        }
+        #archives-temp h3,#comments-navi a.next,#comments-navi a.prev,.comment h4 a,.comment h4 a:hover,.comment-respond input[type=submit]:hover,.entry-content a:hover,.entry-title a:hover,.site-info a:hover,.site-title a:hover,.site-top ul li a:hover,.sorry li a:hover,i.iconfont.js-toggle-search.iconsearch:hover,span.page-numbers.current {
+            color: #ff82ab
+        }
+        .comments .comments-main {
+            display: block!important
+        }
+        .comments .comments-hidden {
+            display: none!important
+        }
+    </style>
+    <meta name="generator" content="Hexo 5.2.0">
+    <script async src='../index/wp-includes/work/cdn-cgi/challenge-platform/h/b/scripts/invisible.js'></script>
+</head>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+    <div class="skin-menu no-select" id="mainskin" style="position:fixed;bottom:65px;right:52px">
+        <div class="theme-controls row-container">
+            <p style="text-align:center;font-family:Monaco;font-weight:700;color:#444">
+                <i style="color:grey" class="fa fa-chevron-left"></i>
+                background <i style="color:grey" class="fa fa-chevron-right"></i>
+            </p>
+            <ul class="menu-list">
+                <li id="white-bg">
+                    <i class="fa fa-television" aria-hidden="true"></i>
+                </li>
+                <li id="bing-bg">
+                    <i class="iconfont icon-pixiv"></i>
+                </li>
+                <li id="dark-bg">
+                    <i class="fa fa-moon-o" aria-hidden="true"></i>
+                </li>
+            </ul>
+        </div>
+        <hr>
+        <p style="text-align:center;font-family:Monaco;font-weight:700;color:#444">
+            <i style="color:grey" class="fa fa-chevron-left"></i>
+            font <i style="color:grey" class="fa fa-chevron-right"></i>
+        </p>
+        <div class="font-family-controls row-container">
+            <button type="button" class="control-btn-serif" data-mode="serif" onclick="mashiro_global.font_control.change_font()">Serif</button>
+            <button type="button" class="control-btn-sans-serif" data-mode="sans-serif" onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
+        </div>
+        <hr>
+        <p style="text-align:center;font-family:Monaco;font-weight:700;color:#444">
+            <i style="color:grey" class="fa fa-chevron-left"></i>
+            script <i style="color:grey" class="fa fa-chevron-right"></i>
+        </p>
+        <div class="theme-controls row-container">
+            <ul class="menu-list">
+                <li id="empty-effect">
+                    <i class="fa fa-ban"></i>
+                </li>
+                <li id="sakura-rain-effect">
+                    <i class="iconfont icon-sakura"></i>
+                </li>
+                <li id="snowy-effect">
+                    <i class="fa fa-snowflake-o"></i>
+                </li>
+                <li id="lines-effect">
+                    <i class="fa fa-chevron-left"></i>
+                </li>
+                <li id="colorful-belts-effect">
+                    <i class="fa fa-map"></i>
+                </li>
+                <li id="words-rain-effect">
+                    <i class="fa fa-font"></i>
+                </li>
+                <li id="point-rain-effect">
+                    <i class="iconfont icon-dots"></i>
+                </li>
+                <li id="rain-drop-effect">
+                    <i class="fa fa-tint"></i>
+                </li>
+            </ul>
+        </div>
+        <canvas id="night-mode-cover"></canvas>
+    </div>
+    <div class="changeSkin-gear no-select" style="background:rgba(0,0,0,0) none repeat scroll 0 0;visibility:visible;bottom:0">
+        <div class="keys" id="setbtn">
+            <button id="open-skinMenu">
+                <style>
+                    button#open-skinMenu {
+                        transition: all .2s linear 0s;
+                        outline: 0;
+                        position: fixed;
+                        bottom: 13px;
+                        right: 40px;
+                        font-size: 16px;
+                        background-color: rgba(255,255,255,.95);
+                        border-radius: 20px;
+                        box-shadow: 0 3px 8px 0 rgba(0,0,0,.1),0 3px 8px 0 rgba(0,0,0,.1)
+                    }
+                    button#open-skinMenu:hover {
+                        transition: all .2s linear 0s;
+                        background-color: #ff82ab;
+                        color: rgba(255,255,255)
+                    }
+                </style>
+                <i class="iconfont icon-gear inline-block rotating"></i>
+                SCHEME TOOL | 主题工具
+            </button>
+        </div>
+    </div>
+    <div class="scrollbar" id="bar"></div>
+    <a href="#" class="cd-top faa-float animated"></a>
+    <section id="main-container">
+        <div class="headertop filter-dot">
+            <div id="banner_wave_1"></div>
+            <div id="banner_wave_2"></div>
+            <figure id="centerbg" class="centerbg">
+                <div class="focusinfo no-select">
+                    <div class="header-tou">
+                        <h1 class="center-text glitch is-glitching Ubuntu-font" data-text="HELLO">HELLO</h1>
+                        <h1 class="center-text glitch is-glitching Ubuntu-font" data-text="WORLD">WORLD</h1>
+                    </div>
+                    <div class="header-info">
+                        <div class="top-social_v2">
+                            <li id="bg-pre">
+                                <img class="flipx" src="../index/wp-content/work/images/main/next-b.svg">
+                            </li>
+                            <li>
+                                <a href="https://github.com/iamyukino" target="_blank" class="social-github" title="Github">
+                                    <img src="../index/wp-content/work/images/main/github.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://gitee.com/iamyukino" target="_blank" class="social-github" title="Gitee">
+                                    <img src="../index/wp-content/work/images/main/gitee.png">
+                                </a>
+                            </li>
+                            <!--li class="wechat">
+                                <a href="/#">
+                                    <img src="icon.png">
+                                </a>
+                                <div class="wechatInner">
+                                    <img src="wechat.webp">
+                                </div>
+                            </li-->
+                            <li id="bg-next">
+                                <img src="../index/wp-content/work/images/main/next-b.svg">
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </figure>
+            <div id="video-container">
+                <video style="object-fit:fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto"></video>
+                <div id="video-btn" class="loadvideo videolive"></div>
+                <div id="video-add"></div>
+                <div class="video-stu"></div>
+            </div>
+            <div class="headertop-down faa-float animated" onclick="headertop_down()">
+                <span>
+                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                </span>
+            </div>
+        </div>
+        <div id="page" class="site wrapper">
+            <header class="site-header no-select gizle sabit" role="banner">
+                <div class="site-top">
+                    <div class="site-branding">
+                        <span class="site-title">
+                            <span class="logolink logo">
+                                <a href="https://iamyukino.github.io/work">
+                                    <ruby>
+                                        <span class="sakuraso">雨宮雪乃</span>
+                                        <span class="no">の</span>
+                                        <span class="shironeko">作業台</span>
+                                        <rp></rp>
+                                        <rt class="logo">展示・収集</rt>
+                                        <rp></rp>
+                                    </ruby>
+                                </a>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="searchbox search-form-submit">
+                        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+                    </div>
+                    <div id="show-nav" class="showNav mobile-fit">
+                        <div class="line line1"></div>
+                        <div class="line line2"></div>
+                        <div class="line line3"></div>
+                    </div>
+                    <div class="lower-cantiner">
+                        <div class="lower">
+                            <nav class="mobile-fit-control hide">
+                                <ul id="menu-new" class="menu">
+                                    <li>
+                                        <a href="https://iamyukino.github.io/">
+                                            <span class="faa-parent animated-hover">
+                                                <i class="fa fa-home faa-shake" aria-hidden="true"></i>
+                                                主站
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://iamyukino.github.io/work">
+                                            <span class="faa-parent animated-hover">
+                                                <i class="fa fa-list-ul faa-vertical" aria-hidden="true"></i>
+                                                首页
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://iamyukino.github.io/work/posts">
+                                            <span class="faa-parent animated-hover">
+                                                <i class="fa fa-archive faa-shake" aria-hidden="true"></i>
+                                                归档
+                                            </span>
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="https://iamyukino.github.io/work/posts/tec">
+                                                    <i class="fa fa-codepen" aria-hidden="true"></i>
+                                                    技术
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://iamyukino.github.io/work/posts/misc">
+                                                    <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                                    杂谈
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://iamyukino.github.io/work/posts/note">
+                                                    <i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+                                                    笔记
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href=javascript:;>
+                                            <span class="faa-parent animated-hover">
+                                                <i class="fa fa-gamepad faa-shake" aria-hidden="true"></i>
+                                                游戏
+                                            </span>
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="https://iamyukino.github.io/work/game/chat-noir">
+                                                    <i class="fa fa-music" aria-hidden="true"></i>
+                                                    猫捕
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://iamyukino.github.io/work/game/leaves-in-wind">
+                                                    <i class="fa fa-music" aria-hidden="true"></i>
+                                                    風切
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="https://iamyukino.github.io/work/comment">
+                                            <span class="faa-parent animated-hover">
+                                                <i class="fa fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                                                留言板
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>    
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="blank" style="padding-top:0"></div>
+            <div id="content" class="site-content">
+                <div class="notice" style="margin-top:60px">
+                    <i class="iconfont icon-notification"></i>
+                    <div class="notice-content">おはようございます！これは雨宮雪乃の作業台で、主にファイリング用です。</div>
+                </div>
+                <div class="top-feature-row">
+                    <h1 class="fes-title" style="font-family:Ubuntu,sans-serif">
+                        <i class="fa fa-anchor" aria-hidden="true"></i>
+                        START:DASH!!
+                    </h1>
+                    <div class="top-feature-v2">
+                        <div class="the-feature square from_left_and_right">
+                            <a href="https://iamyukino.github.io/work/posts">
+                                <div class="img">
+                                    <img src="../index/wp-content/work/images/features/cdn.min.webp">
+                                </div>
+                                <div class="info">
+                                    <h3>博客</h3>
+                                    <p>记录Yukino的学习历程</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="top-feature-v2">
+                        <div class="the-feature square from_left_and_right">
+                            <a href=javascript:;>
+                                <div class="img">
+                                    <img src="../index/wp-content/work/images/features/bilibili.min.webp">
+                                </div>
+                                <div class="info">
+                                    <h3>小游戏</h3>
+                                    <p>好耶！rua！</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="top-feature-v2">
+                        <div class="the-feature square from_left_and_right">
+                            <a href="https://iamyukino.github.io/work/comment">
+                                <div class="img">
+                                    <img src="../index/wp-content/work/images/features/jjie.min.webp">
+                                </div>
+                                <div class="info">
+                                    <h3>留言板</h3>
+                                    <p>汝可在此畅所欲言！</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+                        <h1 class="main-title" style="font-family:Ubuntu,sans-serif">
+                            <i class="fa fa-envira" aria-hidden="true"></i>
+                            Discovery
+                        </h1>
+                        <article class="post post-list-thumb post-list-thumb-left" class="post post-list-thumb">
+                            <div class="post-thumb">
+                                <a href="./posts/202204011546">
+                                    <img class="lazyload" onerror="imgError(this,3)" src="../index/wp-content/work/images/global/lazyload1.webp" data-src="../index/wp-content/work/images/post/202204011546.webp">
+                                </a>
+                            </div>
+                            <div class="post-content-wrap">
+                                <div class="post-content">
+                                    <div class="post-date">
+                                        <i class="iconfont icon-time"></i>
+                                        2022-4-1 15:46
+                                    </div>
+                                    <a href="./posts/202204011546" class="post-title">
+                                        <h3>如何将本地项目同时上传到 Github/Gitee 并使用 GPG 验证</h3>
+                                    </a>
+                                    <div class="post-meta">
+                                        <span>
+                                            <i class="fa fa-tags"></i>
+                                        </span>
+                                        <span>笔记</span>
+                                    </div>
+                                    <div class="float-content">
+                                        <p>如何配置 GPG 密钥？如何一次提交就能同时上传 Github 和 Gitee？本文主要讲述了 Git 的配置流程，并配有相关图片。</p>
+                                        <div class="post-bottom">
+                                            <a href="./posts/202204011546" class="button-normal">
+                                                <i class="iconfont icon-caidan"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="post post-list-thumb">
+                            <div class="post-thumb">
+                                <a href="./posts/202203252029">
+                                    <img class="lazyload" onerror="imgError(this,3)" src="../index/wp-content/work/images/global/lazyload1.webp" data-src="../index/wp-content/work/images/post/202203252029.webp">
+                                </a>
+                            </div>
+                            <div class="post-content-wrap">
+                                <div class="post-content">
+                                    <div class="post-date">
+                                        <i class="iconfont icon-time"></i>
+                                        2022-3-25 20:29
+                                    </div>
+                                    <a href="./posts/202203252029" class="post-title">
+                                        <h3>Python 元组 在 C++ 中的简易实现</h3>
+                                    </a>
+                                    <div class="post-meta">
+                                        <span>
+                                            <i class="fa fa-tags"></i>
+                                        </span>
+                                        <span>
+                                            <!--i class="iconfont icon-file"></i-->
+                                            笔记
+                                        </span>
+                                    </div>
+                                    <div class="float-content">
+                                        <p>运行时期C++如何按下标索引元组？如何遍历输出元组？本文主要讲述了Python元组在C++中的简单实现，并给出了详细代码。</p>
+                                        <div class="post-bottom">
+                                            <a href="./posts/202203252029" class="button-normal">
+                                                <i class="iconfont icon-caidan"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </main>
+                </div>
+                <div id="pagination">
+                    <a href=".?page=2">Previous</a>
+                </div>
+            </div>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="请输入关键词...">
+                    <span class="ins-close ins-selectable">
+                        <i class="fa fa-times-circle"></i>
+                    </span>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+        <script>
+            window.INSIGHT_CONFIG = {
+                TRANSLATION: {
+                    POSTS: "文章",
+                    CATEGORIES: "分类",
+                    TAGS: "标签"
+                },
+                ROOT_URL: "/",
+                CONTENT_URL: "../index/wp-content/work/content.json"
+            }
+        </script>
+        <footer id="colophon" class="site-footer" role="contentinfo">
+            <div class="site-info">
+                <div class="footertext">
+                    <div class="img-preload">
+                        <img src="../index/wp-content/work/images/global/loading-p.gif">
+                    </div>
+                    <p style="color:#666">&copy 2022 | iamYukino</p>
+                </div>
+                <div class="footer-device">
+                    <p style="font-family:Ubuntu,sans-serif">
+                        <span style="color:#b9b9b9">
+                            Powered by Hexo <i class="iconfont icon-sakura rotating" style="color:pink;display:inline-block"></i>
+                            Theme Sakura T
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </footer>
+        <script type="text/javascript" src="../index/wp-includes/work/js/lib.min.js"></script>
+        <script src="../index/wp-includes/work/js/clipboard.min.js"></script>
+        <script type="text/javascript" src="../index/wp-includes/work/js/InsightSearch.js"></script>
+        <script type="text/javascript" src="../index/wp-includes/work/js/jquery.fancybox.min.js"></script>
+        <script type="text/javascript" src="../index/wp-includes/work/js/zoom.min.js"></script>
+        <script type="text/javascript" src="../index/wp-includes/work/js/sakura-app.js"></script>
+        <script type="text/javascript" src="../index/wp-includes/work/js/tocbot.min.js"></script>
+        <script type="text/javascript">
+            var Poi;
+            Poi = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? {
+                pjax: "1",
+                movies: {
+                    url: "../index/wp-content/work/images/cover",
+                    name: "miao3.mp4",
+                    live: "close"
+                },
+                windowheight: "fixed",
+                codelamp: "close",
+                ajaxurl: "",
+                order: "asc",
+                formpostion: "bottom"
+            } : {
+                pjax: "1",
+                movies: {
+                    url: "../index/wp-content/work/images/cover",
+                    name: "miao3.mp4",
+                    live: "open"
+                },
+                windowheight: "auto",
+                codelamp: "close",
+                ajaxurl: "",
+                order: "asc",
+                formpostion: "bottom"
+            }
+        </script>
+        <script>
+            $(document).ready(function() {
+                var o;
+                0 < $(".toc").length && 1200 < document.body.clientWidth && (0 < $(".pattern-center").length ? tocbot.init({
+                    tocSelector: ".toc",
+                    contentSelector: ".entry-content",
+                    scrollSmooth: !0,
+                    headingSelector: "h1, h2, h3, h4, h5",
+                    headingsOffset: -400,
+                    scrollSmoothOffset: -85
+                }) : tocbot.init({
+                    tocSelector: ".toc",
+                    contentSelector: ".entry-content",
+                    scrollSmooth: !0,
+                    headingSelector: "h1, h2, h3, h4, h5",
+                    headingsOffset: -85,
+                    scrollSmoothOffset: -85
+                }),
+                o = $(".toc").offset().top - 95,
+                window.onscroll = function() {
+                    var t = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+                    o <= t ? $(".toc").addClass("toc-fixed") : $(".toc").removeClass("toc-fixed")
+                }
+                )
+            })
+        </script>
+        <div class="openNav no-select" style="height:50px">
+            <div class="iconflat no-select" style="width:50px;height:50px">
+                <div class="icon"></div>
+            </div>
+            <div class="site-branding search-form-submit">
+                <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+            </div>
+        </div>
+    </section>
+
+    <div id="mo-nav">
+        <div class="m-avatar">
+            <img src="../index/wp-content/work/images/global/avatar.png">
+        </div>
+        <p style="text-align:center;color:#333;font-weight:900;font-family:Ubuntu,sans-serif;letter-spacing:1.5px">雨宮雪乃の作業台</p>
+        <p style="text-align:center;word-spacing:15px">
+            <a href="https://github.com/iamyukino">
+                <img src="../index/wp-content/work/images/main/github.png" style="width:10%;">
+            </a>
+            <a href="https://gitee.com/iamyukino">
+                <img src="../index/wp-content/work/images/main/gitee.png" style="width:10%;">
+            </a>
+        </p>
+        <ul id="menu-new-1" class="menu">
+            <li>
+                <a href="https://iamyukino.github.io/">
+                    <span class="faa-parent animated-hover">
+                        <i class="fa fa-home faa-shake" aria-hidden="true"></i>
+                        主站
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://iamyukino.github.io/work" class="faa-parent animated-hover">
+                        <i class="fa fa-list-ul faa-vertical" aria-hidden="true"></i>
+                        首页
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://iamyukino.github.io/work/posts">
+                    <span class="faa-parent animated-hover">
+                        <i class="fa fa-archive faa-shake" aria-hidden="true"></i>
+                        归档
+                    </span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="https://iamyukino.github.io/work/posts/tec">
+                            <i class="fa fa-codepen" aria-hidden="true"></i>
+                            技术
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://iamyukino.github.io/work/posts/misc">
+                            <i class="fa fa-comment-o" aria-hidden="true"></i>
+                            杂谈
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://iamyukino.github.io/work/posts/note">
+                            <i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+                            笔记
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href=javascript:;>
+                    <span class="faa-parent animated-hover">
+                        <i class="fa fa-gamepad faa-shake" aria-hidden="true"></i>
+                        游戏
+                    </span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="https://iamyukino.github.io/work/game/chat-noir">
+                            <i class="fa fa-music" aria-hidden="true"></i>
+                            猫捕
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://iamyukino.github.io/work/game/leaves-in-wind">
+                            <i class="fa fa-music" aria-hidden="true"></i>
+                            風切
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="https://iamyukino.github.io/work/comment">
+                    <span class="faa-parent animated-hover">
+                        <i class="fa fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                        留言板
+                    </span>
+                </a>
+            </li>
+        </ul>
+        <p style="text-align:center;font-size:13px;color:#b9b9b9">&copy 2022 iamYukino</p>
+    </div>
+
+    <button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display:none">
+        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+    </button>
+    <link rel="stylesheet" href="../index/wp-includes/work/npm/aplayer/dist/APlayer.min.css">
+    <script src="../index/wp-includes/work/npm/aplayer/dist/APlayer.min.js"></script>
+    <script src="../index/wp-includes/work/npm/meting@2/dist/Meting.min.js"></script>
+    <style>
+        .aplayer .aplayer-lrc {
+            height: 35px
+        }
+
+        .aplayer .aplayer-lrc p {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 18px!important
+        }
+
+        .aplayer .aplayer-lrc p.aplayer-lrc-current {
+            color: #ff1493
+        }
+
+        .aplayer.aplayer-narrow .aplayer-body {
+            left: -66px!important
+        }
+
+        .aplayer.aplayer-fixed .aplayer-lrc {
+            display: none
+        }
+
+        .aplayer .aplayer-lrc.aplayer-lrc-hide {
+            display: none!important
+        }
+
+        .aplayer.aplayer-fixed .lrc-show {
+            display: block;
+            background: rgba(255,255,255,.8)
+        }
+    </style>
+    <meting-js id="4925243818" server="netease" type="playlist" fixed="true" autoplay loop order="random" preload="none" volume="0.2" mutex="true"></meting-js>
+    <script>
+        $(function() {
+            $("body").on("click", ".aplayer", function() {
+                $(".aplayer-button").hasClass("aplayer-play") ? $(".aplayer-lrc").removeClass("lrc-show") : $(".aplayer-lrc").addClass("lrc-show")
+            })
+        })
+    </script>
+    <canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:1;pointer-events:none"></canvas>
+    <script type="text/javascript" src="../index/wp-includes/work/js/anime.min.js" async></script>
+    <script type="text/javascript" src="../index/wp-includes/work/js/mouse-click-n-tag.js" async></script>
+    <script src="../index/wp-includes/work/js/fly-engine.js" type="module" async></script>
+    
+    <!-- live2d -->
+    <div class="waifu" style="z-index:9;">
+        <div class="waifu-tips"></div>
+        <canvas id="live2d" width="280" height="250" style="bottom: -10px;"></canvas>
+        <div class="waifu-tool">
+            <span class="fui-home"></span>
+            <span class="fui-chat"></span>
+            <span class="fui-eye"></span>
+            <span class="fui-user"></span>
+            <span class="fui-photo"></span>
+            <span class="fui-info-circle"></span>
+            <span class="fui-cross"></span>
+        </div>
+    </div>
+    <!-- Live2DCubismCore script -->
+    <script src="../index/wp-includes/global/waifu/Core/live2dcubismcore.js"></script>
+    <!-- Build script -->
+    <script src = "../index/wp-includes/global/waifu/Samples/TypeScript/Demo/dist/meidou_live2d.js"></script>
+    <script src="../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.js"></script>
+    <script type="text/javascript">    
+        let modulesPath = "../index/wp-content/global/waifu/"
+        let modelNames = ['mia1', 'live2d_free1.1', 'Orangesweet2.1', 'Hiyori']
+        let waifuTipsUrl = "../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.json"
+        initModel(modulesPath, modelNames, waifuTipsUrl);
+    </script>
+
+</body>
+</html>

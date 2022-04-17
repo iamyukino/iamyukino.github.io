@@ -1,0 +1,29 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "aa.moc3",
+		"Textures": [
+			"aa.2048/texture_00.png"
+		],
+		"Physics": "aa.physics3.json"
+	},
+	"Motions": {
+		"Idle": [
+ 		{"File":"motions/idle.motion3.json" ,"FadeInTime":0.5, "FadeOutTime":0.5},]
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": [
+				"ParamEyeLOpen",
+				"ParamEyeROpen"
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		}
+	]
+}

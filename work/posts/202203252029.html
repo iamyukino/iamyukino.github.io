@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+
+    <title>Python 元组 在 C++ 中的简易实现 | 雨宮雪乃の作業台</title>
+    <style>
+        * {
+            cursor: url("https://iamyukino.github.io/index/wp-content/global/images/mouse.png"), auto;
+        }
+    </style>
+    <link rel="shortcut icon" href="https://iamyukino.github.io/index/wp-content/global/images/favicon.png" type="image/png">
+
+    <link rel="stylesheet" type="text/css" href="../../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu.css"/>
+    <script type="text/javascript" src="../../index/wp-includes/index/js/jquery.min.js"></script>
+    <script src="../../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/html2canvas.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../index/wp-includes/work/css/logo.css">
+    <link rel="stylesheet" type="text/css" href="../../index/wp-includes/work/fonts/logo/logo.css">
+    <link rel="stylesheet" id="saukra_css-css" href="../../index/wp-includes/work/css/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../index/wp-includes/work/css/lib.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../index/wp-includes/work/css/font.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../index/wp-includes/work/css/insight.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../index/wp-includes/work/css/jquery.fancybox.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../index/wp-includes/work/css/zoom.css" type="text/css" media="all">
+    <style>
+        .emoji-coda {
+            display: inline-block!important;
+            position: relative;
+            width: 45px;
+            top: 2px;
+            margin: -3px 3px!important;
+            padding: 0
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../../index/wp-includes/work/css/sharejs.css">
+    <script type="text/javascript" src="../../index/wp-includes/work/js/Valine.min.js"></script>
+
+    <script>
+        var mashiro_option = new Object
+            , mashiro_global = new Object
+            , bg =
+                ( "../../index/wp-content/work/images/cover/0.webp,"
+                + "../../index/wp-content/work/images/cover/1.webp,"
+                + "../../index/wp-content/work/images/cover/2.webp,"
+                + "../../index/wp-content/work/images/cover/3.webp,"
+                + "../../index/wp-content/work/images/cover/4.webp,"
+                + "../../index/wp-content/work/images/cover/5.webp,"
+                + "../../index/wp-content/work/images/cover/6.webp,"
+                + "../../index/wp-content/work/images/cover/7.webp,"
+                + "../../index/wp-content/work/images/cover/8.webp,"
+                + "../../index/wp-content/work/images/cover/9.webp,"
+                + "../../index/wp-content/work/images/cover/10.webp,"
+                + "../../index/wp-content/work/images/cover/11.webp,"
+                + "../../index/wp-content/work/images/cover/12.webp,"
+                + "../../index/wp-content/work/images/cover/13.webp,"
+                + "../../index/wp-content/work/images/cover/14.webp,"
+                + "../../index/wp-content/work/images/cover/15.webp,"
+                + "../../index/wp-content/work/images/cover/16.webp"). split(",")
+            , bgindex = Math.floor(Math.random() * bg.length);
+
+            mashiro_option.NProgressON = !0,
+            mashiro_option.email_domain = "iamyukino.github.io",
+            mashiro_option.email_name = "me",
+            mashiro_option.cookie_version_control = "",
+            mashiro_option.qzone_autocomplete = !1,
+            mashiro_option.site_name = "雨宮雪乃のサイト",
+            mashiro_option.author_name = "雨宮雪乃",
+            mashiro_option.site_url = "https://iamyukino.github.io/work/posts/202203252029",
+            mashiro_option.v_appId = "Hr0x4YCmviK0H7WMFGDa2bbb-gzGzoHsz",
+            mashiro_option.v_visitor = true,
+            mashiro_option.v_appKey = "Woqnw7ir7fohwvS8uk0MKDMP",
+            mashiro_option.v_serverURLs = "https://hr0x4ycm.lc-cn-n1-shared.com",
+            mashiro_option.mathjax = "0"
+    </script>
+    <style type="text/css">
+        .hljs-ln {
+            border-collapse: collapse
+        }
+        .hljs-ln td {
+            padding: 0
+        }
+        .hljs-ln-n:before {
+            content: attr(data-line-number)
+        }
+    </style>
+    <style type="text/css">
+        .site-top .lower nav {
+            display: block!important
+        }
+        #pagination a:hover,.author-profile i,.float-content i:hover,.post-content a:hover,.post-like a,.post-more i:hover,.post-share .show-share,.sub-text,.we-info a,span.sitename {
+            color: #ff82ab
+        }
+        .ar-time i,.comment .comment-reply-link,.download,.feature i,.links ul li:before,.navigator i:hover,.object,.siren-checkbox-radio:checked+.siren-checkbox-radioInput:after,span.ar-circle {
+            background: #ff82ab
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff82ab
+        }
+        #pagination a:hover,.comment-respond input[type=submit]:hover,.download,.link-title,.links ul li:hover,.navigator i:hover {
+            border-color: #ff82ab
+        }
+        #archives-temp h3,#comments-navi a.next,#comments-navi a.prev,.comment h4 a,.comment h4 a:hover,.comment-respond input[type=submit]:hover,.entry-content a:hover,.entry-title a:hover,.site-info a:hover,.site-title a:hover,.site-top ul li a:hover,.sorry li a:hover,i.iconfont.js-toggle-search.iconsearch:hover,span.page-numbers.current {
+            color: #ff82ab
+        }
+        .comments .comments-main {
+            display: block!important
+        }
+        .comments .comments-hidden {
+            display: none!important
+        }
+    </style>
+    <meta name="generator" content="Hexo 5.2.0">
+</head>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+    <div class="skin-menu no-select" id="mainskin" style="position:fixed;bottom:65px;right:52px">
+        <div class="theme-controls row-container">
+            <p style="text-align:center;font-family:Monaco;font-weight:700;color:#444">
+                <i style="color:grey" class="fa fa-chevron-left"></i>
+                background <i style="color:grey" class="fa fa-chevron-right"></i>
+            </p>
+            <ul class="menu-list">
+                <li id="white-bg">
+                    <i class="fa fa-television" aria-hidden="true"></i>
+                </li>
+                <li id="bing-bg">
+                    <i class="iconfont icon-pixiv"></i>
+                </li>
+                <li id="dark-bg">
+                    <i class="fa fa-moon-o" aria-hidden="true"></i>
+                </li>
+            </ul>
+        </div>
+        <hr>
+        <p style="text-align:center;font-family:Monaco;font-weight:700;color:#444">
+            <i style="color:grey" class="fa fa-chevron-left"></i>
+            font <i style="color:grey" class="fa fa-chevron-right"></i>
+        </p>
+        <div class="font-family-controls row-container">
+            <button type="button" class="control-btn-serif" data-mode="serif" onclick="mashiro_global.font_control.change_font()">Serif</button>
+            <button type="button" class="control-btn-sans-serif" data-mode="sans-serif" onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
+        </div>
+        <hr>
+        <p style="text-align:center;font-family:Monaco;font-weight:700;color:#444">
+            <i style="color:grey" class="fa fa-chevron-left"></i>
+            script <i style="color:grey" class="fa fa-chevron-right"></i>
+        </p>
+        <div class="theme-controls row-container">
+            <ul class="menu-list">
+                <li id="empty-effect">
+                    <i class="fa fa-ban"></i>
+                </li>
+                <li id="sakura-rain-effect">
+                    <i class="iconfont icon-sakura"></i>
+                </li>
+                <li id="snowy-effect">
+                    <i class="fa fa-snowflake-o"></i>
+                </li>
+                <li id="lines-effect">
+                    <i class="fa fa-chevron-left"></i>
+                </li>
+                <li id="colorful-belts-effect">
+                    <i class="fa fa-map"></i>
+                </li>
+                <li id="words-rain-effect">
+                    <i class="fa fa-font"></i>
+                </li>
+                <li id="point-rain-effect">
+                    <i class="iconfont icon-dots"></i>
+                </li>
+                <li id="rain-drop-effect">
+                    <i class="fa fa-tint"></i>
+                </li>
+            </ul>
+        </div>
+        <canvas id="night-mode-cover"></canvas>
+    </div>
+    <div class="changeSkin-gear no-select" style="background:rgba(0,0,0,0) none repeat scroll 0 0;visibility:visible;bottom:0">
+        <div class="keys" id="setbtn">
+            <button id="open-skinMenu">
+                <style>
+                    button#open-skinMenu {
+                        transition: all .2s linear 0s;
+                        outline: 0;
+                        position: fixed;
+                        bottom: 13px;
+                        right: 40px;
+                        font-size: 16px;
+                        background-color: rgba(255,255,255,.95);
+                        border-radius: 20px;
+                        box-shadow: 0 3px 8px 0 rgba(0,0,0,.1),0 3px 8px 0 rgba(0,0,0,.1)
+                    }
+
+                    button#open-skinMenu:hover {
+                        transition: all .2s linear 0s;
+                        background-color: #ff82ab;
+                        color: rgba(255,255,255)
+                    }
+                </style>
+                <i class="iconfont icon-gear inline-block rotating"></i>
+                SCHEME TOOL | 主题工具
+            </button>
+        </div>
+    </div>
+    <div class="scrollbar" id="bar"></div>
+    <a href="#" class="cd-top faa-float animated"></a>
+    <section id="main-container">
+        <div class="headertop filter-dot">
+            <div id="banner_wave_1"></div>
+            <div id="banner_wave_2"></div>
+            <figure id="centerbg" class="centerbg">
+                <div class="focusinfo no-select">
+                    <div class="header-tou">
+                        <h1 class="center-text glitch is-glitching Ubuntu-font" data-text="HELLO">HELLO</h1>
+                        <h1 class="center-text glitch is-glitching Ubuntu-font" data-text="WORLD">WORLD</h1>
+                    </div>
+                    
+                    <div class="header-info">
+                        <div class="top-social_v2">
+                            <li id="bg-pre">
+                                <img class="flipx" src="../../index/wp-content/work/images/main/next-b.svg">
+                            </li>
+                            <li>
+                                <a href="https://github.com/iamyukino" target="_blank" class="social-github" title="Github">
+                                    <img src="../../index/wp-content/work/images/main/github.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://gitee.com/iamyukino" target="_blank" class="social-github" title="Gitee">
+                                    <img src="../../index/wp-content/work/images/main/gitee.png">
+                                </a>
+                            </li>
+                            <li id="bg-next">
+                                <img src="../../index/wp-content/work/images/main/next-b.svg">
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </figure>
+            <div id="video-container">
+                <video style="object-fit:fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto"></video>
+                <div id="video-btn" class="loadvideo videolive"></div>
+                <div id="video-add"></div>
+                <div class="video-stu"></div>
+            </div>
+            <div class="headertop-down faa-float animated" onclick="headertop_down()">
+                <span>
+                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                </span>
+            </div>
+        </div>
+        <div id="page" class="site wrapper">
+            <header class="site-header no-select gizle sabit" role="banner">
+                <div class="site-top">
+                    <div class="site-branding">
+                        <span class="site-title">
+                            <span class="logolink logo">
+                                <a href="https://iamyukino.github.io/work">
+                                    <ruby>
+                                        <span class="sakuraso">雨宮雪乃</span>
+                                        <span class="no">の</span>
+                                        <span class="shironeko">作業台</span>
+                                        <rp></rp>
+                                        <rt class="logo">展示・収集</rt>
+                                        <rp></rp>
+                                    </ruby>
+                                </a>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="searchbox search-form-submit">
+                        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+                    </div>
+                    <div id="show-nav" class="showNav mobile-fit">
+                        <div class="line line1"></div>
+                        <div class="line line2"></div>
+                        <div class="line line3"></div>
+                    </div>
+                    <div class="lower-cantiner">
+                        <div class="lower">
+                            <nav class="mobile-fit-control hide">
+                                <ul id="menu-new" class="menu">
+                                    <li>
+                                        <a href="https://iamyukino.github.io/">
+                                            <span class="faa-parent animated-hover">
+                                                <i class="fa fa-home faa-shake" aria-hidden="true"></i>
+                                                主站
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://iamyukino.github.io/work">
+                                            <span class="faa-parent animated-hover">
+                                                <i class="fa fa-list-ul faa-vertical" aria-hidden="true"></i>
+                                                首页
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://iamyukino.github.io/work/posts">
+                                            <span class="faa-parent animated-hover">
+                                                <i class="fa fa-archive faa-shake" aria-hidden="true"></i>
+                                                归档
+                                            </span>
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="https://iamyukino.github.io/work/posts/tec">
+                                                    <i class="fa fa-codepen" aria-hidden="true"></i>
+                                                    技术
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://iamyukino.github.io/work/posts/misc">
+                                                    <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                                    杂谈
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://iamyukino.github.io/work/posts/note">
+                                                    <i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+                                                    笔记
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href=javascript:;>
+                                            <span class="faa-parent animated-hover">
+                                                <i class="fa fa-gamepad faa-shake" aria-hidden="true"></i>
+                                                游戏
+                                            </span>
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="https://iamyukino.github.io/work/game/chat-noir">
+                                                    <i class="fa fa-music" aria-hidden="true"></i>
+                                                    猫捕
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://iamyukino.github.io/work/game/leaves-in-wind">
+                                                    <i class="fa fa-music" aria-hidden="true"></i>
+                                                    風切
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="https://iamyukino.github.io/work/comment">
+                                            <span class="faa-parent animated-hover">
+                                                <i class="fa fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                                                留言板
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul> 
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <link rel="stylesheet" type="text/css" href="../../index/wp-includes/work/css/sharejs.css">
+            <link rel="stylesheet" href="../../index/wp-includes/work/css/tocbot.css">
+            <div class="pattern-center-blank"></div>
+            <div class="pattern-center single-center">
+                <div class="pattern-attachment-img lazyload" style="background-image:url(../../index/wp-content/work/images/post/202203252029.webp)" src="../../index/wp-content/work/images/global/lazyload1.webp" data-src="../../index/wp-content/work/images/post/202203252029.webp"></div>
+                <header class="pattern-header single-header" style="text-shadow:0 0 7px #000,0 0 7px #000">
+                    <h1 class="entry-title">Python 元组 在 C++ 中的简易实现</h1>
+                    <p class="entry-census">
+                        <span>
+                            <a href="https://github.com/iamyukino">
+                                <img src="../../index/wp-content/work/images/global/avatar.png">
+                            </a>
+                        </span>
+                        <span>
+                            <a href="https://github.com/iamyukino">雨宮雪乃</a>
+                        </span>
+                        <span class="bull">·</span>
+                        2022-3-25<span class="bull">·</span>
+                        
+                        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                        <span id="busuanzi_container_page_pv">
+                            <span id="busuanzi_value_page_pv"></span>
+                            次阅读
+                        </span>
+                        <!--span id="https://iamyukino.github.io/work/posts/202203252029" class="leancloud_visitors" data-flag-title="Python 元组 在 C++ 中的简易实现">
+                            <a class="leancloud-visitors-count">加载中···</a>
+                            <a class="post-meta-item-text">次阅读</a>
+                        </span-->
+                        
+                        <span class="bull"></span>
+                        <span class="post-count">本文共计：2614字</span>
+                    </p>
+                </header>
+            </div>
+            <div id="content" class="site-content">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+                        <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+                            <div class="entry-content">
+                                <div class="entry-content">
+                        <!-- start of article.md -->
+                        <h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><p>Python 的元组与列表类似，区别在于其元素不可修改。元组的最大特点是可存放任意类型，所以我们可使用其将不相关的变量绑定为一个整体。C++ 作为编译型语言，往往通过模板（编译期），或通过类似于函数闭包的方法（运行期，如<code>std::any</code>），实现不定类型元组。C++ 标准库中的元组类型，是通过模板多态实现的。</p>
+                        <p>在 python 中，元组创建很简单，只需要在括号中添加元素，并使用逗号隔开即可。<br>就像这样：</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="python hljs" data-rel="PYTHON" id="hljs-0"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    t1 = (<span class="hljs-string">'Hello'</span>, <span class="hljs-number">111</span>)  </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    t2 = <span class="hljs-string">"How"</span>, <span class="hljs-string">"are"</span>, <span class="hljs-string">"you"</span></div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-0" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <p>而 C++ 也有现成的元组类型<code>std::tuple</code>，在<code>&lt;tuple&gt;</code>中定义。</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++ hljs" data-rel="C++" id="hljs-1"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">auto</span> t1 = <span class="hljs-built_in">std</span>::make_tuple (<span class="hljs-string">"My"</span>, <span class="hljs-number">22</span>);</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">auto</span> t2 = <span class="hljs-built_in">std</span>::make_tuple (<span class="hljs-string">"Name"</span>, <span class="hljs-string">"is"</span>);</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-1" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <p>元组与数组类似，下标索引从 0 开始。</p>
+                        <h2 id="访问元组"><a href="#访问元组" class="headerlink" title="访问元组"></a>访问元组</h2><p>我们知道，Python 中元组可以使用下标索引来访问元组中的值。</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="python hljs" data-rel="PYTHON" id="hljs-2"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    t3 = (<span class="hljs-string">'Yukino'</span>, <span class="hljs-string">'Amamiya'</span>)</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">print</span> (<span class="hljs-string">'First Name'</span>, t3[<span class="hljs-number">-1</span>])</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">print</span> (<span class="hljs-string">'Last Name'</span>, t3[<span class="hljs-number">0</span>])</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-2" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <p>在编译期，C++ 也可通过 <code>std::get&lt;N&gt;()</code>来获取指定位置的变量。</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++ hljs" data-rel="C++" id="hljs-3"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">auto</span> t3 = <span class="hljs-built_in">std</span>::make_tuple (<span class="hljs-string">'You'</span>, <span class="hljs-string">'can'</span>, <span class="hljs-string">'call me'</span>);</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">std</span>::get&lt;<span class="hljs-number">0</span>&gt;(t3) &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">std</span>::get&lt;<span class="hljs-number">1</span>&gt;(t3) &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-3" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <p>而在运行时期，C++ 需要通过递归的方式来逐一比较编译器和运行期常量的值，从而获取指定下标的元素。而递归会导致找到时所处位置在函数调用栈的深处，很难返回，故在这里我通过赋值的方式返回。<br>注意代码中赋值时使用了模板类型萃取条件，从而避免元组中有不是想要的下标元素，类型不匹配导致编译错误。<br>就像这样：</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++ hljs" data-rel="C++" id="hljs-4"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-comment">/* Runtime subscript access tuples */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">int</span> <span class="hljs-comment">/* Recursive termination condition */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    mcl_tuple_visitor (<span class="hljs-keyword">size_t</span>, <span class="hljs-built_in">std</span>::tuple&lt;&gt; <span class="hljs-keyword">const</span>&amp;, <span class="hljs-keyword">void</span>*) { <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; }</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"> </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> <span class="hljs-keyword">lhs_t</span>, <span class="hljs-keyword">typename</span> <span class="hljs-keyword">rhs_t</span>&gt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">typename</span> <span class="hljs-built_in">std</span>::enable_if&lt;!<span class="hljs-built_in">std</span>::is_convertible&lt;<span class="hljs-keyword">rhs_t</span>, <span class="hljs-keyword">lhs_t</span>&gt;::value, <span class="hljs-keyword">void</span>&gt;::<span class="hljs-function">type</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-title">mcl_copy</span> <span class="hljs-params">(<span class="hljs-keyword">lhs_t</span>* , <span class="hljs-keyword">rhs_t</span>* )</span> <span class="hljs-comment">/* The specified subscript element type cannot be */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    { <span class="hljs-keyword">throw</span> <span class="hljs-built_in">std</span>::bad_cast (); } <span class="hljs-comment">/* implicitly converted to the target type */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"> </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> <span class="hljs-keyword">lhs_t</span>, <span class="hljs-keyword">typename</span> <span class="hljs-keyword">rhs_t</span>&gt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">typename</span> <span class="hljs-built_in">std</span>::enable_if&lt;<span class="hljs-built_in">std</span>::is_convertible&lt;<span class="hljs-keyword">rhs_t</span>, <span class="hljs-keyword">lhs_t</span>&gt;::value, <span class="hljs-keyword">void</span>&gt;::<span class="hljs-function">type</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-title">mcl_copy</span> <span class="hljs-params">(<span class="hljs-keyword">lhs_t</span>* lhs, <span class="hljs-keyword">rhs_t</span>* rhs)</span> <span class="hljs-keyword">noexcept</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    { <span class="hljs-keyword">const_cast</span>&lt;<span class="hljs-keyword">typename</span> <span class="hljs-built_in">std</span>::remove_const&lt;<span class="hljs-keyword">decltype</span>(*lhs)&gt;::type&gt;(*lhs) = *rhs; }</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="14"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"> </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="15"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> <span class="hljs-keyword">visit_t</span>, <span class="hljs-keyword">typename</span> Tv, <span class="hljs-keyword">typename</span>... Ts&gt; <span class="hljs-function"><span class="hljs-keyword">void</span> </span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="16"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-title">mcl_tuple_visitor</span> <span class="hljs-params">(<span class="hljs-keyword">size_t</span> index, <span class="hljs-built_in">std</span>::tuple&lt;Tv, Ts...&gt; <span class="hljs-keyword">const</span>&amp; t, <span class="hljs-keyword">visit_t</span>* ptr)</span> {</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="17"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">if</span> (index &gt;= (<span class="hljs-number">1</span> + <span class="hljs-keyword">sizeof</span>...(Ts))) </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="18"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            <span class="hljs-keyword">throw</span> <span class="hljs-built_in">std</span>::invalid_argument (<span class="hljs-string">"Bad Index"</span>);</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="19"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (index &gt; <span class="hljs-number">0</span>)</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="20"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            mcl_tuple_visitor (index - <span class="hljs-number">1</span>, <span class="hljs-keyword">reinterpret_cast</span>&lt;<span class="hljs-built_in">std</span>::tuple&lt;Ts...&gt; <span class="hljs-keyword">const</span>&amp;&gt;(t), ptr);</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="21"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">else</span> mcl_copy (ptr, &amp;<span class="hljs-built_in">std</span>::get&lt;<span class="hljs-number">0</span>&gt;(t));</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="22"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    }</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-4" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <p>使用<code>operator&lt;&lt;</code>输出时，由于模板不指定目标类型，故需要进行特殊化处理。</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++ hljs" data-rel="C++" id="hljs-5"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-comment">/* Outputs specified tuple elements at run time */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">mcl_do_is_printable</span> {</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> <span class="hljs-keyword">lhs_t</span>, <span class="hljs-keyword">typename</span> <span class="hljs-keyword">rhs_t</span>, </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">          <span class="hljs-keyword">typename</span> = <span class="hljs-keyword">decltype</span>(*<span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">lhs_t</span>*&gt;(<span class="hljs-number">0</span>) &lt;&lt; *<span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">rhs_t</span>*&gt;(<span class="hljs-number">0</span>))&gt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            <span class="hljs-keyword">static</span> <span class="hljs-built_in">std</span>::integral_constant&lt;<span class="hljs-keyword">bool</span>, <span class="hljs-literal">true</span>&gt; test(<span class="hljs-keyword">int</span>); <span class="hljs-comment">/* only declaration */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span>, <span class="hljs-keyword">typename</span>&gt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            <span class="hljs-keyword">static</span> <span class="hljs-built_in">std</span>::integral_constant&lt;<span class="hljs-keyword">bool</span>, <span class="hljs-literal">false</span>&gt; test(...);</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    };</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"> </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> <span class="hljs-keyword">lhs_t</span>, <span class="hljs-keyword">typename</span> <span class="hljs-keyword">rhs_t</span>&gt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">mcl_is_printable</span></span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    : <span class="hljs-keyword">public</span> mcl_do_is_printable {</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-function"><span class="hljs-keyword">typedef</span> <span class="hljs-title">decltype</span><span class="hljs-params">(test&lt;<span class="hljs-keyword">lhs_t</span>, <span class="hljs-keyword">rhs_t</span>&gt;(<span class="hljs-number">0</span>)</span>) type</span>;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="14"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    }; <span class="hljs-comment">/* Judge whether the target type can be output */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="15"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"> </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="16"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> <span class="hljs-keyword">lhs_t</span>, <span class="hljs-keyword">typename</span> <span class="hljs-keyword">rhs_t</span>&gt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="17"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">typename</span> <span class="hljs-built_in">std</span>::enable_if&lt;mcl_is_printable&lt;<span class="hljs-keyword">lhs_t</span>, <span class="hljs-keyword">rhs_t</span>&gt;::type::value, <span class="hljs-keyword">void</span>&gt;::<span class="hljs-function">type</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="18"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-title">mcl_oss_print</span> <span class="hljs-params">(<span class="hljs-keyword">lhs_t</span>* lhs, <span class="hljs-keyword">rhs_t</span>* rhs)</span> <span class="hljs-keyword">noexcept</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="19"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    { *lhs &lt;&lt; *rhs; }</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="20"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"> </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="21"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> <span class="hljs-keyword">lhs_t</span>, <span class="hljs-keyword">typename</span> <span class="hljs-keyword">rhs_t</span>&gt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="22"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">typename</span> <span class="hljs-built_in">std</span>::enable_if&lt;!mcl_is_printable&lt;<span class="hljs-keyword">lhs_t</span>, <span class="hljs-keyword">rhs_t</span>&gt;::type::value, <span class="hljs-keyword">void</span>&gt;::<span class="hljs-function">type</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="23"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-title">mcl_oss_print</span> <span class="hljs-params">(<span class="hljs-keyword">lhs_t</span>* , <span class="hljs-keyword">rhs_t</span>* )</span> </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="24"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    { <span class="hljs-keyword">throw</span> <span class="hljs-built_in">std</span>::ios_base::failure (<span class="hljs-string">"The specified type does not overload operator&lt;&lt; . "</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="25"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-string">"(with type = "</span> + <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> (<span class="hljs-keyword">typeid</span>(<span class="hljs-keyword">rhs_t</span>).name()) + <span class="hljs-string">")"</span>); }</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="26"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"> </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="27"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-function"><span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">int</span></span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="28"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-title">mcl_tuple_printer</span> <span class="hljs-params">(<span class="hljs-keyword">size_t</span>, <span class="hljs-built_in">std</span>::tuple&lt;&gt; <span class="hljs-keyword">const</span>&amp;, <span class="hljs-keyword">void</span>*)</span> <span class="hljs-keyword">noexcept</span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; }</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="29"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"> </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="30"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> <span class="hljs-keyword">os_t</span>, <span class="hljs-keyword">typename</span> Tv, <span class="hljs-keyword">typename</span>... Ts&gt; <span class="hljs-function"><span class="hljs-keyword">void</span> </span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="31"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-title">mcl_tuple_printer</span> <span class="hljs-params">(<span class="hljs-keyword">size_t</span> index, <span class="hljs-built_in">std</span>::tuple&lt;Tv, Ts...&gt; <span class="hljs-keyword">const</span>&amp; t, <span class="hljs-keyword">os_t</span>* oss)</span> {</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="32"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">if</span> (index &gt;= (<span class="hljs-number">1</span> + <span class="hljs-keyword">sizeof</span>...(Ts)))</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="33"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            <span class="hljs-keyword">throw</span> <span class="hljs-built_in">std</span>::invalid_argument (<span class="hljs-string">"Bad index"</span>);</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="34"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (index &gt; <span class="hljs-number">0</span>)</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="35"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            mcl_tuple_printer (index - <span class="hljs-number">1</span>, <span class="hljs-keyword">reinterpret_cast</span>&lt;<span class="hljs-built_in">std</span>::tuple&lt;Ts...&gt; <span class="hljs-keyword">const</span>&amp;&gt;(t), oss);</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="36"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">else</span> mcl_oss_print (oss, &amp;<span class="hljs-built_in">std</span>::get&lt;<span class="hljs-number">0</span>&gt;(t));</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="37"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    }</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="38"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-comment"><span class="hljs-comment">/* Use the characteristics of compile time extension to obtain the elements with</span></span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="39"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-comment">           specified subscripts through recursion at run time */</span></div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-5" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <h2 id="元组大小比较"><a href="#元组大小比较" class="headerlink" title="元组大小比较"></a>元组大小比较</h2><p>Python 中，我们可以直接比较两个元组的大小，其规则是：</p>
+                        <p>如果比较的元素是同类型的，则比较其值，返回结果。<br>如果两个元素不是同一种类型,则检查它们是否是数字。</p>
+                        <ul>
+                        <li>如果是数字，执行必要的数字强制类型转换，然后比较。</li>
+                        <li>如果有一方的元素是数字，则另一方的元素”大”（数字是”最小的”）</li>
+                        <li>否则，通过类型名字的字母顺序进行比较。</li>
+                        </ul>
+                        <p>如果有一个列表首先到达末尾,则另一个长一点的列表”大”。<br>如果我们用尽了两个列表的元素而且所 有元素都是相等的,那么结果就是个平局,就是说返回一个 0。</p>
+                        <p>而对于 C++ 中的 <code>std::tuple</code>，仅支持类型完全相同的两个元组之间的比较。为实现 python 中元组的比较效果，我们可以通过如下方式实现：</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++ hljs" data-rel="C++" id="hljs-6"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-comment">/* Compare between tuples of defferent types */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span>... <span class="hljs-keyword">lhs_t</span>, <span class="hljs-keyword">typename</span>... <span class="hljs-keyword">rhs_t</span>&gt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">typename</span> <span class="hljs-built_in">std</span>::enable_if&lt;!<span class="hljs-keyword">sizeof</span>...(<span class="hljs-keyword">lhs_t</span>) &amp;&amp; <span class="hljs-keyword">sizeof</span>...(<span class="hljs-keyword">rhs_t</span>), <span class="hljs-keyword">int</span>&gt;::<span class="hljs-function">type</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-title">cmp</span> <span class="hljs-params">(<span class="hljs-built_in">std</span>::tuple&lt;<span class="hljs-keyword">lhs_t</span>...&gt; <span class="hljs-keyword">const</span>&amp; , <span class="hljs-built_in">std</span>::tuple&lt;<span class="hljs-keyword">rhs_t</span>...&gt; <span class="hljs-keyword">const</span>&amp; )</span> <span class="hljs-keyword">noexcept</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    { <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>; } <span class="hljs-comment">/* lhs reaches the end first, then rhs is larger */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"> </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span>... <span class="hljs-keyword">lhs_t</span>, <span class="hljs-keyword">typename</span>... <span class="hljs-keyword">rhs_t</span>&gt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">typename</span> <span class="hljs-built_in">std</span>::enable_if&lt;<span class="hljs-keyword">sizeof</span>...(<span class="hljs-keyword">lhs_t</span>) &amp;&amp; !<span class="hljs-keyword">sizeof</span>...(<span class="hljs-keyword">rhs_t</span>), <span class="hljs-keyword">int</span>&gt;::<span class="hljs-function">type</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-title">cmp</span> <span class="hljs-params">(<span class="hljs-built_in">std</span>::tuple&lt;<span class="hljs-keyword">lhs_t</span>...&gt; <span class="hljs-keyword">const</span>&amp; , <span class="hljs-built_in">std</span>::tuple&lt;<span class="hljs-keyword">rhs_t</span>...&gt; <span class="hljs-keyword">const</span>&amp; )</span> <span class="hljs-keyword">noexcept</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    { <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; } <span class="hljs-comment">/* rhs reaches the end first, then lhs is larger */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"> </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span>... <span class="hljs-keyword">lhs_t</span>, <span class="hljs-keyword">typename</span>... <span class="hljs-keyword">rhs_t</span>&gt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">typename</span> <span class="hljs-built_in">std</span>::enable_if&lt;!<span class="hljs-keyword">sizeof</span>...(<span class="hljs-keyword">lhs_t</span>) &amp;&amp; !<span class="hljs-keyword">sizeof</span>...(<span class="hljs-keyword">rhs_t</span>), <span class="hljs-keyword">int</span>&gt;::<span class="hljs-function">type</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="14"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-title">cmp</span> <span class="hljs-params">(<span class="hljs-built_in">std</span>::tuple&lt;<span class="hljs-keyword">lhs_t</span>...&gt; <span class="hljs-keyword">const</span>&amp; , <span class="hljs-built_in">std</span>::tuple&lt;<span class="hljs-keyword">rhs_t</span>...&gt; <span class="hljs-keyword">const</span>&amp; )</span> <span class="hljs-keyword">noexcept</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="15"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    { <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; } <span class="hljs-comment"><span class="hljs-comment">/* lhs and rhs reaches the end at the same time, this means two tuples</span></span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="16"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-comment">                     are exactly equal. */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="17"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> lhsf, <span class="hljs-keyword">typename</span> rhsf, <span class="hljs-keyword">typename</span>... <span class="hljs-keyword">lhs_t</span>, <span class="hljs-keyword">typename</span>... <span class="hljs-keyword">rhs_t</span>&gt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="18"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">typename</span> <span class="hljs-built_in">std</span>::enable_if&lt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="19"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        !(<span class="hljs-built_in">std</span>::is_same&lt;lhsf, rhsf&gt;::value</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="20"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            || (<span class="hljs-built_in">std</span>::is_arithmetic&lt;lhsf&gt;::value &amp;&amp; <span class="hljs-built_in">std</span>::is_arithmetic&lt;rhsf&gt;::value)</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="21"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        ), <span class="hljs-keyword">int</span>&gt;::<span class="hljs-function">type</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="22"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-title">cmp</span> <span class="hljs-params">(<span class="hljs-built_in">std</span>::tuple&lt;lhsf, <span class="hljs-keyword">lhs_t</span>...&gt; <span class="hljs-keyword">const</span>&amp;, <span class="hljs-built_in">std</span>::tuple&lt;rhsf, <span class="hljs-keyword">rhs_t</span>...&gt; <span class="hljs-keyword">const</span>&amp;)</span> <span class="hljs-keyword">noexcept</span> {</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="23"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">return</span> <span class="hljs-built_in">std</span>::is_arithmetic&lt;lhsf&gt;::value ? <span class="hljs-number">-1</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="24"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            : ( <span class="hljs-built_in">std</span>::is_arithmetic&lt;rhsf&gt;::value ? <span class="hljs-number">1</span> : (<span class="hljs-keyword">sizeof</span> (lhsf) &gt; <span class="hljs-keyword">sizeof</span> (rhsf)) );</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="25"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    } <span class="hljs-comment"><span class="hljs-comment">/* The end is not reached and the first element type is different. Compare the type,</span></span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="26"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-comment">         and the number type is smaller. Otherwise, press sizeof for comparison. */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="27"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> lhsf, <span class="hljs-keyword">typename</span> rhsf, <span class="hljs-keyword">typename</span>... <span class="hljs-keyword">lhs_t</span>, <span class="hljs-keyword">typename</span>... <span class="hljs-keyword">rhs_t</span>&gt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="28"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">typename</span> <span class="hljs-built_in">std</span>::enable_if&lt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="29"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        (<span class="hljs-built_in">std</span>::is_same&lt;lhsf, rhsf&gt;::value</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="30"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            || (<span class="hljs-built_in">std</span>::is_arithmetic&lt;lhsf&gt;::value &amp;&amp; <span class="hljs-built_in">std</span>::is_arithmetic&lt;rhsf&gt;::value)</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="31"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        ), <span class="hljs-keyword">int</span>&gt;::<span class="hljs-function">type</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="32"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-title">cmp</span> <span class="hljs-params">(<span class="hljs-built_in">std</span>::tuple&lt;lhsf, <span class="hljs-keyword">lhs_t</span>...&gt; <span class="hljs-keyword">const</span>&amp; lhs, <span class="hljs-built_in">std</span>::tuple&lt;rhsf, <span class="hljs-keyword">rhs_t</span>...&gt; <span class="hljs-keyword">const</span>&amp; rhs)</span> <span class="hljs-keyword">noexcept</span> {</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="33"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">return</span> <span class="hljs-built_in">std</span>::get&lt;<span class="hljs-number">0</span>&gt;(lhs) == <span class="hljs-built_in">std</span>::get&lt;<span class="hljs-number">0</span>&gt;(rhs) ? </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="34"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            cmp (<span class="hljs-keyword">reinterpret_cast</span>&lt;<span class="hljs-built_in">std</span>::tuple&lt;<span class="hljs-keyword">lhs_t</span>...&gt; <span class="hljs-keyword">const</span>&amp;&gt;(lhs),</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="35"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">                 <span class="hljs-keyword">reinterpret_cast</span>&lt;<span class="hljs-built_in">std</span>::tuple&lt;<span class="hljs-keyword">rhs_t</span>...&gt; <span class="hljs-keyword">const</span>&amp;&gt;(rhs))</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="36"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            : (<span class="hljs-built_in">std</span>::get&lt;<span class="hljs-number">0</span>&gt;(lhs) &gt; <span class="hljs-built_in">std</span>::get&lt;<span class="hljs-number">0</span>&gt;(rhs)) - (<span class="hljs-built_in">std</span>::get&lt;<span class="hljs-number">0</span>&gt;(lhs) &lt; <span class="hljs-built_in">std</span>::get&lt;<span class="hljs-number">0</span>&gt;(rhs));</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="37"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    } <span class="hljs-comment"><span class="hljs-comment">/* If the end is not reached and the first element type is the same, compare whether the</span></span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="38"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-comment">         first element of two tuples is equal. If it is not equal, the comparison result is</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="39"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-comment">         returned, and if it is equal, the next element is compared recursively. */</span></div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-6" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <h2 id="元组长度"><a href="#元组长度" class="headerlink" title="元组长度"></a>元组长度</h2><p>Python 中，我们可以像这样获取元组长度，或访问元组中的指定位置的元素，如下所示：<br>元组：</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="python hljs" data-rel="PYTHON" id="hljs-7">    N = (<span class="hljs-string">'Yukinochan'</span>, <span class="hljs-string">'雨雪酱'</span>, <span class="hljs-string">'みぞれちゃん'</span>)</code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-7" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre><br>
+                        <table>
+                        <thead>
+                        <tr>
+                        <th style="text-align:center;">Python 表达式</th>
+                        <th style="text-align:center;">结果</th>
+                        <th style="text-align:center;">描述</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                        <td style="text-align:center;">len(N)</td>
+                        <td style="text-align:center;">3</td>
+                        <td style="text-align:center;">获取元组长度</td>
+                        </tr>
+                        <tr>
+                        <td style="text-align:center;">N[2]</td>
+                        <td style="text-align:center;">‘みぞれちゃん’</td>
+                        <td style="text-align:center;">读取第三个元素</td>
+                        </tr>
+                        <tr>
+                        <td style="text-align:center;">N[-2]</td>
+                        <td style="text-align:center;">‘雨雪酱’</td>
+                        <td style="text-align:center;">反向读取，读取倒数第二个元素</td>
+                        </tr>
+                        </tbody>
+                        </table>
+                        <p>对于 C++，获取元组长度可使用<code>std::tuple_size</code>。</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++ hljs" data-rel="C++" id="hljs-8"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">auto</span> N = <span class="hljs-built_in">std</span>::make_tuple (<span class="hljs-string">'雨宮雪乃'</span>, <span class="hljs-string">'雨雪ちゃん'</span>);</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"len = "</span> &lt;&lt; <span class="hljs-built_in">std</span>::tuple_size&lt;<span class="hljs-keyword">decltype</span>(N)&gt;::value;</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-8" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <p>简易对其进行一个封装：</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++ hljs" data-rel="C++" id="hljs-9"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span>... T&gt; </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-function"><span class="hljs-keyword">constexpr</span> size_t <span class="hljs-title">len</span> <span class="hljs-params">(<span class="hljs-built_in">std</span>::tuple&lt;T...&gt; <span class="hljs-keyword">const</span>&amp;)</span> <span class="hljs-keyword">noexcept</span> </span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    { <span class="hljs-keyword">return</span> <span class="hljs-keyword">sizeof</span>... (T); }</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-9" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <h2 id="元组索引"><a href="#元组索引" class="headerlink" title="元组索引"></a>元组索引</h2><p>而运行时期按下标进行访问，我们上面已经实现了核心代码，现在只需要创建一个继承自<code>std::tuple</code>的类，姑且取名叫做<code>pytuple</code>。</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++ hljs" data-rel="C++" id="hljs-10"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span>... T&gt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">pytuple</span></span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    : <span class="hljs-keyword">public</span> <span class="hljs-built_in">std</span>::tuple&lt;T...&gt; {</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">public</span>:</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-function"><span class="hljs-keyword">constexpr</span> <span class="hljs-title">pytuple</span> <span class="hljs-params">()</span> </span>= <span class="hljs-keyword">default</span>;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-function"><span class="hljs-keyword">constexpr</span> <span class="hljs-title">pytuple</span> <span class="hljs-params">(<span class="hljs-keyword">const</span> pytuple&lt;T...&gt;&amp;)</span> </span>= <span class="hljs-keyword">default</span>;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-function"><span class="hljs-keyword">constexpr</span> <span class="hljs-title">pytuple</span> <span class="hljs-params">(pytuple&amp;&amp;)</span> </span>= <span class="hljs-keyword">default</span>;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        pytuple&lt;T...&gt;&amp; <span class="hljs-keyword">operator</span>= (pytuple&lt;T...&gt; <span class="hljs-keyword">const</span>&amp;) = <span class="hljs-keyword">default</span>;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        pytuple&lt;T...&gt;&amp; <span class="hljs-keyword">operator</span>= (pytuple&lt;T...&gt;&amp;&amp;) = <span class="hljs-keyword">default</span>;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"> </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-function"><span class="hljs-keyword">constexpr</span> <span class="hljs-title">pytuple</span> <span class="hljs-params">(<span class="hljs-built_in">std</span>::tuple&lt;T...&gt; <span class="hljs-keyword">const</span>&amp; tp)</span></span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        : <span class="hljs-built_in">std</span>::tuple&lt;T...&gt; <span class="hljs-params">(tp)</span> { }</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"> </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="14"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-function"><span class="hljs-keyword">constexpr</span> <span class="hljs-title">pytuple</span> <span class="hljs-params">(T&amp;&amp;... parms)</span></span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="15"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        : <span class="hljs-built_in">std</span>::tuple&lt;T...&gt; <span class="hljs-params">(<span class="hljs-built_in">std</span>::make_tuple (<span class="hljs-built_in">std</span>::forward&lt;T&gt;(parms)</span>...)) { }</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="16"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    };</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-10" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <p>定义函数<code>maktuple</code>，以便于创建元组对象。</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++ hljs" data-rel="C++" id="hljs-11"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span>... Ts&gt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">constexpr</span> pytuple&lt;<span class="hljs-keyword">typename</span> <span class="hljs-built_in">std</span>::decay&lt;<span class="hljs-keyword">typename</span> <span class="hljs-built_in">std</span>::remove_reference&lt;Ts&gt;::type&gt;::type...&gt; </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    maktuple (Ts&amp;&amp;... agv) <span class="hljs-keyword">noexcept</span> {</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">return</span> <span class="hljs-built_in">std</span>::make_tuple (<span class="hljs-built_in">std</span>::forward&lt;Ts&gt;(agv)...);</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    }</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-11" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <p>并重载<code>pytuple::operator[]</code>，使其接受下标访问即可。</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++ hljs" data-rel="C++" id="hljs-12"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">proxy_t</span>&lt;T...&gt; <span class="hljs-keyword">operator</span>[] (<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> index) <span class="hljs-keyword">const</span> <span class="hljs-keyword">noexcept</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    { <span class="hljs-keyword">return</span> <span class="hljs-keyword">proxy_t</span> &lt;T...&gt;(*<span class="hljs-keyword">this</span>, index &gt;= <span class="hljs-number">0</span> ? index : <span class="hljs-keyword">sizeof</span>...(T) + index); }</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-12" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <p>这里返回一个<code>pytuple::proxy_t</code>，用于接收需要转换的类型为参数。</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++ hljs" data-rel="C++" id="hljs-13"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span>... pt&gt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">proxy_t</span> {</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">friend</span> pytuple;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">friend</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">pytuple</span>:</span>:iterator;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"> </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-built_in">std</span>::tuple&lt;pt...&gt; <span class="hljs-keyword">const</span>&amp; m_ptr;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">size_t</span> index;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-function"><span class="hljs-keyword">constexpr</span> <span class="hljs-title">proxy_t</span> <span class="hljs-params">(<span class="hljs-built_in">std</span>::tuple&lt;pt...&gt; <span class="hljs-keyword">const</span>&amp; m, <span class="hljs-keyword">size_t</span> i)</span> <span class="hljs-keyword">noexcept</span></span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            : <span class="hljs-title">m_ptr</span> <span class="hljs-params">(m)</span>, <span class="hljs-title">index</span> <span class="hljs-params">(i)</span> { } </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"> </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">public</span>:</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> cv&gt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">operator</span> cv <span class="hljs-title">const</span> <span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>{</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="14"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            cv v; <span class="hljs-comment">/* ignore Int-unini, may not have default constructor */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="15"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            mcl_tuple_visitor&lt;cv&gt; (index, m_ptr, &amp;v);</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="16"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            <span class="hljs-keyword">return</span> v;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="17"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        }</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="18"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">friend</span> <span class="hljs-keyword">inline</span> <span class="hljs-built_in">std</span>::ostream&amp;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="19"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">operator</span>&lt;&lt; (<span class="hljs-built_in">std</span>::ostream&amp; os, <span class="hljs-keyword">proxy_t</span>&lt;pt...&gt; <span class="hljs-keyword">const</span>&amp; rhs) {</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="20"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            mcl_tuple_printer&lt;<span class="hljs-built_in">std</span>::ostream&gt; (rhs.index, rhs.m_ptr, &amp;os);</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="21"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            <span class="hljs-keyword">return</span> os;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="22"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        }</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="23"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">friend</span> <span class="hljs-keyword">inline</span> <span class="hljs-built_in">std</span>::wostream&amp;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="24"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">operator</span>&lt;&lt; (<span class="hljs-built_in">std</span>::wostream&amp; os, <span class="hljs-keyword">proxy_t</span>&lt;pt...&gt; <span class="hljs-keyword">const</span>&amp; rhs) {</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="25"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            mcl_tuple_printer&lt;<span class="hljs-built_in">std</span>::wostream&gt; (rhs.index, rhs.m_ptr, &amp;os);</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="26"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            <span class="hljs-keyword">return</span> os;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="27"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        }</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="28"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    };</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-13" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <h2 id="元组遍历"><a href="#元组遍历" class="headerlink" title="元组遍历"></a>元组遍历</h2><p>在 Python 中，我们可以像这样对元组进行遍历输出：</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="python hljs" data-rel="PYTHON" id="hljs-14"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    tu = (<span class="hljs-string">'Thank'</span>, <span class="hljs-string">'you'</span>, <span class="hljs-string">'for'</span>, <span class="hljs-string">'making'</span>, <span class="hljs-string">'use'</span>, <span class="hljs-string">'of'</span>)</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> tu:</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">print</span> (i)</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-14" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <p>在 C++ 中也有基于范围的循环。我们只需要提供<code>begin</code>和<code>end</code>方法即可利用这一语法糖。</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++ hljs" data-rel="C++" id="hljs-15"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-function"><span class="hljs-keyword">constexpr</span> iterator <span class="hljs-title">begin</span> <span class="hljs-params">()</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">noexcept</span></span>{ <span class="hljs-keyword">return</span> iterator {*<span class="hljs-keyword">this</span>, <span class="hljs-number">0</span>}; }</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-function"><span class="hljs-keyword">constexpr</span> iterator <span class="hljs-title">end</span>   <span class="hljs-params">()</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">noexcept</span></span>{ <span class="hljs-keyword">return</span> iterator {*<span class="hljs-keyword">this</span>, <span class="hljs-keyword">sizeof</span>...(T)}; }</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-15" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <p>这里返回一个<code>pytuple::iterator</code>用于进行索引。</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++ hljs" data-rel="C++" id="hljs-16"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">iterator</span> {</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-built_in">std</span>::tuple&lt;T...&gt; <span class="hljs-keyword">const</span>&amp; m_ptr;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">size_t</span> index;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-function"><span class="hljs-keyword">constexpr</span> <span class="hljs-title">iterator</span> <span class="hljs-params">(<span class="hljs-built_in">std</span>::tuple&lt;T...&gt; <span class="hljs-keyword">const</span>&amp; m, <span class="hljs-keyword">size_t</span> i)</span> <span class="hljs-keyword">noexcept</span></span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            : <span class="hljs-title">m_ptr</span> <span class="hljs-params">(m)</span>, <span class="hljs-title">index</span> <span class="hljs-params">(i)</span> { } </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">friend</span> pytuple;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">public</span>:</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">constexpr</span> pytuple::<span class="hljs-keyword">proxy_t</span>&lt;T...&gt; <span class="hljs-keyword">operator</span>* () <span class="hljs-keyword">noexcept</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        { <span class="hljs-keyword">return</span> pytuple::<span class="hljs-keyword">proxy_t</span>&lt;T...&gt;(m_ptr, index); }</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span>!= (iterator <span class="hljs-keyword">const</span>&amp; rhs) <span class="hljs-keyword">const</span> <span class="hljs-keyword">noexcept</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        { <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>-&gt;index != rhs.index; }</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">inline</span> iterator&amp; <span class="hljs-keyword">operator</span>++ () <span class="hljs-keyword">noexcept</span>{ ++ index; <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>; }</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    };</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-16" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <p>如此以来，我们就可以在 C++ 中这样写：</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++ hljs" data-rel="C++" id="hljs-17"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">auto</span> tp = mcl::maktuple (<span class="hljs-string">'this'</span>, <span class="hljs-string">'graphics'</span>, <span class="hljs-string">'library'</span>)</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> i: tp)</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="hljs-string">' '</span>;</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-17" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <p>如果只是用于输出，可以利用递归来优化。</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++ hljs" data-rel="C++" id="hljs-18"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">private</span>:</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> char_type, <span class="hljs-keyword">size_t</span> i = <span class="hljs-number">1</span>&gt; </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">typename</span> <span class="hljs-built_in">std</span>::enable_if&lt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            (i &gt;= <span class="hljs-keyword">sizeof</span>...(T)), <span class="hljs-built_in">std</span>::basic_ostream&lt;char_type&gt;&amp; &gt;::type</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        str_ (<span class="hljs-built_in">std</span>::basic_ostream&lt;char_type&gt;&amp; ss) <span class="hljs-keyword">const</span> <span class="hljs-keyword">noexcept</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        { <span class="hljs-keyword">return</span> ss &lt;&lt; <span class="hljs-string">")"</span>; }</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"> </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> char_type, <span class="hljs-keyword">size_t</span> i = <span class="hljs-number">1</span>&gt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">typename</span> <span class="hljs-built_in">std</span>::enable_if&lt;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            (i &lt; <span class="hljs-keyword">sizeof</span>...(T)), <span class="hljs-built_in">std</span>::basic_ostream&lt;char_type&gt;&amp; &gt;::type</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        str_ (<span class="hljs-built_in">std</span>::basic_ostream&lt;char_type&gt;&amp; ss) <span class="hljs-keyword">const</span> <span class="hljs-keyword">noexcept</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        { <span class="hljs-keyword">return</span> ss &lt;&lt; <span class="hljs-string">", "</span> &lt;&lt; <span class="hljs-built_in">std</span>::get&lt;i&gt;(*<span class="hljs-keyword">this</span>), str_&lt;char_type, i + <span class="hljs-number">1</span>&gt;(ss); }</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"> </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="14"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">public</span>:</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="15"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">friend</span> <span class="hljs-keyword">constexpr</span> <span class="hljs-built_in">std</span>::ostream&amp;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="16"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">operator</span>&lt;&lt; (<span class="hljs-built_in">std</span>::ostream&amp;  os, pytuple&lt;T...&gt; <span class="hljs-keyword">const</span>&amp; tu) {</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="17"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">sizeof</span>...(T) ? (</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="18"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">                os &lt;&lt; <span class="hljs-string">'('</span> &lt;&lt; <span class="hljs-built_in">std</span>::get&lt;<span class="hljs-number">0</span>&gt;(tu),</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="19"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">                (<span class="hljs-keyword">sizeof</span>...(T) == <span class="hljs-number">1</span>) ? (os &lt;&lt; <span class="hljs-string">",)"</span>) : (tu.str_ (os))</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="20"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            ) : (os &lt;&lt; <span class="hljs-string">"()"</span>);</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="21"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        }</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="22"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">friend</span> <span class="hljs-keyword">constexpr</span> <span class="hljs-built_in">std</span>::wostream&amp;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="23"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-keyword">operator</span>&lt;&lt; (<span class="hljs-built_in">std</span>::wostream&amp; os, pytuple&lt;T...&gt; <span class="hljs-keyword">const</span>&amp; tu) {</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="24"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">sizeof</span>...(T) ? (</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="25"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">                os &lt;&lt; <span class="hljs-string">'('</span> &lt;&lt; <span class="hljs-built_in">std</span>::get&lt;<span class="hljs-number">0</span>&gt;(tu),</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="26"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">                (<span class="hljs-keyword">sizeof</span>...(T) == <span class="hljs-number">1</span>) ? (os &lt;&lt; <span class="hljs-string">L",)"</span>) : (tu.str_ (os))</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="27"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">            ) : (os &lt;&lt; <span class="hljs-string">L"()"</span>);</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="28"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        }</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-18" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <p>这样以来，输出一个元组，我们还可以写：</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++ hljs" data-rel="C++" id="hljs-19"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">auto</span> tp = mcl::maktuple (<span class="hljs-string">"GPL-3.O"</span>,<span class="hljs-string">"©"</span>, <span class="hljs-string">"Yukino Amamiya"</span>);</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; tp &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-19" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>至此，我们就实现了一个简易的 Python 元组。它可以遍历、可以嵌套、可以按下标访问。当然，Python 元组还有很多其他特性，比如切片、复制等，由于这些功能只能通过运行时闭包实现，极大的降低了效率，而图形库 mclib 中元组仅是作为部分函数的返回值使用，用不到这么多功能，故并未支持。</p>
+                        <p>这里列出支持的操作（注释为输出结果）：</p>
+                        <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++ hljs" data-rel="C++" id="hljs-20"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">auto</span> t1 = mcl::maktuple (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"Hello"</span>);</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">auto</span> t2 = mcl::maktuple (<span class="hljs-number">0.2</span>, <span class="hljs-number">99</span>, <span class="hljs-string">"World"</span>);</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">auto</span> t3 = mcl::maktuple (t1);</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; t1 &lt;&lt; <span class="hljs-string">'\n'</span>;               <span class="hljs-comment">/* (1, 2, Hello) */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; t3 &lt;&lt; <span class="hljs-string">'\n'</span>;               <span class="hljs-comment">/* ((1, 2, Hello),) */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; mcl::cmp(t2, t1) &lt;&lt; <span class="hljs-string">'\n'</span>; <span class="hljs-comment">/* -1 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; t1[<span class="hljs-number">-1</span>] &lt;&lt; <span class="hljs-string">'\n'</span>;           <span class="hljs-comment">/* Hello */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; t2[<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-string">'\n'</span>;            <span class="hljs-comment">/* World */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; mcl::len(t2) &lt;&lt; <span class="hljs-string">'\n'</span>;     <span class="hljs-comment">/* 3 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> i: t2)</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="hljs-string">'\n'</span>;            <span class="hljs-comment">/* 0.2\n99\nWorld */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">float</span> m = t2[<span class="hljs-number">-2</span>] &lt;&lt; <span class="hljs-string">'\n'</span>;              <span class="hljs-comment">/* m = 99.f */</span></div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-20" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                        <!-- end of article.md -->
+                                </div>
+                            </div>
+                            <div style="text-align:center;width:100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+                            <footer class="post-footer">
+                                <div class="post-lincenses">
+                                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow">
+                                        <i class="fa fa-creative-commons" aria-hidden="true"></i>
+                                        知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议
+                                    </a>
+                                </div>
+                                <div class="post-tags"></div>
+                                <div class="post-share">
+                                    <div class="social-share sharehidden share-component"></div>
+                                    <i class="iconfont show-share icon-forward"></i>
+                                </div>
+                            </footer>
+                        </article>
+                        <div class="toc" style="background:0 0"></div>
+                        <section class="post-squares nextprev">
+                            <!--div class="post-nepre half previous">
+                                <a href="/posts/2021-first-half/" rel="prev">
+                                    <div class="background">
+                                        <img class="lazyload" src="://cdn.jsdelivr.net/gh/Natsuki-Kaede/Blog-Resources/lazyload1.webp" data-src="://res..cc/Blog-Resources/post/2021-first-half/cover.webp" style="width:100%;height:100%;object-fit:cover;pointer-events:none" onerror="imgError(this,3)" src="://res..cc/Blog-Resources/post/2021-first-half/cover.webp">
+                                    </div>
+                                    <span class="label">Previous Post</span>
+                                    <div class="info">
+                                        <h3>2021上半年の呜呜呜</h3>
+                                        <hr>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="post-nepre half next">
+                                <a href="/posts/site-trim/" rel="next">
+                                    <div class="background">
+                                        <img class="lazyload" src="../../index/wp-content/work/images/global/lazyload1.webp" data-src="../../index/wp-content/work/images/post/202204011546.webp" style="width:100%;height:100%;object-fit:cover;pointer-events:none" onerror="imgError(this,3)" src="../../index/wp-content/work/images/post/202204011546.webp">
+                                    </div>
+                                    <span class="label">Next Post</span>
+                                    <div class="info">
+                                        <h3>如何将本地项目同时上传到 Github/Gitee 并使用 GPG 验证</h3>
+                                        <hr>
+                                    </div>
+                                </a>
+                            </div-->
+                            <div class="post-nepre full next">
+                                <a href="./202204011546" rel="next">
+                                    <div class="background">
+                                        <img class="lazyload" src="../../index/wp-content/work/images/global/lazyload1.webp" data-src="../../index/wp-content/work/images/post/202204011546.webp" style="width:100%;height:100%;object-fit:cover;pointer-events:none" onerror="imgError(this,3)" src="../../index/wp-content/work/images/post/202204011546.webp">
+                                    </div>
+                                    <span class="label">Next Post</span>
+                                    <div class="info">
+                                        <h3>如何将本地项目同时上传到 Github/Gitee 并使用 GPG 验证</h3>
+                                        <hr>
+                                    </div>
+                                </a>
+                            </div>
+                        </section>
+                        <div id="vcomments"></div>
+                        <script data-cfasync="false" src="../../index/wp-includes/work/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+                        <script>
+                            window.onload = function() {
+                                (new Valine).init({
+                                    el: "#vcomments",
+                                    appId: "Hr0x4YCmviK0H7WMFGDa2bbb-gzGzoHsz",
+                                    appKey: "Woqnw7ir7fohwvS8uk0MKDMP",
+                                    enableQQ: "true",
+                                    serverURLs: "https://hr0x4ycm.lc-cn-n1-shared.com",
+                                    recordIP: "true",
+                                    requiredFields: ["nick", "mail"],
+                                    path: window.location.pathname,
+                                    placeholder: "你是理所当然的奇迹...",
+                                    visitor: true
+                                })
+                            }
+                        </script>
+                        <section class="author-profile">
+                            <div class="info" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                <a href="https://github.com/iamyukino" class="profile gravatar">
+                                    <img src="../../index/wp-content/work/images/global/avatar.png" itemprop="image" alt="雨宮雪乃" height="70" width="70">
+                                </a>
+                                <div class="meta">
+                                    <span class="title">Author</span>
+                                    <h3 itemprop="name">
+                                        <a href="https://github.com/iamyukino" itemprop="url" rel="author">iamyukino</a>
+                                    </h3>
+                                </div>
+                            </div>
+                            <hr>
+                            <p>
+                                <i class="iconfont icon-write"></i>
+                                Hello, World!
+                            </p>
+                        </section>
+                    </main>
+                </div>
+            </div>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="请输入关键词...">
+                    <span class="ins-close ins-selectable">
+                        <i class="fa fa-times-circle"></i>
+                    </span>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+        <script>
+            window.INSIGHT_CONFIG = {
+                TRANSLATION: {
+                    POSTS: "文章",
+                    CATEGORIES: "分类",
+                    TAGS: "标签"
+                },
+                ROOT_URL: "/",
+                CONTENT_URL: "../../index/wp-content/work/content.json"
+            }
+        </script>
+        <footer id="colophon" class="site-footer" role="contentinfo">
+            <div class="site-info">
+                <div class="footertext">
+                    <div class="img-preload">
+                        <img src="../../index/wp-content/work/images/global/loading-p.gif">
+                    </div>
+                    <p style="color:#666">&copy 2022 | iamYukino</p>
+                </div>
+                <div class="footer-device">
+                    <p style="font-family:Ubuntu,sans-serif">
+                        <span style="color:#b9b9b9">
+                            Powered by Hexo <i class="iconfont icon-sakura rotating" style="color:pink;display:inline-block"></i>
+                            Theme Sakura T
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </footer>
+        <script type="text/javascript" src="../../index/wp-includes/work/js/lib.min.js"></script>
+        <script src="../../index/wp-includes/work/js/clipboard.min.js"></script>
+        <script type="text/javascript" src="../../index/wp-includes/work/js/InsightSearch.js"></script>
+        <script type="text/javascript" src="../../index/wp-includes/work/js/jquery.fancybox.min.js"></script>
+        <script type="text/javascript" src="../../index/wp-includes/work/js/zoom.min.js"></script>
+        <script type="text/javascript" src="../../index/wp-includes/work/js/sakura-app.js"></script>
+        <script type="text/javascript" src="../../index/wp-includes/work/js/tocbot.min.js"></script>
+        <script type="text/javascript">
+            var Poi;
+            Poi = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? {
+                pjax: "1",
+                movies: {
+                    url: "../../index/wp-content/work/images/cover",
+                    name: "miao3.mp4",
+                    live: "close"
+                },
+                windowheight: "fixed",
+                codelamp: "close",
+                ajaxurl: "",
+                order: "asc",
+                formpostion: "bottom"
+            } : {
+                pjax: "1",
+                movies: {
+                    url: "../../index/wp-content/work/images/cover",
+                    name: "miao3.mp4",
+                    live: "open"
+                },
+                windowheight: "auto",
+                codelamp: "close",
+                ajaxurl: "",
+                order: "asc",
+                formpostion: "bottom"
+            }
+        </script>
+        <script>
+            $(document).ready(function() {
+                var o;
+                0 < $(".toc").length && 1200 < document.body.clientWidth && (0 < $(".pattern-center").length ? tocbot.init({
+                    tocSelector: ".toc",
+                    contentSelector: ".entry-content",
+                    scrollSmooth: !0,
+                    headingSelector: "h1, h2, h3, h4, h5",
+                    headingsOffset: -400,
+                    scrollSmoothOffset: -85
+                }) : tocbot.init({
+                    tocSelector: ".toc",
+                    contentSelector: ".entry-content",
+                    scrollSmooth: !0,
+                    headingSelector: "h1, h2, h3, h4, h5",
+                    headingsOffset: -85,
+                    scrollSmoothOffset: -85
+                }),
+                o = $(".toc").offset().top - 95,
+                window.onscroll = function() {
+                    var t = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+                    o <= t ? $(".toc").addClass("toc-fixed") : $(".toc").removeClass("toc-fixed")
+                }
+                )
+            })
+        </script>
+        <div class="openNav no-select" style="height:50px">
+            <div class="iconflat no-select" style="width:50px;height:50px">
+                <div class="icon"></div>
+            </div>
+            <div class="site-branding search-form-submit">
+                <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+            </div>
+        </div>
+    </section>
+
+    <div id="mo-nav">
+        <div class="m-avatar">
+            <img src="../../index/wp-content/work/images/global/avatar.png">
+        </div>
+        <p style="text-align:center;color:#333;font-weight:900;font-family:Ubuntu,sans-serif;letter-spacing:1.5px">雨宮雪乃の作業台</p>
+        <p style="text-align:center;word-spacing:15px">
+            <a href="https://github.com/iamyukino">
+                <img src="../../index/wp-content/work/images/main/github.png" style="width:10%;">
+            </a>
+            <a href="https://gitee.com/iamyukino">
+                <img src="../../index/wp-content/work/images/main/gitee.png" style="width:10%;">
+            </a>
+        </p>
+        <ul id="menu-new-1" class="menu">
+            <li>
+                <a href="https://iamyukino.github.io/">
+                    <span class="faa-parent animated-hover">
+                        <i class="fa fa-home faa-shake" aria-hidden="true"></i>
+                        主站
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://iamyukino.github.io/work" class="faa-parent animated-hover">
+                        <i class="fa fa-list-ul faa-vertical" aria-hidden="true"></i>
+                        首页
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://iamyukino.github.io/work/posts">
+                    <span class="faa-parent animated-hover">
+                        <i class="fa fa-archive faa-shake" aria-hidden="true"></i>
+                        归档
+                    </span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="https://iamyukino.github.io/work/posts/tec">
+                            <i class="fa fa-codepen" aria-hidden="true"></i>
+                            技术
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://iamyukino.github.io/work/posts/misc">
+                            <i class="fa fa-comment-o" aria-hidden="true"></i>
+                            杂谈
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://iamyukino.github.io/work/blog/note">
+                            <i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+                            笔记
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href=javascript:;>
+                    <span class="faa-parent animated-hover">
+                        <i class="fa fa-gamepad faa-shake" aria-hidden="true"></i>
+                        游戏
+                    </span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="https://iamyukino.github.io/work/game/chat-noir">
+                            <i class="fa fa-music" aria-hidden="true"></i>
+                            猫捕
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://iamyukino.github.io/work/game/leaves-in-wind">
+                            <i class="fa fa-music" aria-hidden="true"></i>
+                            風切
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="https://iamyukino.github.io/work/comment">
+                    <span class="faa-parent animated-hover">
+                        <i class="fa fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                        留言板
+                    </span>
+                </a>
+            </li>
+        </ul>
+        <p style="text-align:center;font-size:13px;color:#b9b9b9">&copy 2022 iamYukino</p>
+    </div>
+    <button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display:none">
+        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+    </button>
+    <link rel="stylesheet" href="../../index/wp-includes/work/npm/aplayer/dist/APlayer.min.css">
+    <script src="../../index/wp-includes/work/npm/aplayer/dist/APlayer.min.js"></script>
+    <script src="../../index/wp-includes/work/npm/meting@2/dist/Meting.min.js"></script>
+    <style>
+        .aplayer .aplayer-lrc {
+            height: 35px
+        }
+
+        .aplayer .aplayer-lrc p {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 18px!important
+        }
+
+        .aplayer .aplayer-lrc p.aplayer-lrc-current {
+            color: #ff1493
+        }
+
+        .aplayer.aplayer-narrow .aplayer-body {
+            left: -66px!important
+        }
+
+        .aplayer.aplayer-fixed .aplayer-lrc {
+            display: none
+        }
+
+        .aplayer .aplayer-lrc.aplayer-lrc-hide {
+            display: none!important
+        }
+
+        .aplayer.aplayer-fixed .lrc-show {
+            display: block;
+            background: rgba(255,255,255,.8)
+        }
+    </style>
+    <meting-js id="4925243818" server="netease" type="playlist" fixed="true" autoplay loop order="random" preload="none" volume="0.2" mutex="true"></meting-js>
+    <script>
+        $(function() {
+            $("body").on("click", ".aplayer", function() {
+                $(".aplayer-button").hasClass("aplayer-play") ? $(".aplayer-lrc").removeClass("lrc-show") : $(".aplayer-lrc").addClass("lrc-show")
+            })
+        })
+    </script>
+    <canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:1;pointer-events:none"></canvas>
+    <script type="text/javascript" src="../../index/wp-includes/work/js/anime.min.js" async></script>
+    <script type="text/javascript" src="../../index/wp-includes/work/js/mouse-click-n-tag.js" async></script>
+    <script src="../../index/wp-includes/work/js/fly-engine.js" type="module" async></script>
+    
+    <!-- live2d -->
+    <div class="waifu" style="z-index:9;">
+        <div class="waifu-tips"></div>
+        <canvas id="live2d" width="280" height="250" style="bottom: -10px;"></canvas>
+        <div class="waifu-tool">
+            <span class="fui-home"></span>
+            <span class="fui-chat"></span>
+            <span class="fui-eye"></span>
+            <span class="fui-user"></span>
+            <span class="fui-photo"></span>
+            <span class="fui-info-circle"></span>
+            <span class="fui-cross"></span>
+        </div>
+    </div>
+    <!-- Live2DCubismCore script -->
+    <script src="../../index/wp-includes/global/waifu/Core/live2dcubismcore.js"></script>
+    <!-- Build script -->
+    <script src = "../../index/wp-includes/global/waifu/Samples/TypeScript/Demo/dist/meidou_live2d.js"></script>
+    <script src="../../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.js"></script>
+    <script type="text/javascript">    
+        let modulesPath = "../../index/wp-content/global/waifu/"
+        let modelNames = ['mia1', 'live2d_free1.1', 'Orangesweet2.1', 'Hiyori']
+        let waifuTipsUrl = "../../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.json"
+        initModel(modulesPath, modelNames, waifuTipsUrl);
+    </script>
+
+</body>
+</html>

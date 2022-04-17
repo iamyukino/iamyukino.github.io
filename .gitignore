@@ -1,0 +1,5 @@
+# Node.js webpack
+**/node_modules/*
+
+# vscode cache files
+**/.vscode/*

@@ -1,0 +1,7 @@
+@font-face {
+    font-family: logo;
+    src: url(logo.eot);
+    src: url(logo.eot?#iefix) format("embedded-opentype"),url(logo.woff) format("woff"),url(logo.ttf) format("truetype"),url(logo.svg#logo) format("svg");
+    font-style: normal;
+    font-weight: 400
+}

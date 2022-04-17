@@ -1,0 +1,1165 @@
+/*
+Theme Name: Focus Stock Dark
+Theme URI: https://catchthemes.com/themes/focus-stock-dark/
+Author: Catch Themes
+Author URI: https://catchthemes.com/
+Description: Focus Stock Dark is an elegant and bold Photography WordPress theme that comes with a Dark Color Scheme. It is available to download for absolutely free. It is a child theme of a popular multipurpose Photography theme, Focus Stock. The detailed customization process in Focus Stock Dark lets you fine-tune the display of every element within your website and every photography within your showcase. The theme ensures your precious content is always in the exhibition under the most favorable spotlight. Focus Stock Dark incorporates many highly customizable creative features and functionalities. For instance, Dark Color Scheme, Header Media, Featured Content, Hero Content, Portfolio, Layout Options, Testimonials, Services, Menu Options, Logo Slider, and more. All of the features are fully responsive and easy to customize. The color option is unlimited for sections like Header Text and Background Color. Other features include the attractive Featured Slider where you can display your impressive works. Focus Stock Dark also includes a demo data for easier setup. This theme has it all to take your photography websites to the next level. For more information, check out Theme Instructions at https://catchthemes.com/themes/focus-stock-dark/#theme-instructions, support at https://catchthemes.com/support/ and Demo at https://catchthemes.com/demo/focus-stock-dark-free
+Version: 1.1
+Requires at least: 5.6
+Tested up to: 5.9
+Requires PHP: 5.6
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Text Domain: focus-stock-dark
+Template: focus-stock
+Domain Path: /languages/
+Tags: one-column, two-columns, right-sidebar, flexible-header, custom-background, custom-header, custom-logo, custom-menu, editor-style, featured-images, featured-image-header, footer-widgets, microformats, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, block-styles, wide-blocks, photography, blog, portfolio
+
+Focus Stock Dark is based on Underscores http://underscores.me/, (C) 2012-2018 Automattic, Inc. Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
+*/
+
+
+/*--------------------------------------------------------------
+# Colors
+--------------------------------------------------------------*/
+
+/* Background Color */
+	body {
+		background-color: #111111;
+	}
+
+	/* Header Text Color */
+	.site-title a,
+	.site-title a:hover,
+	.site-title a:focus,
+	.site-description {
+		color: #ffffff;
+	}
+
+	/* Page Background Color */
+	.sidebar input[type="text"],
+	.sidebar input[type="email"],
+	.sidebar input[type="url"],
+	.sidebar input[type="password"],
+	.sidebar input[type="search"],
+	.sidebar input[type="number"],
+	.sidebar input[type="tel"],
+	.sidebar input[type="range"],
+	.sidebar input[type="date"],
+	.sidebar input[type="month"],
+	.sidebar input[type="week"],
+	.sidebar input[type="time"],
+	.sidebar input[type="datetime"],
+	.sidebar input[type="datetime-local"],
+	.sidebar input[type="color"],
+	.sidebar textarea,
+	.sidebar select,
+	.comment-respond input[type="text"],
+	.comment-respond input[type="email"],
+	.comment-respond input[type="url"],
+	.comment-respond input[type="password"],
+	.comment-respond input[type="search"],
+	.comment-respond input[type="number"],
+	.comment-respond input[type="tel"],
+	.comment-respond input[type="range"],
+	.comment-respond input[type="date"],
+	.comment-respond input[type="month"],
+	.comment-respond input[type="week"],
+	.comment-respond input[type="time"],
+	.comment-respond input[type="datetime"],
+	.comment-respond input[type="datetime-local"],
+	.comment-respond input[type="color"],
+	.comment-respond textarea,
+	.comment-respond select,
+	.footer-newsletter input[type="text"],
+	.footer-newsletter input[type="email"],
+	.footer-newsletter input[type="url"],
+	.footer-newsletter input[type="password"],
+	.footer-newsletter input[type="search"],
+	.footer-newsletter input[type="number"],
+	.footer-newsletter input[type="tel"],
+	.footer-newsletter input[type="range"],
+	.footer-newsletter input[type="date"],
+	.footer-newsletter input[type="month"],
+	.footer-newsletter input[type="week"],
+	.footer-newsletter input[type="time"],
+	.footer-newsletter input[type="datetime"],
+	.footer-newsletter input[type="datetime-local"],
+	.footer-newsletter input[type="color"],
+	.footer-newsletter textarea,
+	.footer-newsletter select,
+	.edd-reviews-form input[type="text"],
+	.edd-reviews-form input[type="email"],
+	.edd-reviews-form input[type="url"],
+	.edd-reviews-form input[type="password"],
+	.edd-reviews-form input[type="search"],
+	.edd-reviews-form input[type="number"],
+	.edd-reviews-form input[type="tel"],
+	.edd-reviews-form input[type="range"],
+	.edd-reviews-form input[type="date"],
+	.edd-reviews-form input[type="month"],
+	.edd-reviews-form input[type="week"],
+	.edd-reviews-form input[type="time"],
+	.edd-reviews-form input[type="datetime"],
+	.edd-reviews-form input[type="datetime-local"],
+	.edd-reviews-form input[type="color"],
+	.edd-reviews-form textarea,
+	.edd-reviews-form select,
+	#edd_checkout_form_wrap textarea,
+	#edd_checkout_form_wrap input[type="text"],
+	#edd_checkout_form_wrap input[type="email"],
+	#edd_checkout_form_wrap input[type="password"],
+	#edd_checkout_form_wrap input[type="tel"],
+	.menu-inside-wrapper input[type="search"],
+	.select2-container--default .select2-selection--single,
+	.screen-reader-text:focus,
+	.boxed-layout .site,
+	.ui-state-active,
+	.ui-widget-content .ui-state-active,
+	.ui-widget-header .ui-state-active,
+	#gallery-section .gallery-item .gallery-icon:hover a:after,
+	#gallery-section .gallery-item .gallery-icon:focus a:after,
+	#gallery-section .tiled-gallery .tiled-gallery-item:hover a:after,
+	#gallery-section .tiled-gallery .tiled-gallery-item:focus a:after,
+	.tagcloud a,
+	.focus-stock-mejs-container.mejs-container .mejs-controls .mejs-time-rail .mejs-time-current,
+	.mejs-time-handle-content,
+	.mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current,
+	section.ew-tabbed-recent-popular .ui-tabs .ui-tabs-nav li.ui-tabs-active a,
+	section.ew-tabbed-recent-popular .ui-tabs .ui-tabs-panel,
+	.section:nth-child(2n-1)#featured-content-section .featured-content-wrapper .hentry-inner,
+	.section:nth-child(2n-1).testimonial-content-section .hentry-inner,
+	.section:nth-child(2n-1).pricing-section .hentry-inner,
+	#fes-vendor-dashboard form div.fes-form .fes-el .fes-fields input[type="text"],
+	#fes-vendor-dashboard form div.fes-form .fes-el .fes-fields input[type="password"],
+	#fes-vendor-dashboard form div.fes-form .fes-el .fes-fields input[type="email"],
+	#fes-vendor-dashboard form div.fes-form .fes-el .fes-fields input[type="url"],
+	#fes-vendor-dashboard form div.fes-form .fes-el .fes-fields input[type="number"],
+	#fes-vendor-dashboard form div.fes-form .fes-el .fes-fields textarea {
+		background-color: #111111;
+	}
+
+	.section:nth-child(2n-1)#portfolio-content-section .portfolio-content-wrapper .filter-button-group,
+	#primary-menu-wrapper .site-header-cart, {
+	    border-color: #111111;
+	}
+
+	/* Secondary Background Color */
+	.menu-inside-wrapper,
+	input[type="text"],
+	input[type="email"],
+	input[type="url"],
+	input[type="password"],
+	input[type="search"],
+	input[type="number"],
+	input[type="tel"],
+	input[type="range"],
+	input[type="date"],
+	input[type="month"],
+	input[type="week"],
+	input[type="time"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="color"],
+	textarea,
+	select,
+	.author-info,
+	.sidebar .widget,
+	#footer-newsletter,
+	mark,
+	.custom-header,
+	ul.tabs.wc-tabs li.active a,
+	.woocommerce-Tabs-panel,
+	.shop_table thead th,
+	ul.wc_payment_methods.payment_methods.methods li,
+	.comment-respond,
+	.comment-container,
+	.widget_shopping_cart,
+	pre,
+	.widget .ui-tabs .ui-tabs-panel,
+	#featured-content-section .featured-content-wrapper .hentry-inner,
+	#sticky-playlist-section, #sticky-playlist-section .wp-playlist,
+	#primary-search-wrapper .menu-inside-wrapper,
+	section.ew-tabbed-recent-popular .ui-tabs .ui-tabs-nav li a,
+	.section:nth-child(2n-1),
+	.testimonial-content-section .hentry-inner,
+	.pricing-section .hentry-inner,
+	form div.fes-form .fes-el .fes-fields input[type="text"],
+	form div.fes-form .fes-el .fes-fields input[type="password"],
+	form div.fes-form .fes-el .fes-fields input[type="email"],
+	form div.fes-form .fes-el .fes-fields input[type="url"],
+	form div.fes-form .fes-el .fes-fields input[type="number"],
+	form div.fes-form .fes-el .fes-fields textarea,
+	#edd_checkout_user_info {
+		background-color: #222222;
+	}
+
+	.comment-container::before {
+	    border-color: transparent #222222 transparent transparent;
+	}
+
+	@media screen and (min-width: 1024px) {
+	    .navigation-classic .site-header .sub-menu,
+	    .navigation-classic .site-header .children {
+	        background-color: #222222;
+	    }
+	}
+
+	/* Main Text Color */
+	body,
+	input,
+	select,
+	optgroup,
+	textarea,
+	table a,
+	blockquote,
+	input::placeholder,
+	input[type="text"],
+	input[type="email"],
+	input[type="url"],
+	input[type="password"],
+	input[type="search"],
+	input[type="number"],
+	input[type="tel"],
+	input[type="range"],
+	input[type="date"],
+	input[type="month"],
+	input[type="week"],
+	input[type="time"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="color"],
+	textarea,
+	.site-info a,
+	.pagination .page-numbers:hover,
+	.pagination .page-numbers:focus,
+	.pagination .page-numbers.current,
+	section.ew-tabbed-recent-popular .ui-widget-content,
+	.portfolio-content-wrapper .filter-button-group button,
+	.ewnewsletter .hentry form input[type="submit"],
+	.menu-inside-wrapper .action-buttons > .login-button,
+	form div.fes-form .fes-el .fes-fields input[type="text"],
+	form div.fes-form .fes-el .fes-fields input[type="password"],
+	form div.fes-form .fes-el .fes-fields input[type="email"],
+	form div.fes-form .fes-el .fes-fields input[type="url"],
+	form div.fes-form .fes-el .fes-fields input[type="number"],
+	form div.fes-form .fes-el .fes-fields textarea,
+	#edd_checkout_cart th,
+	#edd_checkout_cart td,
+	#tabs.ui-tabs .ui-tabs-nav li a,
+	#edd_checkout_form_wrap textarea,
+	#edd_checkout_form_wrap input[type="text"],
+	#edd_checkout_form_wrap input[type="email"],
+	#edd_checkout_form_wrap input[type="password"],
+	#edd_checkout_form_wrap input[type="tel"] {
+		color: #999999;
+	}
+
+	/* Header Navigation Color */
+	.gallery-caption {
+	    color: #ffffff;
+	}
+
+	.absolute-header .site-title a,
+	.absolute-header .site-title a:hover,
+	.absolute-header .site-title a:focus,
+	.absolute-header .site-description,
+	.absolute-header .menu-toggle,
+	.absolute-header .menu-toggle:hover,
+	.absolute-header .menu-toggle:focus,
+	.wp-playlist-current-item,
+	.mejs-time,
+	.focus-stock-mejs-container.mejs-container button  {
+	    color: #ffffff;
+	}
+
+	#promotion-section .play-button {
+	    background-color: #ffffff;
+	}
+
+	/* Absolute Header Link Color */
+
+	@media screen and (min-width: 568px) {
+	    .absolute-header .action-buttons .button.login-button {
+	        color: #ffffff;
+	    }
+	}
+
+	@media screen and (min-width: 768px) {
+	    .absolute-header .cart-contents,
+	    .absolute-header .cart-contents:hover,
+	    .absolute-header .cart-contents:focus {
+	        color: #ffffff;
+	    }
+	}
+
+	@media screen and (min-width: 991px) {
+	    .navigation-classic.absolute-header .main-navigation a,
+	    .navigation-classic.absolute-header .main-navigation .dropdown-toggle  {
+	        color: #ffffff;
+	    }
+	}
+
+	/* Headline Text Color */
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	.section-title,
+	.portfolio-section-headline .section-title,
+	.drop-cap:first-letter,
+	.author-name,
+	.comment-reply-link,
+	.author-title,
+	.comment-respond .comment-form p label,
+	.has-background-image .entry-container .event-title .entry-title,
+	.has-background-image .entry-container .event-title .entry-title a,
+	section.ew-tabbed-recent-popular .ui-tabs .ui-tabs-nav li.ui-tabs-active a,
+	.edd-single-product-container .product-title,
+	#tabs.ui-tabs .ui-tabs-nav li a:hover,
+	#tabs.ui-tabs .ui-tabs-nav li a:focus,
+	#tabs.ui-tabs .ui-tabs-nav li.ui-tabs-active a,
+	.portfolio-content-wrapper .filter-select-group > span {
+		color: #ffffff;
+	}
+
+	/* 89% of heading color */
+	.vcard,
+	.position,
+	.single footer .entry-meta a {
+	    color: rgba( 255, 255, 255, 0.89);
+	}
+
+	.portfolio-content-wrapper .filters-select-wrap:after {
+	    border-top-color: #ffffff;
+	}
+
+	/* Tertiary Background Color */
+	.events-content-wrapper .entry-meta,
+	.playlist-content-wrapper .wp-playlist .mejs-container,
+	#gallery-section .gallery-item .gallery-icon a:before,
+	#gallery-section .tiled-gallery .tiled-gallery-item a:before,
+	.playlist-content-wrapper .wp-playlist .wp-playlist-tracks > div:hover,
+	.playlist-content-wrapper .wp-playlist .wp-playlist-tracks > div:focus,
+	.gallery-caption {
+	    background-color: #007ced;
+	}
+
+	/* Footer Background Color */
+
+	#site-generator {
+	    background-color: #111111;
+	}
+	ins,
+	#colophon,
+	.app-section .entry-container:after,
+	#focus-stock-logo-slider-section .owl-dots .owl-dot.active {
+	    background-color: rgba( 17, 17, 17, 0.91);
+	}
+
+	/* Link Color */
+	a,
+	.more-link,
+	ul li:before {
+		color: #007ced;
+	}
+
+	/* Link Hover Color */
+	a:hover,
+	a:focus,
+	.more-link:hover,
+	.more-link:focus {
+		color: #ffffff;
+	}
+
+	/* Secondary Link Color */
+	.menu-toggle,
+	.menu-toggle:hover,
+	.menu-toggle:focus,
+	.cart-contents,
+	.cart-contents:hover,
+	.cart-contents:focus,
+	.entry-title a,
+	.entry-meta a,
+	.comment-meta a,
+	ins,
+	.entry-breadcrumbs a,
+	.woocommerce .woocommerce-breadcrumb a,
+	p.stars a,
+	p.stars a:before,
+	.controller:before,
+	.tag-cloud-link,
+	.select2-results__option,
+	.testimonials-content-wrapper.section.testimonial-wrapper .cycle-prev:before,
+	.testimonials-content-wrapper.section.testimonial-wrapper .cycle-prev:after,
+	.testimonials-content-wrapper.section.testimonial-wrapper .cycle-next:before,
+	.clients-content-wrapper .controller .cycle-pager span,
+	.testimonials-content-wrapper .cycle-pager:after,
+	.testimonials-content-wrapper .entry-title a,
+	.testimonials-content-wrapper.section.testimonial-wrapper .hentry,
+	.scrollup a:hover:before,
+	.scrollup a:focus:before,
+	.archive-content-wrap .section-content-wrapper.layout-one .entry-container>.entry-meta .posted-on a,
+	.author-label,
+	.section-heading-wrapper .entry-title span,
+	.author-section-title,
+	.comment-permalink,
+	.comment-edit-link,
+	.nav-subtitle,
+	.nav-menu .menu-item-has-children>a:before,
+	.nav-menu .menu_item_has_children>a:before,
+	input,
+	select,
+	optgroup,
+	textarea,
+	aside.footer-widget-area svg,
+	span.woocommerce-Price-amount,
+	.events-content-wrapper .entry-meta a:hover,
+	.events-content-wrapper .entry-meta a:focus,
+	.sidebar .widget-wrap li a,
+	.ui-state-active a,
+	.ui-state-active a:link,
+	.ui-state-active a:visited,
+	.social-search-wrapper .menu-social-container li a,
+	.menu-social-container a,
+	.sidebar nav.social-navigation ul li a:hover,
+	.sidebar nav.social-navigation ul li a:focus,
+	.screen-reader-text:focus,
+	td#today,
+	.toggled-on.active:before,
+	.comment-respond .comment-form p.is-focused label,
+	.main-navigation a,
+	.main-navigation a:hover,
+	.main-navigation a:focus,
+	.main-navigation .sub-menu a,
+	.site-header-main .social-navigation a,
+	.dropdown-toggle,
+	.page-links a,
+	.wp-caption .wp-caption-text,
+	#testimonial-content-section .owl-prev,
+	#testimonial-content-section .owl-next,
+	.edd-author .author-title a,
+	.edd_download .edd_download_title a,
+	.fes-vendor-menu-tab a,
+	.edd-rp-item > a .edd-rp-item-title,
+	.action-buttons .button.login-button {
+		color: #ffffff;
+	}
+
+	#feature-slider-section button.owl-dot,
+	#testimonial-content-section button.owl-dot {
+	    background-color: #ffffff;
+	}
+
+	@media screen and (min-width: 1200px) {
+	    .absolute-header .main-navigation ul ul a,
+	    .navigation-classic.absolute-header .main-navigation ul ul a {
+	        color: #ffffff;
+	    }
+	}
+
+	/* 86% of Secondary Link Color */
+	.nav-title,
+	.post-title,
+	.woocommerce.has-header-image .woocommerce-breadcrumb a:hover,
+	.woocommerce.has-header-image .woocommerce-breadcrumb a:focus,
+	.comments-title,
+	.comment-reply-title,
+	.widget_recent_entries li a,
+	.post-navigation .nav-title {
+	   color: #ffffff;
+	}
+
+	/* Secondary Link Hover Color */
+	.entry-title a:hover,
+	.entry-title a:focus,
+	.entry-meta a:hover,
+	.entry-meta a:focus,
+	.comment-meta a:hover,
+	.comment-meta a:focus,
+	.play-button-text:hover,
+	.play-button-text:focus,
+	.has-background-image .woocommerce-loop-product__title:hover,
+	.has-background-image .woocommerce-loop-product__title:focus,
+	.has-background-image  .entry-container .entry-meta a:hover,
+	.has-background-image  .entry-container .entry-meta a:focus,
+	.has-background-image  .entry-container .entry-title a:hover,
+	.has-background-image  .entry-container .entry-title a:focus,
+	#site-footer-navigation li a:hover,
+	#site-footer-navigation li a:focus,
+	#social-footer-navigation li a:hover,
+	#social-footer-navigation li a:focus,
+	.has-background-image .entry-title a:hover,
+	.has-background-image .entry-title a:focus,
+	.has-background-image .entry-meta a:hover,
+	.has-background-image .entry-meta a:focus,
+	.archive-post-wrap .hentry:nth-child(2n) .entry-title a:hover,
+	.archive-post-wrap .hentry:nth-child(2n) .entry-title a:focus,
+	.archive-post-wrap .hentry:nth-child(2n) .entry-meta a:hover,
+	.archive-post-wrap .hentry:nth-child(2n) .entry-meta a:focus,
+	.wp-playlist-tracks .wp-playlist-caption:hover,
+	.wp-playlist-tracks .wp-playlist-caption:focus,
+	#service-section .entry-title a:hover,
+	#service-section .entry-title a:focus,
+	.woocommerce-loop-product__title:hover,
+	.woocommerce-loop-product__title,
+	span.price span.woocommerce-Price-amount:hover,
+	span.price span.woocommerce-Price-amount:focus,
+	.widget_recent_entries li a:hover,
+	.widget_recent_entries li a:focus,
+	.portfolio-content-wrapper .hentry .entry-container a:hover,
+	.portfolio-content-wrapper .hentry .entry-container a:focus,
+	button#wp-custom-header-video-button:hover,
+	button#wp-custom-header-video-button:focus,
+	.widget .ui-state-default a:hover,
+	.widget .ui-state-default a:focus,
+	.widget .ui-widget-content .ui-state-default a:hover,
+	.widget .ui-widget-content .ui-state-default a:focus,
+	.widget .ui-widget-header .ui-state-default a:hover,
+	.widget .ui-widget-header .ui-state-default a:focus,
+	body .site-header .site-header-main .site-header-menu .menu-inside-wrapper .main-navigation .nav-menu ul .current_page_item>a:hover,
+	body .site-header .site-header-main .site-header-menu .menu-inside-wrapper .main-navigation .nav-menu ul .current_page_item>a:focus,
+	.tag-cloud-link:hover,
+	.tag-cloud-link:focus,
+	.nav-title:hover,
+	.nav-title:focus,
+	.menu-social-container a:hover,
+	.menu-social-container a:focus,
+	.portfolio-content-wrapper .hentry .entry-container a:hover,
+	.portfolio-content-wrapper .hentry .entry-container a:focus,
+	.portfolio-content-wrapper .hentry .entry-container .entry-meta time:hover,
+	.portfolio-content-wrapper .hentry .entry-container .entry-meta time:focus,
+	.social-search-wrapper .menu-social-container li a:hover,
+	.social-search-wrapper .menu-social-container li a:focus,
+	.author a:hover,
+	.author a:focus,
+	.entry-title a:hover,
+	.entry-title a:focus,
+	.site-footer td#prev a:hover,
+	.site-footer td#prev a:focus,
+	.site-footer td#next a:hover,
+	.site-footer td#next a:focus,
+	.comment-reply-link:hover,
+	.comment-reply-link:focus,
+	.portfolio-content-wrapper .filter-button-group button:hover,
+	.portfolio-content-wrapper .filter-button-group button:focus,
+	.author-section-title:hover,
+	.author-section-title:focus,
+	.comment-permalink:hover,
+	.comment-permalink:focus,
+	.comment-edit-link:hover,
+	.comment-edit-link:focus,
+	.nav-subtitle:hover,
+	.nav-subtitle:focus,
+	.entry-meta a:hover,
+	.entry-meta a:focus,
+	.scroll-down:hover,
+	.scroll-down:focus,
+	.testimonials-content-wrapper.section.testimonial-wrapper .entry-title a:hover,
+	.testimonials-content-wrapper.section.testimonial-wrapper .entry-title a:focus,
+	#site-generator .menu-social-container a:hover,
+	#site-generator .menu-social-container a:focus,
+	.widget-wrap li a:hover,
+	.widget-wrap li a:focus,
+	.archive-content-wrap .section-content-wrapper.layout-one .entry-container>.entry-meta .posted-on a:hover,
+	.archive-content-wrap .section-content-wrapper.layout-one .entry-container>.entry-meta .posted-on a:focus,
+	.dropdown-toggle:hover,
+	.dropdown-toggle:focus,
+	.entry-title a:hover,
+	.entry-title a:focus,
+	.single footer .entry-meta a:hover,
+	.single footer .entry-meta a:focus,
+	.focus-stock-logo-slider-content-wrapper .entry-title span:hover,
+	.focus-stock-logo-slider-content-wrapper .entry-title span:focus,
+	.wp-playlist .mejs-controls .mejs-button button:hover,
+	.wp-playlist .mejs-controls .mejs-button button:focus,
+	#sticky-playlist-section .mejs-container.focus-stock-mejs-container .mejs-toggle-playlist button:hover,
+	#sticky-playlist-section .mejs-container.focus-stock-mejs-container .mejs-toggle-playlist button:focus,
+	span.breadcrumb a:hover,
+	span.breadcrumb a:focus,
+	.sidebar .widget-wrap li a:hover,
+	.sidebar .widget-wrap li a:focus,
+	.ui-state-active a:hover,
+	.ui-state-active a:focus,
+	.social-search-wrapper .menu-social-container li a:hover,
+	.social-search-wrapper .menu-social-container li a:focus,
+	.menu-social-container a:hover,
+	.menu-social-container a:focus,
+	.sidebar nav.social-navigation ul li a:hover,
+	.sidebar nav.social-navigation ul li a:focus,
+	.main-navigation .sub-menu a:hover,
+	.main-navigation .sub-menu a:focus,
+	.site-header-main .social-navigation a:hover,
+	.site-header-main .social-navigation a:focus,
+	.page-links a:hover,
+	.page-links a:focus,
+	#testimonial-content-section .owl-prev:hover,
+	#testimonial-content-section .owl-prev:focus,
+	#testimonial-content-section .owl-next:hover,
+	#testimonial-content-section .owl-next:focus,
+	.edd-author .author-title a:hover,
+	.edd-author .author-title a:focus,
+	.edd_download .edd_download_title a:hover,
+	.edd_download .edd_download_title a:focus,
+	.fes-vendor-menu-tab a:hover,
+	.fes-vendor-menu-tab a:focus,
+	.fes-vendor-menu-tab.active a,
+	.edd-rp-item > a .edd-rp-item-title:hover,
+	.edd-rp-item > a .edd-rp-item-title:focus {
+		color: #007ced;
+	}
+
+	p.stars:hover a:before,
+	p.stars:focus a:before,
+	.star-rating span:before,
+	p.stars.selected a.active:before,
+	p.stars.selected a:not(.active):before,
+	p.stars.selected a.active~a:before,
+	p.stars a:hover~a:before,
+	p.stars a:focus~a:before,
+	#reviews .comment-respond .comment-form-rating .stars span a.active:before,
+	#reviews .comment-respond .comment-form-rating .stars.selected span a:not(.active):before,
+	#promotion-section .play-button,
+	.sidebar .widget-wrap li a:before,
+	.service-section .entry-category,
+	.section-tagline,
+	.archive-post-wrap .hentry .entry-meta > span:hover::before,
+	.archive-post-wrap .hentry .entry-meta > span:focus::before,
+	.pagination .page-numbers:hover,
+	.pagination .page-numbers:focus,
+	.pagination .page-numbers.current,
+	.testimonial-content-section .entry-header:before,
+	ul > li::marker {
+	    color: #007ced;
+	}
+
+	.single .site-main .entry-footer .entry-meta > span:not(.edit-link) a:hover,
+	.single .site-main .entry-footer .entry-meta > span:not(.edit-link) a:focus,
+	.portfolio-content-wrapper .filter-button-group button.is-checked:before,
+	.portfolio-content-wrapper .inner-wrap:before,
+	.ui-state-active a:after {
+	    border-color: #007ced;
+	}
+
+	@media screen and (min-width: 1200px) {
+    .navigation-classic .main-navigation .current_page_item > a:before,
+    .navigation-classic .main-navigation .current-menu-item > a:before {
+	      border-color: #007ced;
+	    }
+	}
+
+	#feature-slider-section button.owl-dot.active,
+	#testimonial-content-section button.owl-dot.active {
+    	background-color: #007ced;
+	}
+
+	/* Button Background Color */
+	.asc-settings,
+	.button,
+	.entry-content button,
+	.entry-summary button,
+	button,
+	#scrollup,
+	.slider-content-wrapper .controllers .cycle-prev,
+	.slider-content-wrapper .controllers .cycle-next,
+	button[type="submit"],
+	input[type="submit"],
+	.scrollup a,
+	.wp-block-button__link,
+	#infinite-handle .ctis-load-more button,
+	.menu-inside-wrapper #site-header-cart-wrappe li>a,
+	nav.navigation.posts-navigation .nav-links a,
+	.woocommerce-pagination ul.page-numbers li .page-numbers.current,
+	.archive-content-wrap .pagination .page-numbers.current,
+	.cart-collaterals .shop_table.shop_table_responsive .cart-subtotal,
+	.catch-instagram-feed-gallery-widget-wrapper .button,
+	.sticky-label,
+	#focus-stock-logo-slider-section .owl-dots .owl-dot,
+	#focus-stock-logo-slider-section .owl-prev,
+	#focus-stock-logo-slider-section .owl-next,
+	.post-page-numbers.current,
+	.sticky-post span,
+	#hero-section .more-button .more-link,
+	.pagination .page-numbers.prev,
+	.pagination .page-numbers.next,
+	.promotion-section .more-link,
+	.pricing-section .hentry.highlight .more-button .more-link,
+	.pricing-section .popular-tag,
+	.woocommerce .product-container .wc-forward,
+	.header-media .more-link,
+	#feature-slider-section .more-link,
+	.ewnewsletter .hentry form input[type="submit"]:hover,
+	.ewnewsletter .hentry form input[type="submit"]:focus,
+	.site-footer .ewnewsletter .hentry form input[type="submit"]:hover,
+	.site-footer .ewnewsletter .hentry form input[type="submit"]:focus,
+	form div.fes-form .fes-submit input[type="submit"],
+	.edd_purchase_submit_wrapper .button.edd-submit,
+	.demo_store,
+	.header-widget-area .search-submit {
+	    background-color: #007ced;
+	}
+
+	.team-content-wrapper .hentry-inner:hover img,
+	.team-content-wrapper .hentry-inner:focus img {
+	    box-shadow: 0 0 0 8px #007ced;
+	}
+
+	/* Button Text Color */
+	.entry-content button,
+	.entry-summary button,
+	.slider-content-wrapper .controllers .cycle-prev,
+	.slider-content-wrapper .controllers .cycle-next,
+	button,
+	#scrollup,
+	#primary-search-wrapper .search-container button,
+	.button,
+	.scroll-down,
+	.scrollup a:before,
+	.page-numbers:hover,
+	.page-numbers:focus,
+	button[type="submit"],
+	input[type="submit"],
+	button#wp-custom-header-video-button,
+	#infinite-handle .ctis-load-more button,
+	nav.navigation.posts-navigation .nav-links a,
+	.woocommerce-pagination ul.page-numbers li:hover,
+	.archive-content-wrap .pagination .page-numbers:hover,
+	.archive-content-wrap .pagination .page-numbers:focus,
+	.woocommerce-pagination ul.page-numbers li:focus,
+	.archive-content-wrap .pagination .page-numbers.current,
+	.woocommerce-pagination ul.page-numbers li .page-numbers.current,
+	#portfolio-content-section .entry-container,
+	.slider-content-wrapper #featured-slider-prev:hover:before,
+	.slider-content-wrapper #featured-slider-next:hover:before,
+	.slider-content-wrapper #featured-slider-prev:focus:before,
+	.slider-content-wrapper #featured-slider-next:focus:before,
+	.nav-menu .menu-item-has-children>a:hover:before,
+	.nav-menu .menu-item-has-children>a:focus:before,
+	.nav-menu .menu_item_has_children>a:hover:before,
+	.nav-menu .menu_item_has_children>a:focus:before,
+	.cart-collaterals .shop_table.shop_table_responsive .cart-subtotal,
+	.post-page-numbers.current,
+	.sticky-post span,
+	#hero-section .more-button .more-link,
+	.pagination .page-numbers.prev,
+	.pagination .page-numbers.next,
+	.promotion-section .more-link,
+	.pricing-section .hentry.highlight .more-button .more-link,
+	.pricing-section .popular-tag,
+	.woocommerce .product-container .wc-forward,
+	.header-media .more-link,
+	#feature-slider-section .more-link,
+	.ewnewsletter .hentry form input[type="submit"]:hover,
+	.ewnewsletter .hentry form input[type="submit"]:focus,
+	.site-footer .ewnewsletter .hentry form input[type="submit"]:hover,
+	.site-footer .ewnewsletter .hentry form input[type="submit"]:focus,
+	form div.fes-form .fes-submit input[type="submit"],
+	.edd_purchase_submit_wrapper .button.edd-submit,
+	.demo_store .woocommerce-store-notice__dismiss-link,
+	.demo_store,
+	.header-widget-area .search-submit {
+	    color: #ffffff;
+	}
+
+	/* Button Hover Text Color */
+	button:hover,
+	button:focus,
+	.button:hover,
+	.button:focus,
+	.entry-content button:hover,
+	.entry-content button:focus,
+	.entry-summary button:hover,
+	.entry-summary button:focus,
+	#social-search-toggle svg:hover,
+	#social-search-toggle svg:focus,
+	input[type="submit"]:hover,
+	input[type="submit"]:focus,
+	button[type="submit"]:hover,
+	button[type="submit"]:focus,
+	#primary-search-wrapper .search-container button:hover,
+	#primary-search-wrapper .search-container button:focus,
+	#infinite-handle .ctis-load-more button:hover,
+	#infinite-handle .ctis-load-more button:focus,
+	nav.navigation.posts-navigation .nav-links a:hover,
+	nav.navigation.posts-navigation .nav-links a:focus,
+	.catch-instagram-feed-gallery-widget-wrapper .instagram-button .button:hover,
+	.catch-instagram-feed-gallery-widget-wrapper .instagram-button .button:focus,
+	.catch-instagram-feed-gallery-widget-wrapper .instagram-button .button:hover,
+	.catch-instagram-feed-gallery-widget-wrapper .instagram-button .button:focus,
+	#focus-stock-logo-slider-section .owl-prev:hover,
+	#focus-stock-logo-slider-section .owl-prev:focus,
+	#focus-stock-logo-slider-section .owl-next:hover,
+	#focus-stock-logo-slider-section .owl-next:focus,
+	#scrollup:hover,
+	#scrollup:focus,
+	.archive-posts-wrapper .more-button .more-link:hover,
+	.archive-posts-wrapper .more-button .more-link:focus,
+	#hero-section .more-button .more-link:hover,
+	#hero-section .more-button .more-link:focus,
+	.pagination .page-numbers.prev:hover,
+	.pagination .page-numbers.prev:focus,
+	.pagination .page-numbers.next:hover,
+	.pagination .page-numbers.next:focus,
+	.pricing-section .more-button .more-link:hover,
+	.pricing-section .more-button .more-link:focus,
+	.woocommerce .product-container .wc-forward:hover,
+	.woocommerce .product-container .wc-forward:focus,
+	.header-media .more-link:hover,
+	.header-media .more-link:focus,
+	#feature-slider-section .more-link:hover,
+	#feature-slider-section .more-link:focus,
+	.onsale,
+	form div.fes-form .fes-submit input[type="submit"]:hover,
+	form div.fes-form .fes-submit input[type="submit"]:focus,
+	.edd_purchase_submit_wrapper .button.edd-submit:hover,
+	.edd_purchase_submit_wrapper .button.edd-submit:focus,
+	.header-widget-area .search-submit:hover,
+	.header-widget-area .search-submit:focus {
+	    color: #ffffff;
+	}
+
+	/* Button Hover Background Color */
+	.button:hover,
+	.button:focus,
+	#scrollup:hover,
+	#scrollup:focus,
+	button:hover,
+	button:focus,
+	.scrollup a:hover,
+	.scrollup a:focus,
+	#focus-stock-logo-slider-section .owl-prev:hover,
+	#focus-stock-logo-slider-section .owl-prev:focus,
+	#focus-stock-logo-slider-section .owl-next:hover,
+	#focus-stock-logo-slider-section .owl-next:focus,
+	button[type="submit"]:hover,
+	button[type="submit"]:focus,
+	input[type="submit"]:hover,
+	input[type="submit"]:focus,
+	.wp-block-button__link:hover,
+	.wp-block-button__link:focus,
+	.woocommerce .products .product-container .button:hover,
+	.woocommerce .products .product-container .button:focus,
+	#infinite-handle .ctis-load-more button:hover,
+	#infinite-handle .ctis-load-more button:focus,
+	.slider-content-wrapper .cycle-next:hover,
+	.slider-content-wrapper .cycle-next:focus,
+	.slider-content-wrapper .cycle-prev:hover,
+	.slider-content-wrapper .cycle-prev:focus,
+	nav.navigation.posts-navigation .nav-links a:hover,
+	nav.navigation.posts-navigation .nav-links a:focus,
+	.woocommerce-pagination ul.page-numbers li .page-numbers:hover,
+	.woocommerce-pagination ul.page-numbers li .page-numbers:focus,
+	.archive-content-wrap .pagination .page-numbers:hover,
+	.archive-content-wrap .pagination .page-numbers:focus,
+	.catch-instagram-feed-gallery-widget-wrapper .instagram-button .button:hover,
+	.catch-instagram-feed-gallery-widget-wrapper .instagram-button .button:focus,
+	.archive-posts-wrapper .more-button .more-link:hover,
+	.archive-posts-wrapper .more-button .more-link:focus,
+	#hero-section .more-button .more-link:hover,
+	#hero-section .more-button .more-link:focus,
+	.pagination .page-numbers.prev:hover,
+	.pagination .page-numbers.prev:focus,
+	.pagination .page-numbers.next:hover,
+	.pagination .page-numbers.next:focus,
+	.pricing-section .more-button .more-link:hover,
+	.pricing-section .more-button .more-link:focus,
+	.woocommerce .product-container .wc-forward:hover,
+	.woocommerce .product-container .wc-forward:focus,
+	.header-media .more-link:hover,
+	.header-media .more-link:focus,
+	#feature-slider-section .more-link:hover,
+	#feature-slider-section .more-link:focus,
+	.onsale,
+	form div.fes-form .fes-submit input[type="submit"]:hover,
+	form div.fes-form .fes-submit input[type="submit"]:focus,
+	.edd_purchase_submit_wrapper .button.edd-submit:hover,
+	.edd_purchase_submit_wrapper .button.edd-submit:focus,
+	.header-widget-area .search-submit:hover,
+	.header-widget-area .search-submit:focus {
+        background-color: #333333;
+    }
+
+	/* Border Color */
+	.woocommerce-tabs .panel,
+	.woocommerce-tabs ul.tabs li.active a:after,
+	.woocommerce-tabs ul.tabs:after,
+	.calendar_wrap tbody tr:first-child,
+	.calendar_wrap tbody tr:last-child,
+	tfoot,
+	tfoot tr td,
+	.author-info,
+	.wpcf7 div input,
+	.wpcf7 div textarea,
+	.navigation-classic .main-navigation ul ul,
+	.woocommerce-shorting-wrapper,
+	.woocommerce-tabs ul.tabs.wc-tabs li,
+	.menu-wrapper .widget_shopping_cart ul.woocommerce-mini-cart li,
+	.entry-summary form.cart,
+	.widget_recent_entries li,
+	table,
+	caption,
+	th,
+	td,
+	.sidebar .widget,
+	table thead,
+	table thead tr,
+	table.shop_table_responsive tr td,
+	table tbody tr,
+	table.shop_table_responsive tbody tr:last-child,
+	.shop_table tfoot tr td,
+	.shop_table tfoot tr th,
+	table.shop_table.woocommerce-checkout-review-order-table .cart_item td,
+	table.shop_table.woocommerce-checkout-review-order-table tr td,
+	table.shop_table.woocommerce-checkout-review-order-table tr th,
+	.rtl tbody td:last-child,
+	.rtl table thead th:last-child,
+	.select2-container--default .select2-selection--single,
+	table.woocommerce-grouped-product-list.group_table,
+	table.woocommerce-grouped-product-list.group_table td,
+	table.variations,
+	table.variations td,
+	.woocommerce-pagination ul.page-numbers li .page-numbers,
+	.archive-content-wrap .navigation.pagination .page-numbers,
+	.woocommerce-posts-wrapper .summary.entry-summary .woocommerce-product-rating,
+	.cart-collaterals .order-total,
+	#payment .wc_payment_methods .payment_box,
+	.products .product,
+	select,
+	abbr,
+	acronym,
+	.product-quantity input[type="number"],
+	.coupon input[type="text"],
+	.catch-instagram-feed-gallery-widget-wrapper .button,
+	.site-header-cart .widget_shopping_cart,
+	.woocommerce-grouped-product-list tr,
+	.mobile-social-search,
+	.widget .ui-tabs .ui-tabs-panel,
+	.site-header-menu .menu-inside-wrapper .nav-menu button:focus,
+	header .site-header-menu .menu-inside-wrapper .main-navigation .sub-menu li:last-child,
+	header .site-header-menu .menu-inside-wrapper .main-navigation .children li:last-child,
+	.comment-body,
+	.section:nth-child(2n) + .site-content,
+	.site-content + .section:nth-child(2n),
+	.archive-content-wrap .section-content-wrapper.layout-one .hentry .hentry-inner .entry-container>.entry-meta,
+	.comments-area,
+	.playlist-content-wrapper .wp-playlist .wp-playlist-tracks,
+	thead th,
+	.archive-post-wrap .hentry .entry-footer,
+	.portfolio-content-wrapper .filter-button-group,
+	.portfolio-content-wrapper .filters-select-wrap select,
+	form div.fes-form fieldset,
+	.edd-product-details__short-description,
+	.edd-vendor-detail,
+	.ui-tabs .ui-tabs-nav {
+		border-color: #2f2f2f;
+	}
+
+	.navigation-default #primary-menu-wrapper .menu-inside-wrapper,
+	.page .site-main .entry-footer .entry-meta > span:not(.edit-link) a,
+	.single .site-main .entry-footer .entry-meta > span:not(.edit-link) a,
+	.events-content-wrapper .events-article-wrapper .hentry,
+	.tagcloud a,
+	.post-navigation,
+	.post-navigation .nav-previous,
+	.post-navigation .nav-next,
+	.events-content-wrapper .hentry,
+	.is-open .menu-inside-wrapper input[type=search],
+	#sticky-playlist-section,
+	input[type="date"]:focus,
+	input[type="time"]:focus,
+	input[type="datetime-local"]:focus,
+	input[type="week"]:focus,
+	input[type="month"]:focus,
+	input[type="text"]:focus,
+	input[type="email"]:focus,
+	input[type="url"]:focus,
+	input[type="password"]:focus,
+	input[type="search"]:focus,
+	input[type="tel"]:focus,
+	input[type="number"]:focus,
+	textarea:focus {
+	    border-color: #2f2f2f;
+	}
+
+	/* Text Color With Background */
+	ins,
+	.scroll-down,
+	aside.footer-widget-area a,
+	.hero-content-wrapper.has-background-image .entry-container,
+	.has-background-image .entry-container,
+	.portfolio-content-wrapper .hentry .entry-container a,
+	.portfolio-content-wrapper .hentry .entry-container .entry-meta time,
+	.portfolio-content-wrapper .hentry .entry-container .entry-summary,
+	.ewnewsletter.has-background-image .section-title,
+	.site-footer .widget-wrap .widget-title,
+	.testimonials-content-wrapper.section.testimonial-wrapper.has-background-image .hentry,
+	.testimonials-content-wrapper.section.testimonial-wrapper.has-background-image .position,
+	aside.footer-widget-area .widget-title,
+	.playlist-content-wrapper .focus-stock-mejs-container.mejs-container button,
+	.playlist-content-wrapper .wp-playlist-current-item,
+	.has-background-image .section-title,
+	.has-background-image  .entry-container .entry-meta a,
+	.has-background-image  .entry-container .entry-title a,
+	.has-background-image  .entry-container .entry-title,
+	.has-background-image  .entry-container .entry-title span,
+	.has-background-image  .entry-container .entry-summary,
+	.has-background-image  .entry-container .entry-content,
+	.has-background-image .woocommerce-loop-product__title,
+	.content-color-white .entry-container .entry-title a,
+	.content-color-white .entry-container .entry-title,
+	.content-color-white .entry-container .entry-content,
+	.content-color-white .entry-container .entry-summary,
+	.has-background-image .products .button,
+	#feature-slider-section .owl-nav button:hover:before,
+	#feature-slider-section .owl-nav button:focus:before,
+	.playlist-content-wrapper .wp-playlist-caption:hover,
+	.playlist-content-wrapper .wp-playlist-caption:focus,
+	.play-button-text,
+	#feature-slider-section .owl-dot,
+	#app-section.content-color-white .entry-container .entry-content,
+	.events-content-wrapper .entry-meta a,
+	#playlist-section .playlist-content-wrapper .mejs-time {
+	    color: #ffffff;
+	}
+
+	.site-footer input[type="text"]:focus,
+	.site-footer input[type="email"]:focus,
+	.site-footer input[type="url"]:focus,
+	.site-footer input[type="password"]:focus,
+	.site-footer input[type="search"]:focus,
+	.site-footer input[type="number"]:focus,
+	.site-footer input[type="tel"]:focus,
+	.site-footer input[type="range"]:focus,
+	.site-footer input[type="date"]:focus,
+	.site-footer input[type="month"]:focus,
+	.site-footer input[type="week"]:focus,
+	.site-footer input[type="time"]:focus,
+	.site-footer input[type="datetime"]:focus,
+	.site-footer input[type="datetime-local"]:focus,
+	.site-footer input[type="color"]:focus,
+	.site-footer textarea:focus {
+        border-color: #ffffff;
+    }
+
+	.site-footer input[type="text"],
+	.site-footer input[type="email"],
+	.site-footer input[type="url"],
+	.site-footer input[type="password"],
+	.site-footer input[type="search"],
+	.site-footer input[type="number"],
+	.site-footer input[type="tel"],
+	.site-footer input[type="range"],
+	.site-footer input[type="date"],
+	.site-footer input[type="month"],
+	.site-footer input[type="week"],
+	.site-footer input[type="time"],
+	.site-footer input[type="datetime"],
+	.site-footer input[type="datetime-local"],
+	.site-footer input[type="color"],
+	.site-footer textarea {
+        border-color: rgba( 255, 255, 255, 0.58);
+    }
+
+	/* 82% of text color with background */
+	.has-background-image .event-list-description .entry-summary,
+	.has-background-image .event-list-description .entry-summary  p,
+	.has-background-image .event-list-description .entry-content,
+	.has-background-image .event-list-description .entry-content  p,
+	.playlist-content-wrapper .wp-playlist-tracks,
+	#social-footer-navigation li a,
+	#site-footer-navigation li a,
+	aside.footer-widget-area .widget,
+	aside.footer-widget-area a,
+	.site-info,
+	.site-info a,
+	.testimonial-content-section .position,
+	.site-footer input::placeholder,
+	.site-footer input[type="text"],
+	.site-footer input[type="email"],
+	.site-footer input[type="url"],
+	.site-footer input[type="password"],
+	.site-footer input[type="search"],
+	.site-footer input[type="number"],
+	.site-footer input[type="tel"],
+	.site-footer input[type="range"],
+	.site-footer input[type="date"],
+	.site-footer input[type="month"],
+	.site-footer input[type="week"],
+	.site-footer input[type="time"],
+	.site-footer input[type="datetime"],
+	.site-footer input[type="datetime-local"],
+	.site-footer input[type="color"],
+	.site-footer textarea,
+	.site-footer .ewnewsletter .hentry form input[type="submit"] {
+	    color: rgba( 255, 255, 255, 0.82);
+	}
+
+	input[type="text"]:focus,
+	input[type="email"]:focus,
+	input[type="url"]:focus,
+	input[type="password"]:focus,
+	input[type="search"]:focus,
+	input[type="number"]:focus,
+	input[type="tel"]:focus,
+	input[type="range"]:focus,
+	input[type="date"]:focus,
+	input[type="month"]:focus,
+	input[type="week"]:focus,
+	input[type="time"]:focus,
+	input[type="datetime"]:focus,
+	input[type="datetime-local"]:focus,
+	input[type="color"]:focus,
+	textarea:focus,
+	form div.fes-form .fes-el .fes-fields input[type="text"]:focus,
+	form div.fes-form .fes-el .fes-fields input[type="password"]:focus,
+	form div.fes-form .fes-el .fes-fields input[type="email"]:focus,
+	form div.fes-form .fes-el .fes-fields input[type="url"]:focus,
+	form div.fes-form .fes-el .fes-fields input[type="number"]:focus,
+	form div.fes-form .fes-el .fes-fields textarea:focus {
+	    border-color: rgba( 255, 255, 255, 0.82);
+	}
+
+	/* Custom Header and Slider Text Color */
+	#feature-slider-section .entry-title a,
+	#feature-slider-section .entry-meta a,
+	.feature-slider-wrapper .entry-container .entry-summary,
+	.feature-slider-wrapper .entry-container .entry-content,
+	.feature-slider-wrapper .entry-meta span,
+	.custom-header-content .entry-title,
+	.custom-header-content .site-header-text,
+	.custom-header-content .site-header-text .entry-meta a,
+	.custom-header-content-wrapper .section-title span,
+	.custom-header-media .entry-breadcrumbs a,
+	.custom-header-media .woocommerce .woocommerce-breadcrumb a,
+	.custom-header-media .catch-breadcrumb .entry-breadcrumbs,
+	.custom-header-media .catch-breadcrumb .woocommerce-breadcrumb,
+	.header-widget-area .widget-title,
+	.header-widget-area .widget_text {
+	    color: #ffffff;
+	}
+
+	/* Custom Header and Slider Hover Color */
+	#feature-slider-section .entry-title a:hover,
+	#feature-slider-section .entry-title a:focus,
+	#feature-slider-section .entry-meta a:hover,
+	#feature-slider-section .entry-meta a:focus,
+	.custom-header-content .site-header-text .entry-meta a:hover,
+	.custom-header-content .site-header-text .entry-meta a:focus,
+	.custom-header-media .entry-breadcrumbs a:hover,
+	.custom-header-media .entry-breadcrumbs a:focus,
+	.custom-header-media .woocommerce .woocommerce-breadcrumb a:hover,
+	.custom-header-media .woocommerce .woocommerce-breadcrumb a:focus {
+	    color: #007ced;
+	}
+
+	.absolute-header .site-title a,
+	.absolute-header .site-title a:hover,
+	.absolute-header .site-title a:focus,
+	.absolute-header .site-description {
+	    color: #ffffff;
+	}

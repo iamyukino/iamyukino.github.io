@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>エラー! - iamyukino.github.io</title>
+    <style>
+        * {
+            cursor: url("https://iamyukino.github.io/index/wp-content/global/images/mouse.png"), auto;
+        }
+    </style>
+    <link rel="shortcut icon" href="https://iamyukino.github.io/index/wp-content/global/images/favicon.png" type="image/png">
+
+    <link rel="stylesheet" href="https://iamyukino.github.io/index/wp-includes/err/404.css">
+</head>
+<body>
+    <script>
+        var patt1 = /^(https?:\/\/)?iamyukino\.github\.io\/((zh)(\-(TW|CHS|SG|CHT|HK|MO))?|cn)$/;
+        var patt2 = /^(https?:\/\/)?iamyukino\.github\.io\/((ja|ko|en)(\-[A-Z]{2,3})?|jp|us)$/;
+        if (patt1.test(window.location.href))
+            window.location.href='https://iamyukino.github.io/zh-CN';
+        else if (patt2.test(window.location.href))
+            window.location.href='https://iamyukino.github.io/';
+        
+        function back2lastdoc (){
+            if (history.length > 1) window.history.go(-1);
+            else window.location.href = 'https://iamyukino.github.io/';
+        }
+    </script>
+    <div class="error-page">
+        <div class="content">
+            <h1 data-text="404">404</h1>
+            <br><br><br>
+            <h4 data-text="Page not found">Page not found</h4>
+            <p>このアドレスに設定されているサイトには、要求されたファイルは含まれていません</p>
+            <p>もしこれが問題だと思うのなら、バグを報告してください</p>
+            <p style="font-size:50%;"><br>All Rights Reserved. Copyright © 2022 iamYukino</p>
+            <div class="btns">
+                <a onclick="back2lastdoc()">戻る</a>
+                <a href="https://iamyukino.github.io/work/comment">報告問題</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,428 @@
+{
+  "DUID": "0e17725a-610f-432c-884e-fdd62e200e05",
+  "Align": {
+    "paramBodyMoveX": {
+      "MinSet": -2.0,
+      "MaxSet": 2.0,
+      "MinParamValue": -2.0,
+      "MaxParamValue": 2.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": false
+    },
+    "paramBodyMoveY": {
+      "MinSet": -5.0,
+      "MaxSet": 5.0,
+      "MinParamValue": -5.0,
+      "MaxParamValue": 5.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": false
+    },
+    "paramBodyMoveZ": {
+      "MinSet": -5.0,
+      "MaxSet": 5.0,
+      "MinParamValue": -5.0,
+      "MaxParamValue": 5.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": false
+    },
+    "paramEyeLOpen": {
+      "MinSet": 0.0,
+      "MaxSet": 1.0,
+      "MinParamValue": 0.0,
+      "MaxParamValue": 1.0,
+      "Smooth": 0.41046387,
+      "Enlarge": 1.0,
+      "Enabled": true
+    },
+    "paramEyeROpen": {
+      "MinSet": 0.0,
+      "MaxSet": 1.0,
+      "MinParamValue": 0.0,
+      "MaxParamValue": 1.0,
+      "Smooth": 0.424054354,
+      "Enlarge": 1.0,
+      "Enabled": true
+    },
+    "paramEyeLSmile": {
+      "MinSet": 0.0,
+      "MaxSet": 1.0,
+      "MinParamValue": 0.0,
+      "MaxParamValue": 1.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": true
+    },
+    "paramEyeRSmile": {
+      "MinSet": 0.0,
+      "MaxSet": 1.0,
+      "MinParamValue": 0.0,
+      "MaxParamValue": 1.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": true
+    },
+    "paramAngleX": {
+      "MinSet": -30.0,
+      "MaxSet": 30.0,
+      "MinParamValue": -30.0,
+      "MaxParamValue": 30.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": true
+    },
+    "paramAngleY": {
+      "MinSet": -30.0,
+      "MaxSet": 30.0,
+      "MinParamValue": -30.0,
+      "MaxParamValue": 30.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": true
+    },
+    "paramAngleZ": {
+      "MinSet": -30.0,
+      "MaxSet": 30.0,
+      "MinParamValue": -30.0,
+      "MaxParamValue": 30.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": true
+    },
+    "paramBodyAngleX": {
+      "MinSet": -10.0,
+      "MaxSet": 10.0,
+      "MinParamValue": -10.0,
+      "MaxParamValue": 10.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": true
+    },
+    "paramBodyAngleY": {
+      "MinSet": -10.0,
+      "MaxSet": 10.0,
+      "MinParamValue": -10.0,
+      "MaxParamValue": 10.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": true
+    },
+    "paramBodyAngleZ": {
+      "MinSet": -10.0,
+      "MaxSet": 10.0,
+      "MinParamValue": -10.0,
+      "MaxParamValue": 10.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": true
+    },
+    "paramEyeBallX": {
+      "MinSet": -1.0,
+      "MaxSet": 1.0,
+      "MinParamValue": -1.0,
+      "MaxParamValue": 1.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": true
+    },
+    "paramEyeBallY": {
+      "MinSet": -1.0,
+      "MaxSet": 1.0,
+      "MinParamValue": -1.0,
+      "MaxParamValue": 1.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": true
+    },
+    "paramBrowLForm": {
+      "MinSet": -1.0,
+      "MaxSet": 1.0,
+      "MinParamValue": -1.0,
+      "MaxParamValue": 1.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": true
+    },
+    "paramBrowRForm": {
+      "MinSet": -1.0,
+      "MaxSet": 1.0,
+      "MinParamValue": -1.0,
+      "MaxParamValue": 1.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": true
+    },
+    "paramBrowAngleL": {
+      "MinSet": -1.0,
+      "MaxSet": 1.0,
+      "MinParamValue": -1.0,
+      "MaxParamValue": 1.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": true
+    },
+    "paramBrowAngleR": {
+      "MinSet": -1.0,
+      "MaxSet": 1.0,
+      "MinParamValue": -1.0,
+      "MaxParamValue": 1.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": true
+    },
+    "paramBrowLY": {
+      "MinSet": -1.0,
+      "MaxSet": 1.0,
+      "MinParamValue": -1.0,
+      "MaxParamValue": 1.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": true
+    },
+    "paramBrowRY": {
+      "MinSet": -1.0,
+      "MaxSet": 1.0,
+      "MinParamValue": -1.0,
+      "MaxParamValue": 1.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": true
+    },
+    "paramMouthOpenY": {
+      "MinSet": 0.0,
+      "MaxSet": 1.0,
+      "MinParamValue": 0.0,
+      "MaxParamValue": 1.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": true
+    },
+    "paramMouthForm": {
+      "MinSet": -1.0,
+      "MaxSet": 1.0,
+      "MinParamValue": -1.0,
+      "MaxParamValue": 1.0,
+      "Smooth": 0.5,
+      "Enlarge": 1.0,
+      "Enabled": true
+    }
+  },
+  "Model": {
+    "Location": {
+      "x": 12.5073729,
+      "y": -59.351017,
+      "s": 3.5,
+      "r": 0.0
+    },
+    "Collider": {
+      "height": 2.0,
+      "radius": 0.5,
+      "offsetX": 0.0,
+      "offsetY": 0.0,
+      "percentangeZ": 100.0
+    }
+  },
+  "Shortcut": {
+    "27c5e732-757d-4b2e-9a6a-6d51d2bb7563": {
+      "Parameter": "Param31",
+      "AnimationClip": "",
+      "Type": 1,
+      "Speed": 449.0,
+      "SingleTap": true,
+      "Reverse": false,
+      "Loop": false,
+      "SimpleLoop": false,
+      "KeyPair": [
+        164,
+        54
+      ]
+    },
+    "a9e0bc46-64e2-48e4-b034-d2c76e82911f": {
+      "Parameter": "Param8",
+      "AnimationClip": "",
+      "Type": 1,
+      "Speed": 447.0,
+      "SingleTap": true,
+      "Reverse": false,
+      "Loop": false,
+      "SimpleLoop": false,
+      "KeyPair": [
+        162,
+        54
+      ]
+    },
+    "15415e3a-0d02-48f1-afc0-9084c43d4b01": {
+      "Parameter": "Param",
+      "AnimationClip": "",
+      "Type": 1,
+      "Speed": 402.0,
+      "SingleTap": true,
+      "Reverse": false,
+      "Loop": false,
+      "SimpleLoop": false,
+      "KeyPair": [
+        162,
+        53
+      ]
+    },
+    "c74e7c84-9584-40a7-a25c-da617d6f9bfc": {
+      "Parameter": "Param12",
+      "AnimationClip": "",
+      "Type": 1,
+      "Speed": 434.0,
+      "SingleTap": true,
+      "Reverse": false,
+      "Loop": false,
+      "SimpleLoop": false,
+      "KeyPair": [
+        162,
+        52
+      ]
+    },
+    "b16d4303-8fad-4219-9910-42871368cc37": {
+      "Parameter": "Param6",
+      "AnimationClip": "",
+      "Type": 1,
+      "Speed": 423.0,
+      "SingleTap": true,
+      "Reverse": false,
+      "Loop": false,
+      "SimpleLoop": false,
+      "KeyPair": [
+        162,
+        49
+      ]
+    },
+    "ea541fcf-2fcd-4469-af43-7002f8121df2": {
+      "Parameter": "Param10",
+      "AnimationClip": "",
+      "Type": 1,
+      "Speed": 411.0,
+      "SingleTap": true,
+      "Reverse": false,
+      "Loop": false,
+      "SimpleLoop": false,
+      "KeyPair": [
+        162,
+        50
+      ]
+    },
+    "367a7e09-21ac-4151-8b84-1692ba80baa3": {
+      "Parameter": "Param9",
+      "AnimationClip": "",
+      "Type": 1,
+      "Speed": 431.0,
+      "SingleTap": true,
+      "Reverse": false,
+      "Loop": false,
+      "SimpleLoop": false,
+      "KeyPair": [
+        162,
+        51
+      ]
+    },
+    "928d0358-9141-4468-935c-efadbed34cb0": {
+      "Parameter": "Param7",
+      "AnimationClip": "",
+      "Type": 1,
+      "Speed": 429.0,
+      "SingleTap": true,
+      "Reverse": false,
+      "Loop": false,
+      "SimpleLoop": false,
+      "KeyPair": [
+        164,
+        49
+      ]
+    },
+    "6873d225-058c-4911-b294-e86535caf762": {
+      "Parameter": "Param5",
+      "AnimationClip": "",
+      "Type": 1,
+      "Speed": 428.0,
+      "SingleTap": true,
+      "Reverse": false,
+      "Loop": false,
+      "SimpleLoop": false,
+      "KeyPair": [
+        164,
+        50
+      ]
+    },
+    "a39a561f-dc1f-4614-8ff9-8cb80f3b7025": {
+      "Parameter": "Param11",
+      "AnimationClip": "",
+      "Type": 1,
+      "Speed": 430.0,
+      "SingleTap": true,
+      "Reverse": false,
+      "Loop": false,
+      "SimpleLoop": false,
+      "KeyPair": [
+        164,
+        51
+      ]
+    },
+    "32f9268a-c479-4c12-a898-cce908869df8": {
+      "Parameter": "Param4",
+      "AnimationClip": "",
+      "Type": 1,
+      "Speed": 426.0,
+      "SingleTap": true,
+      "Reverse": false,
+      "Loop": false,
+      "SimpleLoop": false,
+      "KeyPair": [
+        164,
+        52
+      ]
+    },
+    "e6cd833b-d637-448f-993b-27c577f47f5f": {
+      "Parameter": "Param3",
+      "AnimationClip": "",
+      "Type": 1,
+      "Speed": 439.0,
+      "SingleTap": true,
+      "Reverse": false,
+      "Loop": false,
+      "SimpleLoop": false,
+      "KeyPair": [
+        164,
+        53
+      ]
+    },
+    "cda4fe81-84e4-4187-8401-f4e8e4c61c06": {
+      "Parameter": "Param30",
+      "AnimationClip": "",
+      "Type": 1,
+      "Speed": 442.0,
+      "SingleTap": true,
+      "Reverse": false,
+      "Loop": false,
+      "SimpleLoop": false,
+      "KeyPair": [
+        164,
+        55
+      ]
+    },
+    "03c18278-aada-452f-90fa-8b2ddf027454": {
+      "Parameter": "Param35",
+      "AnimationClip": "",
+      "Type": 1,
+      "Speed": 414.0,
+      "SingleTap": true,
+      "Reverse": false,
+      "Loop": false,
+      "SimpleLoop": false,
+      "KeyPair": [
+        164,
+        56
+      ]
+    }
+  },
+  "CustomParameter": {},
+  "CustomSettings": null,
+  "CustomAnchorPoint": {}
+}
