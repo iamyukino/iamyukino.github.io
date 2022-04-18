@@ -5,6 +5,7 @@
 	margin: 0;
 	-webkit-tap-highlight-color: transparent;
 	/*清除点击默认的高亮效果*/
+	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	/*以你的border开始计算宽度*/
 }
@@ -12,7 +13,7 @@
 body,html{
 	font-size: 20px;
 	overflow-x: hidden;
-	overflow-y: scroll
+	overflow-y: scroll;
 	
 	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
