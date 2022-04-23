@@ -951,9 +951,10 @@ p {
 }
 
 .header-image {
-  max-width: 450px;
   margin: 0 auto;
-  position: relative; }
+  position: relative;
+  top:-60px;
+}
 /*
   .header-image::before {
     position: absolute;
