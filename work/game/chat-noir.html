@@ -16,19 +16,19 @@
   
   <a class="text" id="goback" onclick="back2lastdoc?back2lastdoc():history.go(-1)">&lt;返回</a>
   <a class="text" id="fullscreen">全屏显示</a>
-  <canvas width="1" height="80%"></canvas> <div id="chat-noir" align="center"></div>
+  <canvas id="blankf" width="1px" height="80%"></canvas><br><div id="chat-noir" align="center" style="overflow:hidden;"></div>
   
   <div class="brief">
     <h1>Chat Noir</h1>
     本页游戏的思路和小猫图片来源于<a href="https://www.gamedesign.jp/">gamedesign.jp</a>，仅供交流学习使用。<br>
     基本玩法：点击淡蓝色小原点，围住小猫。<br>
-    期间可通过点击【点我排列】来变换形状，从而化解难题。<br><br>
+    期间可通过点击【点我排列】来变换形状，从而化解难题。
   </div>
 
   <script>
-    window.game = new CatchTheCatGame(
-      { w: 8, h: 8, r: 20, backgroundColor: 0xF1E0E0, parent: "chat-noir", statusBarAlign: "center", credit: "iamyukino.github.io" }
-    );
+    let gr = Math.trunc(document.body.scrollWidth / 23), gh = Math.trunc(document.body.scrollHeight / 1.8);
+    if (gr > 20) gr = 20; document.getElementById("blankf").height=gh.toString();
+    window.game = new CatchTheCatGame({ w: 8, h: 8, r: gr, backgroundColor: 0xF1E0E0, parent: "chat-noir", statusBarAlign: "center", credit: "iamyukino.github.io" });
   </script>
   <script src="../../index/wp-includes/work/game/js/background.js"></script>
 
