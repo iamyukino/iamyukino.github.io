@@ -16,7 +16,7 @@
   
   <a class="text" id="goback" onclick="back2lastdoc?back2lastdoc():history.go(-1)">&lt;返回</a>
   <a class="text" id="fullscreen">全屏显示</a>
-  <canvas id="blankf" width="1px" height="80%"></canvas><br><div id="chat-noir" align="center" style="overflow:hidden;"></div>
+  <canvas id="blankf" width="1" height="40px"></canvas><br><div id="chat-noir" align="center" style="overflow:hidden;"></div>
   
   <div class="brief">
     <h1>Chat Noir</h1>
@@ -26,8 +26,8 @@
   </div>
 
   <script>
-    let gr = Math.trunc(document.body.scrollWidth / 23), gh = Math.trunc(document.body.scrollHeight / 1.8);
-    if (gr > 20) gr = 20; document.getElementById("blankf").height=gh.toString();
+    let gr = Math.trunc(document.body.scrollWidth / 23);
+    if (gr > 20) gr = 20;
     window.game = new CatchTheCatGame({ w: 8, h: 8, r: gr, backgroundColor: 0xF1E0E0, parent: "chat-noir", statusBarAlign: "center", credit: "iamyukino.github.io" });
   </script>
   <script src="../../index/wp-includes/work/game/js/background.js"></script>
