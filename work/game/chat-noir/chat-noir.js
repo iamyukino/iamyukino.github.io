@@ -327,7 +327,7 @@ var block_n = 8, b_reset = 0, n_hurdlehurdle = 1, n_bl_pow = 3;
                     height: d,
                     type: Phaser.AUTO,
                     parent: e.parent,
-                    backgroundColor: e.backgroundColor,
+                    transparent:true,
                     scene: h,
                     zoom: a
                 };
@@ -560,7 +560,7 @@ function (t, e, n) {
     Object.defineProperty(e, "__esModule", { value: !0 });
     var i = n(2), s = function (t) {
         function e(e) {
-            var n = t.call(this, e, 0, 0, i.default("   > 点我排列 <"), {}) || this; n.setColor("#000077");
+            var n = t.call(this, e, 0, 0, i.default("   > 点我排列 <"), {}) || this; n.setColor("#CCEFEF");
             var o = e.r;
             n.setFontSize(o), n.setPadding(o, o, o, o), n.setPosition(0, e.game.canvas.height + 5), n.setOrigin(0, 1);
             var r = new Phaser.Geom.Rectangle(0, 0, n.width, n.height);
@@ -588,7 +588,7 @@ function (t, e, n) {
     var i = function (t) {
         function e(e) {
             var n = t.call(this, e, 0, 0, "", {}) || this;
-            n.setColor("#000000");
+            n.setColor("#FFFFFF");
             var o = e.r;
             return n.setFontSize(o),
                 "center" === e.game.myConfig.statusBarAlign
@@ -618,7 +618,7 @@ function (t, e, n) {
     var i = function (t) {
         function e(e) {
             var n = t.call(this, e, 0, 0, "", {}) || this;
-            n.setColor("#000000"), n.setPosition(e.game.canvas.width, e.game.canvas.height), n.setOrigin(1, 1);
+            n.setColor("#FFFFFF"), n.setPosition(e.game.canvas.width, e.game.canvas.height), n.setOrigin(1, 1);
             var o = e.r;
             return n.setFontSize(.8 * o), n.setPadding(o, o, o, o),
                 n.setText(e.game.myConfig.credit), n

@@ -1,0 +1,84 @@
+* {
+    cursor: url("https://iamyukino.github.io/index/wp-content/global/images/mouse.png"), auto;
+}
+html {
+    margin: 0 auto;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(125deg,#2c3e50,#27ae60,#2980b9,#e74c3c,#8e44ad);
+    background-size: 400%;
+    animation: bganimation 15s infinite;
+}
+:-webkit-full-screen {
+  margin: 0 auto;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(125deg,#2c3e50,#27ae60,#2980b9,#e74c3c,#8e44ad);
+  background-size: 400%;
+  animation: bganimation 15s infinite;
+}
+:-moz-full-screen {
+  margin: 0 auto;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(125deg,#2c3e50,#27ae60,#2980b9,#e74c3c,#8e44ad);
+  background-size: 400%;
+  animation: bganimation 15s infinite;
+}
+:-ms-full-screen {
+  margin: 0 auto;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(125deg,#2c3e50,#27ae60,#2980b9,#e74c3c,#8e44ad);
+  background-size: 400%;
+  animation: bganimation 15s infinite;
+}
+:fullscreen {
+  margin: 0 auto;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(125deg,#2c3e50,#27ae60,#2980b9,#e74c3c,#8e44ad);
+  background-size: 400%;
+  animation: bganimation 15s infinite;
+}
+@keyframes bganimation {
+  0%{   background-position: 0% 50%;   }
+  50%{  background-position: 100% 50%; }
+  100%{ background-position: 0% 50%;   }
+}
+.text{
+  color: white;
+  position: absolute;
+  top:10px;
+  letter-spacing: 6px;
+  text-decoration: none;
+  user-select: none;-webkit-user-seletct: none;-moz-user-seletct: none;
+}
+#fullscreen{
+  text-align:right;
+  right:5px;
+}
+#goback{
+  text-align:left;
+  left:10px;
+}
+.text:hover{color:#FAB5B5;}
+.brief{
+  color: white;
+  position: absolute;
+  bottom:5%;
+  left:2%;
+  text-decoration: none;
+}
+.brief a{
+  color:antiquewhite;
+  text-decoration: none;
+}
+.brief a:hover{
+  color:#FAB5B5;
+}

@@ -5,12 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>猫捕り計画</title>
-  <style>
-      * {
-          cursor: url("../../index/wp-content/global/images/mouse.png"), auto;
-      }
-  </style>
+  <title>猫捕り計画 | 雨宮雪乃の作業台</title>
+  <link rel="stylesheet" type="text/css" href="../../index/wp-includes/work/game/css/background.css">
   <link rel="shortcut icon" href="../../index/wp-content/global/images/favicon.png" type="image/png">
 </head>
 
@@ -18,19 +14,23 @@
   <script src="./chat-noir/phaser.min.js"></script>
   <script src="./chat-noir/chat-noir.js"></script>
   
-  <div id="chat-noir"></div>
+  <a class="text" id="goback" onclick="back2lastdoc?back2lastdoc():history.go(-1)">&lt;返回</a>
+  <a class="text" id="fullscreen">全屏显示</a>
+  <canvas width="1" height="80%"></canvas> <div id="chat-noir" align="center"></div>
   
-  <br>
-  本页游戏的思路和小猫图片来源于<a href="https://www.gamedesign.jp/">gamedesign.jp</a>，仅供交流学习使用。<br>
-  基本玩法：点击淡蓝色小原点，围住小猫。<br>
-  期间可通过点击【点我排列】来变换形状，从而化解难题。
-  <br><br>
-  <a href="https://iamyukino.github.io#work"><button>返回主页</button></a>
-  <a href=""><button>重置游戏</button></a>
+  <div class="brief">
+    <h1>Chat Noir</h1>
+    本页游戏的思路和小猫图片来源于<a href="https://www.gamedesign.jp/">gamedesign.jp</a>，仅供交流学习使用。<br>
+    基本玩法：点击淡蓝色小原点，围住小猫。<br>
+    期间可通过点击【点我排列】来变换形状，从而化解难题。<br><br>
+  </div>
 
   <script>
-      window.game = new CatchTheCatGame({ w: 8, h: 8, r: 20, backgroundColor: 16777215, parent: "chat-noir", statusBarAlign: "center", credit: "iamyukino.github.io" })
+    window.game = new CatchTheCatGame(
+      { w: 8, h: 8, r: 20, backgroundColor: 0xF1E0E0, parent: "chat-noir", statusBarAlign: "center", credit: "iamyukino.github.io" }
+    );
   </script>
+  <script src="../../index/wp-includes/work/game/js/background.js"></script>
 
 </body>
 </html>
