@@ -1,3 +1,4 @@
+var load_completed = false;
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
@@ -792,7 +793,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Live2DCubismFramework = exports.EyeState = exports.CubismEyeBlink = void 0;
 var csmvector_1 = __webpack_require__(/*! ../type/csmvector */ "../../../Framework/src/type/csmvector.ts");
-var load_completed = false;
 var CubismEyeBlink = (function () {
     function CubismEyeBlink(modelSetting) {
         this._blinkingState = EyeState.EyeState_First;
@@ -890,14 +890,6 @@ var CubismEyeBlink = (function () {
         }
         for (var i = 0; i < this._parameterIds.getSize(); ++i) {
             model.setParameterValueById(this._parameterIds.at(i), parameterValue);
-        }
-        
-        if (!load_completed) {
-            load_completed = true;
-            try {
-                if (typeof(eval(loading_live2d_before)) == "function")
-                    loading_live2d_before ();
-            } catch (e) {}
         }
     };
     CubismEyeBlink.prototype.determinNextBlinkingTiming = function () {
@@ -9975,6 +9967,14 @@ var LAppModel = (function (_super) {
             this._pose.updateParameters(this._model, deltaTimeSeconds);
         }
         this._model.update();
+        
+        if (!load_completed) {
+            load_completed = true;
+            try {
+                if (typeof(eval(loading_live2d_before)) == "function")
+                    loading_live2d_before ();
+            } catch (e) {}
+        }
     };
     LAppModel.prototype.startMotion = function (group, no, priority, onFinishedMotionHandler) {
         var _this = this;

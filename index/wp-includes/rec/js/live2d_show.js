@@ -13,4 +13,5 @@ function copy_code(){
 }
 function loading_live2d_before() {
     document.getElementById("live2d").style.backgroundImage="none";
+    console.log ('live2d canvas update completed.')
 }
