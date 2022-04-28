@@ -707,16 +707,17 @@
                 <div class="col-lg-4 col-md-6 col-sm-7">
                     <div class="contact-box text-center mt-30">
                         <div class="contact-content">
-                            <h6 class="contact-title">お問い合わせ&nbsp;</h6>
-                            <p>本サイトに関するお問い合わせは、<a class="channel" href="./work/comment">こちら</a>からお願いします。</p>
+                            <h6 class="contact-title">本サイトの統計情報&nbsp;</h6>
+                            運営期間<p id="runtime_span"></p>
+                            ページビュー &amp; 訪問者数<p><span id="busuanzi_value_site_pv"></span>回 <span id="busuanzi_value_site_uv"></span>人</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-7">
                     <div class="contact-box text-center mt-30">
                         <div class="contact-content">
-                            <h6 class="contact-title">本サイトの運営期間&nbsp;</h6>
-                            <p id="runtime_span"></p>
+                            <h6 class="contact-title">お問い合わせ&nbsp;</h6>
+                            <p>本サイトに関するお問い合わせは、<a class="channel" href="./work/comment">こちら</a>からお願いします。</p>
                         </div>
                     </div>
                 </div>
@@ -734,10 +735,11 @@
                         c = (b - B) * 60;
                         C = Math.floor((b - B) * 60);
                         D = Math.floor((c - C) * 60);
-                        runtime_span.innerHTML = A + "天" + B + "時" + C + "分" + D + "秒"
+                        runtime_span.innerHTML = A + "日" + B + "時" + C + "分" + D + "秒"
                     }
                     show_runtime ();
                 </script>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             </div>
         </div>
     </section>
