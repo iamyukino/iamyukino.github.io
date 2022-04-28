@@ -31,12 +31,10 @@
 
 
 
-    
-    function stop() {
+    document.oncontextmenu = ()=>{
         return false;
-    }
-    document.oncontextmenu = stop;
-    
+    } // disable right button
+  
 	$(function(){
 	    function n(n, e, t){
             return n.getAttribute(e)||t
