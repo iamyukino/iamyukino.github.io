@@ -6,7 +6,6 @@
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	/*以你的border开始计算宽度*/
-	cursor: url("../../../wp-content/global/images/mouse.png"), auto;
 }
 
 body, html{

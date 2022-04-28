@@ -62,6 +62,12 @@
                 ,"让我们<span style=\"font-weight:bold;\">传送</span>吧"]
         },
         {
+            "selector": "#wpfront-scroll-top-container",
+            "text": ["回到<span style=\"font-weight:bold;\">开始</span>的地方吧"
+                ,"回到<span style=\"font-weight:bold;\">梦开始</span>的地方吧"
+                ,"让我们<span style=\"font-weight:bold;\">传送</span>吧"]
+        },
+        {
             "selector": ".waifu #live2d",
             "text": ["你想…干嘛…","快…把手拿开", "鼠…鼠标放错地方了！"]
         }

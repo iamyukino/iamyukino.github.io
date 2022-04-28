@@ -1,20 +1,89 @@
 <!DOCTYPE html>
-<html lang="en" class=" sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers" id="ls-global">
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <title>雨宫雪乃的个人网站</title>
+    <style>
+        * {
+            cursor: url("./index/wp-content/global/images/mouse.png"), auto;
+        }
+    </style>
     <link rel="shortcut icon" href="./index/wp-content/global/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="./index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu.css"/>
+    <script src="./index/wp-includes/index/js/jquery.min.js"></script>
+    <script src="./index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/html2canvas.js"></script>
 
+</head>
+
+<body>
+
+<div id="pjaxFrame">
+    <!-- live2d -->
+    <div class="waifu" style="z-index:9;">
+        <div class="waifu-tips"></div>
+        <canvas id="live2d" width="280" height="250" style="bottom: -10px;"></canvas>
+        <div class="waifu-tool">
+            <span class="fui-home"></span>
+            <span class="fui-chat"></span>
+            <span class="fui-eye"></span>
+            <span class="fui-user"></span>
+            <span class="fui-photo"></span>
+            <span class="fui-info-circle"></span>
+            <span class="fui-cross"></span>
+        </div>
+    </div>
+    <!-- Live2DCubismCore script -->
+    <script src="./index/wp-includes/global/waifu/Core/live2dcubismcore.js"></script>
+    <!-- Build script -->
+    <script src = "./index/wp-includes/global/waifu/Samples/TypeScript/Demo/dist/meidou_live2d.js"></script>
+    <script src="./index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.js"></script>
+    <script type="text/javascript">    
+        let modulesPath = "./index/wp-content/global/waifu/"
+        let modelNames = ['mia1', 'live2d_free1.1', 'Orangesweet2.1', 'Hiyori']
+        let waifuTipsUrl = "./index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.json"
+        initModel(modulesPath, modelNames, waifuTipsUrl);
+    </script>
+
+    <!-- APlayer -->
+    <link rel="stylesheet" href="./index/wp-includes/work/npm/aplayer/dist/APlayer.min.css">
+    <script src="./index/wp-includes/work/npm/aplayer/dist/APlayer.min.js"></script>
+    <script src="./index/wp-includes/work/npm/meting@2/dist/Meting.min.js"></script>
+    <style>
+        .aplayer .aplayer-lrc { height: 35px }
+        .aplayer .aplayer-lrc p {
+            zoom: 1;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 18px!important
+        }
+        .aplayer .aplayer-lrc p.aplayer-lrc-current { color: #ff1493 }
+        .aplayer.aplayer-narrow .aplayer-body { left: -66px!important }
+        .aplayer.aplayer-fixed .aplayer-lrc { display: none }
+        .aplayer .aplayer-lrc.aplayer-lrc-hide { display: none!important }
+        .aplayer.aplayer-fixed .lrc-show {
+            display: block;
+            background: rgba(255,255,255,.8)
+        }
+    </style>
+    <meting-js id="2608803683" server="tencent" type="playlist" fixed="true" autoplay loop order="random" preload="none" volume="0.2" mutex="true"></meting-js>
+    <script>
+        $(function() { $("body").on("click", ".aplayer", function() {
+            $(".aplayer-button").hasClass("aplayer-play") ?
+                $(".aplayer-lrc").removeClass("lrc-show") : $(".aplayer-lrc").addClass("lrc-show")
+        }) })
+    </script>
+</div><!-- pjaxFrame -->
+
+<div id="pjaxContent">
     <style>
         .container {
             margin-left: 30px;
             margin-top: 20px;
         }
     </style>
-    <link rel="stylesheet" type="text/css" href="./index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu.css"/>
     <link rel="stylesheet" href="./index/wp-includes/index/css/bootstrap.min.css">
     <link rel="stylesheet" href="./index/wp-includes/index/css/magnific-popup.css">
     <link rel="stylesheet" href="./index/wp-includes/index/css/default.css">
@@ -28,17 +97,11 @@
     <link rel="stylesheet" href="./index/wp-includes/index/css/layerslider.css">
     <link rel="stylesheet" href="./index/wp-includes/index/css/qa.css">
     
-    <script type="text/javascript" src="./index/wp-includes/index/js/jquery.min.js"></script>
-    <script src="./index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/html2canvas.js"></script>
-    <script src="./index/wp-includes/index/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./index/wp-includes/index/js/swiper.min.js" charset="utf-8"></script>
     <script src="./index/wp-includes/index/js/vue.min.js"></script>
-    <script type="text/javascript" src="./index/wp-includes/index/js/jq22.js"></script>
+    <script src="./index/wp-includes/index/js/jq22.js"></script>
     <script src="./index/wp-includes/index/js/index.js"></script>
-    
-</head>
 
-
-<body>
     <header id="home" class="header-area">
         <div class="navigation fixed-top">
             <div class="container">
@@ -72,15 +135,15 @@
             </div>
         </div>
         <div id="parallax" class="header-content d-flex align-items-center" style="transform: translate3d(0px, 0px, 0px); transform-style: preserve-3d; backface-visibility: hidden;">
-            <div class="header-shape shape-one layer" data-depth="0.10" style="transform: translate3d(-10.2862px, 6.23858px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: relative; display: block; left: 0px; top: 0px;"><img class="lazy" src="./index/wp-content/index/head/banner-preview.jpg" data-src="./index/wp-content/index/head/shape-1.png" alt="时钟" draggable="false"></div>
+            <div class="header-shape shape-one layer" data-depth="0.10" style="transform: translate3d(-10.2862px, 6.23858px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: relative; display: block; left: 0px; top: 0px;"><img class="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-src="./index/wp-content/index/head/shape-1.png" alt="时钟" draggable="false"></div>
             <div class="header-shape shape-tow layer" data-depth="0.30" style="transform: translate3d(-30.8585px, 18.7157px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;"><img src="./index/wp-content/index/head/shape-2.png" alt="桃子" title="左边桃子自取" draggable="false"></div>
             <div class="header-shape shape-three layer" data-depth="0.40" style="transform: translate3d(-41.1447px, 24.9543px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;"><img src="./index/wp-content/index/head/shape-3.png" alt="线条" draggable="false"></div>
             <div class="header-shape shape-fore layer" data-depth="0.60" style="transform: translate3d(-61.717px, 37.4315px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;"><img src="./index/wp-content/index/head/shape-2.png" alt="桃子" title="左边桃子自取" draggable="false"></div>
-            <div class="header-shape shape-five layer" data-depth="0.20" style="transform: translate3d(-20.5723px, 12.4772px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;"><a class="page-scroll" href="#contact" title="诶嘿这表能动"><img class="lazy" src="./index/wp-content/index/head/banner-preview.jpg" data-src="./index/wp-content/index/head/shape-1.gif" alt="时钟" draggable="false"> </a></div>
+            <div class="header-shape shape-five layer" data-depth="0.20" style="transform: translate3d(-20.5723px, 12.4772px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;"><a class="page-scroll" href="#contact" title="诶嘿这表能动"><img class="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-src="./index/wp-content/index/head/shape-1.gif" alt="时钟" draggable="false"> </a></div>
             <div class="header-shape shape-six layer" data-depth="0.15" style="transform: translate3d(-15.4292px, 9.35787px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;"><img src="./index/wp-content/index/head/shape-4.png" alt="幽灵" draggable="false"></div>
             <div class="header-shape shape-seven layer" data-depth="0.50" style="transform: translate3d(-51.4308px, 31.1929px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;"><img src="./index/wp-content/index/head/shape-5.png" alt="色块" draggable="false"></div>
             <div class="header-shape shape-eight layer" data-depth="0.40" style="transform: translate3d(-41.1447px, 24.9543px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;"><img src="./index/wp-content/index/head/shape-3.png" alt="线条" draggable="false"></div>
-            <div class="header-shape shape-nine layer" data-depth="0.20" style="transform: translate3d(-20.5723px, 12.4772px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;"><img class="lazy" src="./index/wp-content/index/head/banner-preview.jpg" data-src="./index/wp-content/index/head/shape-6.png" alt="狐牙" title="嗷呜~" draggable="false"></div>
+            <div class="header-shape shape-nine layer" data-depth="0.20" style="transform: translate3d(-20.5723px, 12.4772px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;"><img class="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-src="./index/wp-content/index/head/shape-6.png" alt="狐牙" title="嗷呜~" draggable="false"></div>
             <div class="header-shape shape-ten layer" data-depth="0.30" style="transform: translate3d(-30.8585px, 18.7157px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;"><img src="./index/wp-content/index/head/shape-3.png" alt="线条" draggable="false"></div>
             <div class="container">
                 <div class="row align-items-center">
@@ -93,7 +156,7 @@
                                 <h4 class="div-inline">个人网站!</h4>
                             </div>
                             <div>&nbsp;</div>
-                            <a class="main-btn" href="https://iamyukino.github.io/rec">资源站</a>
+                            <a class="main-btn" href="https://iamyukino.github.io/rec/live2d">资源站</a>
                             &nbsp; &nbsp;<a class="main-btn" href="https://iamyukino.github.io/work">工作台</a>
                         </div>
                     </div>
@@ -106,31 +169,6 @@
             </div>
         </div>
     </header>
-    <!-- live2d -->
-    <div class="waifu">
-        <div class="waifu-tips"></div>
-        <canvas id="live2d" width="280" height="250" style="bottom: -10px;"></canvas>
-        <div class="waifu-tool">
-            <span class="fui-home"></span>
-            <span class="fui-chat"></span>
-            <span class="fui-eye"></span>
-            <span class="fui-user"></span>
-            <span class="fui-photo"></span>
-            <span class="fui-info-circle"></span>
-            <span class="fui-cross"></span>
-        </div>
-    </div>
-    <!-- Live2DCubismCore script -->
-    <script src="./index/wp-includes/global/waifu/Core/live2dcubismcore.js"></script>
-    <!-- Build script -->
-    <script src = "./index/wp-includes/global/waifu/Samples/TypeScript/Demo/dist/meidou_live2d.js"></script>
-    <script src="./index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.js"></script>
-    <script type="text/javascript">    
-        let modulesPath = "./index/wp-content/global/waifu/"
-        let modelNames = ['mia1', 'live2d_free1.1', 'Orangesweet2.1', 'Hiyori']
-        let waifuTipsUrl = "./index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.json"
-        initModel(modulesPath, modelNames, waifuTipsUrl);
-    </script>
     <section id="rec" class="photo-area pt-40 pb-130">
         <div class="container">
             <div class="row">
@@ -774,7 +812,7 @@
                         <small style="color: white;">站内导航</small>
                         <ul class="list-unstyled">
                             <li>
-                                <a href="https://iamyukino.github.io/rec" class="link-footer">资源站</a>
+                                <a href="https://iamyukino.github.io/rec/live2d" class="link-footer">资源站</a>
                             </li>
                             <li>
                                 <a href="https://iamyukino.github.io/work" class="link-footer">工作台</a>
@@ -830,51 +868,6 @@
     <script src="./index/wp-includes/index/js/scrolling-nav.js"></script>
     <script src="./index/wp-includes/index/js/jquery.easing.min.js"></script>
     <script src="./index/wp-includes/index/js/main.js"></script>
-
-    <link rel="stylesheet" href="./index/wp-includes/work/npm/aplayer/dist/APlayer.min.css">
-    <script src="./index/wp-includes/work/npm/aplayer/dist/APlayer.min.js"></script>
-    <script src="./index/wp-includes/work/npm/meting@2/dist/Meting.min.js"></script>
-    <style>
-        .aplayer .aplayer-lrc {
-            height: 35px
-        }
-
-        .aplayer .aplayer-lrc p {
-            zoom: 1;
-            font-size: 16px;
-            font-weight: 700;
-            line-height: 18px!important
-        }
-
-        .aplayer .aplayer-lrc p.aplayer-lrc-current {
-            color: #ff1493
-        }
-
-        .aplayer.aplayer-narrow .aplayer-body {
-            left: -66px!important
-        }
-
-        .aplayer.aplayer-fixed .aplayer-lrc {
-            display: none
-        }
-
-        .aplayer .aplayer-lrc.aplayer-lrc-hide {
-            display: none!important
-        }
-
-        .aplayer.aplayer-fixed .lrc-show {
-            display: block;
-            background: rgba(255,255,255,.8)
-        }
-    </style>
-    <meting-js id="2608803683" server="tencent" type="playlist" fixed="true" autoplay loop order="random" preload="none" volume="0.2" mutex="true"></meting-js>
-    <script>
-        $(function() {
-            $("body").on("click", ".aplayer", function() {
-                $(".aplayer-button").hasClass("aplayer-play") ? $(".aplayer-lrc").removeClass("lrc-show") : $(".aplayer-lrc").addClass("lrc-show")
-            })
-        })
-    </script>
 
     <!-- lazyload -->
     <script>
@@ -932,5 +925,8 @@
         })();
     </script>
     <canvas id="c_n44" width="1536" height="714" style="position: fixed; top: 0px; left: 0px; z-index: -1; opacity: 0.6;"></canvas>
+
+</div><!-- pjaxContent -->
+
 </body>
 </html>
