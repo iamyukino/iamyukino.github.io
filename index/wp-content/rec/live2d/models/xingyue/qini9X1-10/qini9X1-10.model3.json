@@ -1,0 +1,26 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "qini9X1-10.moc3",
+		"Textures": [
+			"qini9X1-10.4096/texture_00.png"
+		],
+		"Physics": "qini9X1-10.physics3.json",
+		"DisplayInfo": "qini9X1-10.cdi3.json"
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		},
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": [
+				"ParamEyeLOpen",
+				"ParamEyeROpen"
+			]
+		}
+	]
+}
