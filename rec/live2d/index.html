@@ -499,7 +499,6 @@
 											@media screen and (max-width:480px){#jtg-232 .modula-item .figc .jtg-title {  font-size: 12px; }
 											#jtg-232 .modula-items .figc p.description { color:#ffffff;font-size:10px; }}
 										</style>
-										<img id="loading_pic" src="../../index/wp-content/global/images/loading.gif"/>
 										<!-- Gallery Container -->
 										<div id="jtg-232" class="modula modula-gallery modula-columns" data-config="{&quot;enableTwitter&quot;:false,&quot;enableWhatsapp&quot;:false,&quot;enableFacebook&quot;:false,&quot;enablePinterest&quot;:false,&quot;enableLinkedin&quot;:false,&quot;enableEmail&quot;:false,&quot;randomFactor&quot;:0,&quot;type&quot;:&quot;grid&quot;,&quot;columns&quot;:12,&quot;gutter&quot;:10,&quot;mobileGutter&quot;:10,&quot;tabletGutter&quot;:10,&quot;desktopGutter&quot;:10,&quot;enableResponsive&quot;:&quot;0&quot;,&quot;tabletColumns&quot;:&quot;2&quot;,&quot;mobileColumns&quot;:&quot;1&quot;,&quot;lazyLoad&quot;:&quot;0&quot;,&quot;lightboxOpts&quot;:{&quot;loop&quot;:false,&quot;arrows&quot;:true,&quot;toolbar&quot;:true,&quot;keyboard&quot;:true,&quot;wheel&quot;:true,&quot;buttons&quot;:[&quot;download&quot;,&quot;close&quot;],&quot;hash&quot;:false,&quot;lang&quot;:&quot;en&quot;,&quot;touch&quot;:{&quot;vertical&quot;:true,&quot;momentum&quot;:true},&quot;protect&quot;:false,&quot;i18n&quot;:{&quot;en&quot;:{&quot;CLOSE&quot;:&quot;Close&quot;,&quot;NEXT&quot;:&quot;Next&quot;,&quot;PREV&quot;:&quot;Previous&quot;,&quot;Error&quot;:&quot;The requested content cannot be loaded. Please try again later.&quot;,&quot;PLAY_START&quot;:&quot;Start slideshow&quot;,&quot;PLAY_STOP&quot;:&quot;Pause slideshow&quot;,&quot;FULL_SCREEN&quot;:&quot;Full screen&quot;,&quot;THUMBS&quot;:&quot;Thumbnails&quot;,&quot;DOWNLOAD&quot;:&quot;Download&quot;,&quot;SHARE&quot;:&quot;Share&quot;,&quot;ZOOM&quot;:&quot;Zoom&quot;}},&quot;clickSlide&quot;:&quot;close&quot;,&quot;clickOutside&quot;:false,&quot;dblclickContent&quot;:false,&quot;dblclickSlide&quot;:false,&quot;dblclickOutside&quot;:false,&quot;baseTpl&quot;:&quot;&lt;div class=\&quot;modula-fancybox-container modula-lightbox-jtg-232\&quot; role=\&quot;dialog\&quot; tabindex=\&quot;-1\&quot;&gt;&lt;div class=\&quot;modula-fancybox-bg\&quot;&gt;&lt;\/div&gt;&lt;div class=\&quot;modula-fancybox-inner\&quot;&gt;&lt;div class=\&quot;modula-fancybox-infobar\&quot;&gt;&lt;span data-fancybox-index&gt;&lt;\/span&gt;&nbsp;\/&nbsp;&lt;span data-fancybox-count&gt;&lt;\/span&gt;&lt;\/div&gt;&lt;div class=\&quot;modula-fancybox-toolbar\&quot;&gt;{{buttons}}&lt;\/div&gt;&lt;div class=\&quot;modula-fancybox-navigation\&quot;&gt;{{arrows}}&lt;\/div&gt;&lt;div class=\&quot;modula-fancybox-stage\&quot;&gt;&lt;\/div&gt;&lt;div class=\&quot;modula-fancybox-caption\&quot;&gt;&lt;div class=\&quot;modula-fancybox-caption__body\&quot;&gt;&lt;\/div&gt;&lt;\/div&gt;&lt;\/div&gt;&lt;\/div&gt;&quot;,&quot;infobar&quot;:false,&quot;animationEffect&quot;:&quot;fade&quot;,&quot;animationDuration&quot;:366,&quot;transitionEffect&quot;:false,&quot;transitionDuration&quot;:366,&quot;thumbs&quot;:{&quot;autoStart&quot;:false,&quot;axis&quot;:&quot;y&quot;},&quot;preventCaptionOverlap&quot;:false},&quot;inView&quot;:false,&quot;email_subject&quot;:&quot;Check out this awesome image !!&quot;,&quot;email_message&quot;:&quot;Here is the link to the image : %%image_link%% and this is the link to the gallery : %%gallery_link%%&quot;,&quot;grid_type&quot;:&quot;automatic&quot;,&quot;rowHeight&quot;:150,&quot;lastRow&quot;:&quot;justify&quot;,&quot;lightbox&quot;:&quot;fancybox&quot;,&quot;filterClick&quot;:&quot;0&quot;,&quot;dropdownFilters&quot;:&quot;0&quot;,&quot;defaultActiveFilter&quot;:&quot;all&quot;,&quot;initLightbox&quot;:&quot;modula_pro_init_lightbox&quot;,&quot;haveFilters&quot;:0,&quot;lightbox_devices&quot;:&quot;both&quot;}">
 											<!-- Items Container -->
@@ -530,17 +529,12 @@
 													</div>
 												-->
 												
-												<script>
-													function loading_pic_before() {
-														document.getElementById("loading_pic").style.display="none";
-													}
-												</script>
 												<!-- live2d-orangesweet -->
 												<div class="modula-item effect-pufrobo jtg-filter-all jtg-filter-" style="width: 948px; height: 1322px; position: absolute;">
 													<div class="modula-item-overlay"></div>
 													<div class="modula-item-content">
 														<a href="./orangesweet.html" pjax="include">
-															<img src="../../index/wp-content/rec/global/uploads/img/live2d/orangesweet.jpg" onload="loading_pic_before()"/>
+															<img class="lazy" src="../../index/wp-content/work/images/global/lazyload1.webp" data-src="../../index/wp-content/rec/global/uploads/img/live2d/orangesweet.jpg"/>
 														</a>
 														<div class="figc no-description">
 															<div class="figc-inner">
@@ -553,7 +547,7 @@
 													<div class="modula-item-overlay"></div>
 													<div class="modula-item-content">
 														<a href="./whiteneko.html" pjax="include">
-															<img src="../../index/wp-content/rec/global/uploads/img/live2d/whiteneko.jpg"/>
+															<img class="lazy" src="../../index/wp-content/work/images/global/lazyload1.webp" data-src="../../index/wp-content/rec/global/uploads/img/live2d/whiteneko.jpg"/>
 														</a>
 														<div class="figc no-description">
 															<div class="figc-inner"></div>
@@ -565,7 +559,7 @@
 													<div class="modula-item-overlay"></div>
 													<div class="modula-item-content">
 														<a href="./mia.html" pjax="include">
-															<img src="../../index/wp-content/rec/global/uploads/img/live2d/mia.jpg"/>
+															<img class="lazy" src="../../index/wp-content/work/images/global/lazyload1.webp" data-src="../../index/wp-content/rec/global/uploads/img/live2d/mia.jpg"/>
 														</a>
 														<div class="figc no-description">
 															<div class="figc-inner"></div>
@@ -577,7 +571,7 @@
 													<div class="modula-item-overlay"></div>
 													<div class="modula-item-content">
 														<a href="./kitune.html" pjax="include">
-															<img src="../../index/wp-content/rec/global/uploads/img/live2d/kitune.jpg"/>
+															<img class="lazy" src="../../index/wp-content/work/images/global/lazyload1.webp" data-src="../../index/wp-content/rec/global/uploads/img/live2d/kitune.jpg"/>
 														</a>
 														<div class="figc no-description">
 															<div class="figc-inner"></div>
@@ -589,7 +583,7 @@
 													<div class="modula-item-overlay"></div>
 													<div class="modula-item-content">
 														<a href="./hiyori.html" pjax="include">
-															<img src="../../index/wp-content/rec/global/uploads/img/live2d/hiyori.jpg"/>
+															<img class="lazy" src="../../index/wp-content/work/images/global/lazyload1.webp" data-src="../../index/wp-content/rec/global/uploads/img/live2d/hiyori.jpg"/>
 														</a>
 														<div class="figc no-description">
 															<div class="figc-inner"></div>
@@ -620,7 +614,7 @@
 													<div class="modula-item-overlay"></div>
 													<div class="modula-item-content">
 														<a href="./xuehusang.html" pjax="include">
-															<img src="../../index/wp-content/rec/global/uploads/img/live2d/xuehusang.jpg"/>
+															<img class="lazy" src="../../index/wp-content/work/images/global/lazyload1.webp" data-src="../../index/wp-content/rec/global/uploads/img/live2d/xuehusang.jpg"/>
 														</a>
 														<div class="figc no-description">
 															<div class="figc-inner"></div>
@@ -632,7 +626,7 @@
 													<div class="modula-item-overlay"></div>
 													<div class="modula-item-content">
 														<a href="./xinyue.html" pjax="include">
-															<img src="../../index/wp-content/rec/global/uploads/img/live2d/xinyue.jpg"/>
+															<img class="lazy" src="../../index/wp-content/work/images/global/lazyload1.webp" data-src="../../index/wp-content/rec/global/uploads/img/live2d/xinyue.jpg"/>
 														</a>
 														<div class="figc no-description">
 															<div class="figc-inner"></div>
@@ -644,7 +638,7 @@
 													<div class="modula-item-overlay"></div>
 													<div class="modula-item-content">
 														<a href="./mingshi.html" pjax="include">
-															<img src="../../index/wp-content/rec/global/uploads/img/live2d/mingshi.jpg"/>
+															<img class="lazy" src="../../index/wp-content/work/images/global/lazyload1.webp" data-src="../../index/wp-content/rec/global/uploads/img/live2d/mingshi.jpg"/>
 														</a>
 														<div class="figc no-description">
 															<div class="figc-inner"></div>
@@ -656,7 +650,7 @@
 													<div class="modula-item-overlay"></div>
 													<div class="modula-item-content">
 														<a href="./lafei.html" pjax="include">
-															<img src="../../index/wp-content/rec/global/uploads/img/live2d/lafei.jpg"/>
+															<img class="lazy" src="../../index/wp-content/work/images/global/lazyload1.webp" data-src="../../index/wp-content/rec/global/uploads/img/live2d/lafei.jpg"/>
 														</a>
 														<div class="figc no-description">
 															<div class="figc-inner"></div>
@@ -668,7 +662,7 @@
 													<div class="modula-item-overlay"></div>
 													<div class="modula-item-content">
 														<a href="./xuefeng.html" pjax="include">
-															<img src="../../index/wp-content/rec/global/uploads/img/live2d/xuefeng.jpg"/>
+															<img class="lazy" src="../../index/wp-content/work/images/global/lazyload1.webp" data-src="../../index/wp-content/rec/global/uploads/img/live2d/xuefeng.jpg"/>
 														</a>
 														<div class="figc no-description">
 															<div class="figc-inner"></div>
@@ -687,6 +681,41 @@
 							</div>	<!-- .singular-content-wrap -->
 						</main><!-- #main -->
 					</div><!-- #primary -->
+					<!-- lazyload -->
+					<script>
+						document.addEventListener('DOMContentLoaded',function() {
+							let lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+							let active = false;
+							const lazyLoad = function() {
+								if(active === false){
+									active = true;
+									setTimeout(function(){
+										lazyImages.forEach(function(lazyImage) {
+											if((lazyImage.getBoundingClientRect().top <= window.innerHeight 
+											&& lazyImage.getBoundingClientRect().bottom >= 0) 
+											&&  getComputedStyle(lazyImage).display !== "none"){
+												lazyImage.src = lazyImage.dataset.src;
+												lazyImage.classList.remove("lazy");
+												lazyImages = lazyImages.filter(image => {
+													return image !==lazyImage;
+												});
+												if(lazyImages.length === 0){
+													document.addEventListener("scroll",lazyLoad);
+													window.addEventListener("resize",lazyLoad);
+													window.addEventListener("orientationchange",lazyLoad);
+												}   
+											}
+										});
+										active = false;
+									},200)
+								} 
+							}
+							lazyLoad();
+							document.addEventListener("scroll",lazyLoad);
+							window.addEventListener("resize",lazyLoad);
+							window.addEventListener("orientationchange",lazyLoad);
+						});
+					</script>
 					<aside id="secondary" class="widget-area sidebar">
 						<section id="block-28" class="widget widget_block">
 							<div class="widget-wrap">
