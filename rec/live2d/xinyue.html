@@ -465,32 +465,50 @@
 												<!-- article-main -->
 												<h5>
 													<script>
+														let lnekomimi = false, lmeedo = false;
 														$(document).ready(function(){
 															$(".lexpression").click(function(){
 																if($(this)[0].value == "1"){
 																	$(this).removeAttr("checked");
 																	$(this).val("0");
 																} else $(this).val("1");
+
+																if ($(this)[0].id == "llm-1") lnekomimi = !lnekomimi;
+																else lmeedo = !lmeedo;
+																
+																if (!lnekomimi && !lmeedo) live2dLoader.changeScene(1);  
+																else if (!lnekomimi && lmeedo) live2dLoader.changeScene(2);
+																else if (lnekomimi && !lmeedo) live2dLoader.changeScene(3);
+																else live2dLoader.changeScene(4);
 															});
 														});
-														var nekomimi = false, meedo = false;
-														function chan (which) {
-															if (which === 1) nekomimi = !nekomimi;
-															else meedo = !meedo;
-															if (!nekomimi && !meedo) live2dLoader.changeScene(1);  
-															else if (!nekomimi && meedo) live2dLoader.changeScene(2);
-															else if (nekomimi && !meedo) live2dLoader.changeScene(3);
-															else live2dLoader.changeScene(4);
-														}
 													</script>
+													<style>
+														.waifu{
+															text-overflow:ellipsis;
+															white-space:nowrap;
+															-moz-user-select:none; 
+															-webkit-user-select:none;
+															-ms-user-select:none;  
+															-khtml-user-select:none;
+															user-select:none;  
+														}
+														.waifu #lmotions{
+															font-size:12px;
+															position:relative;
+															z-index:100;
+															left:-155px;
+															top:-15px;
+														}
+													</style>
 													<!-- live2d -->
-													<div class="waifu" style="text-overflow:ellipsis;white-space:nowrap;">
+													<div class="waifu">
 														<canvas id="live2d" width="740" height="500" class="live2d">
 														モデルのロードに失敗しました。ブラウザはcanvasプラグインをサポートしていません。
 														</canvas>
-														<span style="font-size:25%; position:relative; z-index:100; left:-155px; top:-15px;">
-															<label onclick="chan(1)"><input type="radio" class="lexpression" value="0">メード服</input></label>&nbsp;
-															<label onclick="chan(2)"><input type="radio" class="lexpression" value="0">猫耳</input></label>
+														<span id="lmotions">
+															<label><input type="radio" class="lexpression" value="0" id="llm-1">メード服</input></label>&nbsp;
+															<label><input type="radio" class="lexpression" value="0" id="llm-2">猫耳</input></label>
 														</span>
 													</div>
 													<!-- text -->
