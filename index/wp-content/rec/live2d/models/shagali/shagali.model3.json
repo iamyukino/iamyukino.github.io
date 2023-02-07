@@ -1,0 +1,87 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "shagali.moc3",
+		"Textures": [
+			"shagali.4096/texture_00.png",
+			"shagali.4096/texture_01.png",
+			"shagali.4096/texture_02.png",
+			"shagali.4096/texture_03.png"
+		],
+		"Physics": "shagali.physics3.json",
+		"DisplayInfo": "shagali.cdi3.json",
+		"Expressions": [
+			{
+				"Name": "？",
+				"File": "？.exp3.json"
+			},
+			{
+				"Name": "o o",
+				"File": "o o.exp3.json"
+			},
+			{
+				"Name": "爱心眼",
+				"File": "爱心眼.exp3.json"
+			},
+			{
+				"Name": "翅膀",
+				"File": "翅膀.exp3.json"
+			},
+			{
+				"Name": "哭泣",
+				"File": "哭泣.exp3.json"
+			},
+			{
+				"Name": "脸黑",
+				"File": "脸黑.exp3.json"
+			},
+			{
+				"Name": "脸红",
+				"File": "脸红.exp3.json"
+			},
+			{
+				"Name": "帽子",
+				"File": "帽子.exp3.json"
+			},
+			{
+				"Name": "生气",
+				"File": "生气.exp3.json"
+			},
+			{
+				"Name": "云",
+				"File": "云.exp3.json"
+			},
+			{
+				"Name": "星星眼",
+				"File": "星星眼.exp3.json"
+			},
+			{
+				"Name": "星星",
+				"File": "星星.exp3.json"
+			},
+			{
+				"Name": "月亮",
+				"File": "月亮.exp3.json"
+			},
+			{
+				"Name": "眯眯眼",
+				"File": "眯眯眼.exp3.json"
+			}
+		]
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		},
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": [
+				"ParamEyeLOpen",
+				"ParamEyeROpen"
+			]
+		}
+	]
+}

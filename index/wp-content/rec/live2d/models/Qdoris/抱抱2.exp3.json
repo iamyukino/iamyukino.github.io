@@ -1,0 +1,50 @@
+{
+    "Type": "Live2D Expression",
+    "Parameters": [
+        {
+            "Id": "ganfan",
+            "Value": 0.0,
+            "Blend": "Add"
+        },
+        {
+            "Id": "longmao",
+            "Value": 0.0,
+            "Blend": "Add"
+        },
+        {
+            "Id": "jiandao",
+            "Value": 0.0,
+            "Blend": "Add"
+        },
+        {
+            "Id": "changge",
+            "Value": 0.0,
+            "Blend": "Add"
+        },
+        {
+            "Id": "shouoff1",
+            "Value": 1.0,
+            "Blend": "Add"
+        },
+        {
+            "Id": "shouoff2",
+            "Value": 1.0,
+            "Blend": "Add"
+        },
+        {
+            "Id": "shouoff3",
+            "Value": 0.0,
+            "Blend": "Add"
+        },
+        {
+            "Id": "shouoff4",
+            "Value": 0.0,
+            "Blend": "Add"
+        },
+        {
+            "Id": "baobao2",
+            "Value": 1.0,
+            "Blend": "Add"
+        }
+    ]
+}

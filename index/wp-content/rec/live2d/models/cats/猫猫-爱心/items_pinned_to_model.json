@@ -1,0 +1,94 @@
+{
+    "FileMetadata": {
+        "LastSavedVTubeStudioVersion": "1.23.5",
+        "LastSavedPlatform": "Steam",
+        "LastSavedDateUTC": "Wednesday, 04 January 2023, 10:22:09",
+        "LastSavedDateLocalTime": "Wednesday, 04 January 2023, 18:22:09",
+        "LastSavedDateUnixMillisecondTimestamp": "1672827729627"
+    },
+    "SceneName": "",
+    "SceneGroupName": "",
+    "SceneModel": "",
+    "SceneID": "",
+    "Items": [
+        {
+            "ItemName": "猫猫-爱心",
+            "ItemObjectInScene": {
+                "m_FileID": -153526,
+                "m_PathID": 0
+            },
+            "ItemFileName": "猫猫-爱心",
+            "ItemInstanceUUID": "cd74840a46cb4e8183031fe9db2fab55",
+            "Selected": true,
+            "TrackingModel": true,
+            "IsAnimated": false,
+            "IsVideo": false,
+            "IsModel": true,
+            "IsCensored": false,
+            "IsFlipped": false,
+            "IsLocked": false,
+            "Smoothing": 0.0,
+            "Order": 2,
+            "FPS": -1.0,
+            "IsPinned": true,
+            "PinnedTo": "ArtMesh40",
+            "PinnedModel_Live2D": "猫猫-爱心",
+            "PinnedModel_VTS": "猫猫-爱心",
+            "PinnedModel_InternalID": "40761764ac5548c1a49d997da49dcd55",
+            "PinnedVertexIDs": "5 34 6 33 35 69",
+            "PinnedVertexPositions": [
+                {
+                    "x": 0.12146537750959397,
+                    "y": 0.030484994873404504,
+                    "z": 0.0
+                },
+                {
+                    "x": 0.11737493425607681,
+                    "y": 0.008099832572042942,
+                    "z": 0.0
+                },
+                {
+                    "x": 0.14141811430454255,
+                    "y": 0.0030500050634145738,
+                    "z": 0.0
+                },
+                {
+                    "x": 0.09628453850746155,
+                    "y": 0.03273916617035866,
+                    "z": 0.0
+                },
+                {
+                    "x": 0.13015758991241456,
+                    "y": -0.01559000089764595,
+                    "z": 0.0
+                },
+                {
+                    "x": 0.08065991848707199,
+                    "y": 0.008373869583010674,
+                    "z": 0.0
+                }
+            ],
+            "PinnedVertexCenterOffset": {
+                "x": 0.007953725755214692,
+                "y": 0.011925376020371914,
+                "z": -0.011494253762066365
+            },
+            "Size": 0.10344827175140381,
+            "ModelScaleMultiplier": 0.01149425283074379,
+            "Rotation": 0.0,
+            "Position": {
+                "x": 0.1225138008594513,
+                "y": 0.02092009037733078,
+                "z": 0.0
+            },
+            "Group": "",
+            "Scene": "",
+            "AssetType": 6,
+            "FromWorkshop": false,
+            "FromHotkey": false,
+            "FromAPI": false,
+            "FadeTime": 0.5,
+            "Plugin": ""
+        }
+    ]
+}

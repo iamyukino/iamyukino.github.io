@@ -1,0 +1,20 @@
+{
+    "Type": "Live2D Expression",
+    "Parameters": [
+        {
+            "Id": "shuangmaweiodd",
+            "Value": 1.0,
+            "Blend": "Add"
+        },
+        {
+            "Id": "luoxuan",
+            "Value": 0.0,
+            "Blend": "Add"
+        },
+        {
+            "Id": "xiaojiu",
+            "Value": 1.0,
+            "Blend": "Add"
+        }
+    ]
+}

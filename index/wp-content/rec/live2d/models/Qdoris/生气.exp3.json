@@ -1,0 +1,40 @@
+{
+    "Type": "Live2D Expression",
+    "Parameters": [
+        {
+            "Id": "quanquan2",
+            "Value": 0.0,
+            "Blend": "Add"
+        },
+        {
+            "Id": "biyan2",
+            "Value": 0.0,
+            "Blend": "Add"
+        },
+        {
+            "Id": "shengqi",
+            "Value": 1.0,
+            "Blend": "Add"
+        },
+        {
+            "Id": "ganfan",
+            "Value": 0.0,
+            "Blend": "Add"
+        },
+        {
+            "Id": "koushui",
+            "Value": 0.0,
+            "Blend": "Add"
+        },
+        {
+            "Id": "zuioff",
+            "Value": 1.0,
+            "Blend": "Add"
+        },
+        {
+            "Id": "yanoff",
+            "Value": 0.0,
+            "Blend": "Add"
+        }
+    ]
+}

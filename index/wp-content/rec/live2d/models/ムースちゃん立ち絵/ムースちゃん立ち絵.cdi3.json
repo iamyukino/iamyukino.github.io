@@ -1,0 +1,499 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "ParamAngleX",
+			"GroupId": "",
+			"Name": "角度 X"
+		},
+		{
+			"Id": "ParamAngleY",
+			"GroupId": "",
+			"Name": "角度 Y"
+		},
+		{
+			"Id": "ParamAngleZ",
+			"GroupId": "",
+			"Name": "角度 Z"
+		},
+		{
+			"Id": "ParamEyeLOpen",
+			"GroupId": "",
+			"Name": "左眼　开闭"
+		},
+		{
+			"Id": "ParamEyeLSmile",
+			"GroupId": "",
+			"Name": "左眼　微笑"
+		},
+		{
+			"Id": "Param6",
+			"GroupId": "",
+			"Name": "左眼 物理"
+		},
+		{
+			"Id": "Param8",
+			"GroupId": "",
+			"Name": "左眼 物理"
+		},
+		{
+			"Id": "Param7",
+			"GroupId": "",
+			"Name": "左眼 物理"
+		},
+		{
+			"Id": "ParamEyeROpen",
+			"GroupId": "",
+			"Name": "右眼   开闭"
+		},
+		{
+			"Id": "ParamEyeRSmile",
+			"GroupId": "",
+			"Name": "右眼　微笑"
+		},
+		{
+			"Id": "Param",
+			"GroupId": "",
+			"Name": "右眼 物理"
+		},
+		{
+			"Id": "Param2",
+			"GroupId": "",
+			"Name": "右眼 物理"
+		},
+		{
+			"Id": "Param5",
+			"GroupId": "",
+			"Name": "右眼 物理"
+		},
+		{
+			"Id": "ParamEyeBallX",
+			"GroupId": "",
+			"Name": "眼珠 X"
+		},
+		{
+			"Id": "ParamEyeBallY",
+			"GroupId": "",
+			"Name": "眼珠 Y"
+		},
+		{
+			"Id": "ParamBrowLY",
+			"GroupId": "",
+			"Name": "左眉   上下"
+		},
+		{
+			"Id": "ParamBrowRY",
+			"GroupId": "",
+			"Name": "右眉　上下"
+		},
+		{
+			"Id": "ParamMouthForm",
+			"GroupId": "",
+			"Name": "嘴　变形"
+		},
+		{
+			"Id": "ParamMouthOpenY",
+			"GroupId": "",
+			"Name": "嘴　张开和闭合"
+		},
+		{
+			"Id": "ParamBodyAngleX",
+			"GroupId": "",
+			"Name": "身体旋转　X"
+		},
+		{
+			"Id": "ParamBodyAngleY",
+			"GroupId": "",
+			"Name": "身体旋转　Y"
+		},
+		{
+			"Id": "ParamBodyAngleZ",
+			"GroupId": "",
+			"Name": "身体旋转　Z"
+		},
+		{
+			"Id": "ParamBreath",
+			"GroupId": "",
+			"Name": "呼吸"
+		},
+		{
+			"Id": "ParamHairFront",
+			"GroupId": "",
+			"Name": "摇动 刘海中"
+		},
+		{
+			"Id": "ParamHairFront2",
+			"GroupId": "",
+			"Name": "摇动 刘海中"
+		},
+		{
+			"Id": "ParamHairFront4",
+			"GroupId": "",
+			"Name": "摇动 刘海右"
+		},
+		{
+			"Id": "ParamHairFront5",
+			"GroupId": "",
+			"Name": "摇动 刘海右"
+		},
+		{
+			"Id": "ParamHairFront6",
+			"GroupId": "",
+			"Name": "摇动 刘海左"
+		},
+		{
+			"Id": "ParamHairFront7",
+			"GroupId": "",
+			"Name": "摇动 刘海左"
+		},
+		{
+			"Id": "ParamHairSide",
+			"GroupId": "",
+			"Name": "摇动 右侧发"
+		},
+		{
+			"Id": "ParamHairSide2",
+			"GroupId": "",
+			"Name": "摇动 右侧发"
+		},
+		{
+			"Id": "ParamHairSide3",
+			"GroupId": "",
+			"Name": "摇动 左侧发"
+		},
+		{
+			"Id": "ParamHairSide4",
+			"GroupId": "",
+			"Name": "摇动 左侧发"
+		},
+		{
+			"Id": "ParamHairBack",
+			"GroupId": "",
+			"Name": "摇动 后发"
+		},
+		{
+			"Id": "ParamHairBack2",
+			"GroupId": "",
+			"Name": "摇动 后发"
+		},
+		{
+			"Id": "Param3",
+			"GroupId": "",
+			"Name": "马尾"
+		},
+		{
+			"Id": "Param4",
+			"GroupId": "",
+			"Name": "马尾"
+		},
+		{
+			"Id": "Param9",
+			"GroupId": "",
+			"Name": "呆毛"
+		},
+		{
+			"Id": "Param10",
+			"GroupId": "",
+			"Name": "呆毛"
+		},
+		{
+			"Id": "Param11",
+			"GroupId": "",
+			"Name": "蝴蝶结头"
+		},
+		{
+			"Id": "Param12",
+			"GroupId": "",
+			"Name": "蝴蝶结头"
+		},
+		{
+			"Id": "Param13",
+			"GroupId": "",
+			"Name": "蝴蝶结 脖子"
+		},
+		{
+			"Id": "Param14",
+			"GroupId": "",
+			"Name": "蝴蝶结 脖子"
+		},
+		{
+			"Id": "Param15",
+			"GroupId": "",
+			"Name": "蝴蝶结 腰"
+		},
+		{
+			"Id": "Param16",
+			"GroupId": "",
+			"Name": "蝴蝶结 腰"
+		},
+		{
+			"Id": "Param17",
+			"GroupId": "",
+			"Name": "尾巴"
+		},
+		{
+			"Id": "Param18",
+			"GroupId": "",
+			"Name": "尾巴1"
+		},
+		{
+			"Id": "Param19",
+			"GroupId": "",
+			"Name": "尾巴1"
+		},
+		{
+			"Id": "Param20",
+			"GroupId": "",
+			"Name": "胸"
+		},
+		{
+			"Id": "Param21",
+			"GroupId": "",
+			"Name": "胸"
+		},
+		{
+			"Id": "Param22",
+			"GroupId": "",
+			"Name": "胸y"
+		},
+		{
+			"Id": "Param23",
+			"GroupId": "",
+			"Name": "胸y"
+		},
+		{
+			"Id": "Param24",
+			"GroupId": "",
+			"Name": "袖子"
+		},
+		{
+			"Id": "Param25",
+			"GroupId": "",
+			"Name": "袖子"
+		},
+		{
+			"Id": "Param26",
+			"GroupId": "",
+			"Name": "袖子"
+		},
+		{
+			"Id": "Param27",
+			"GroupId": "",
+			"Name": "袖子"
+		},
+		{
+			"Id": "Param28",
+			"GroupId": "",
+			"Name": "裙子"
+		},
+		{
+			"Id": "Param29",
+			"GroupId": "",
+			"Name": "裙子"
+		},
+		{
+			"Id": "Param30",
+			"GroupId": "",
+			"Name": "伤心"
+		},
+		{
+			"Id": "Param31",
+			"GroupId": "",
+			"Name": "懵"
+		},
+		{
+			"Id": "Param32",
+			"GroupId": "",
+			"Name": "生气"
+		}
+	],
+	"ParameterGroups": [],
+	"Parts": [
+		{
+			"Id": "Part",
+			"Name": "1"
+		},
+		{
+			"Id": "Part2",
+			"Name": "伤心"
+		},
+		{
+			"Id": "Part3",
+			"Name": "懵"
+		},
+		{
+			"Id": "Part4",
+			"Name": "生气"
+		},
+		{
+			"Id": "Part5",
+			"Name": "人"
+		},
+		{
+			"Id": "Part28",
+			"Name": "夹子"
+		},
+		{
+			"Id": "Part6",
+			"Name": "刘海"
+		},
+		{
+			"Id": "Part7",
+			"Name": "左眼"
+		},
+		{
+			"Id": "Part8",
+			"Name": "右眼"
+		},
+		{
+			"Id": "Part9",
+			"Name": "口腔"
+		},
+		{
+			"Id": "Part10",
+			"Name": "鼻子"
+		},
+		{
+			"Id": "Part11",
+			"Name": "侧发"
+		},
+		{
+			"Id": "Part12",
+			"Name": "右耳"
+		},
+		{
+			"Id": "Part13",
+			"Name": "左耳"
+		},
+		{
+			"Id": "Part14",
+			"Name": "身体"
+		},
+		{
+			"Id": "Part20",
+			"Name": "尾巴"
+		},
+		{
+			"Id": "Part22",
+			"Name": "蝴蝶结 头上 右"
+		},
+		{
+			"Id": "Part15",
+			"Name": "蝴蝶结 脖子"
+		},
+		{
+			"Id": "Part16",
+			"Name": "蝴蝶结 胸下"
+		},
+		{
+			"Id": "Part17",
+			"Name": "蝴蝶结 腿"
+		},
+		{
+			"Id": "Part18",
+			"Name": "右手"
+		},
+		{
+			"Id": "Part19",
+			"Name": "左手"
+		},
+		{
+			"Id": "Part21",
+			"Name": "蝴蝶结尾巴"
+		}
+	],
+	"CombinedParameters": [
+		[
+			"ParamAngleX",
+			"ParamAngleY"
+		],
+		[
+			"Param6",
+			"Param8"
+		],
+		[
+			"Param",
+			"Param2"
+		],
+		[
+			"ParamEyeBallX",
+			"ParamEyeBallY"
+		],
+		[
+			"ParamMouthForm",
+			"ParamMouthOpenY"
+		],
+		[
+			"ParamBodyAngleX",
+			"ParamBodyAngleY"
+		],
+		[
+			"ParamHairFront",
+			"ParamHairFront2"
+		],
+		[
+			"ParamHairFront4",
+			"ParamHairFront5"
+		],
+		[
+			"ParamHairFront6",
+			"ParamHairFront7"
+		],
+		[
+			"ParamHairSide",
+			"ParamHairSide2"
+		],
+		[
+			"ParamHairSide3",
+			"ParamHairSide4"
+		],
+		[
+			"ParamHairBack",
+			"ParamHairBack2"
+		],
+		[
+			"Param3",
+			"Param4"
+		],
+		[
+			"Param9",
+			"Param10"
+		],
+		[
+			"Param11",
+			"Param12"
+		],
+		[
+			"Param13",
+			"Param14"
+		],
+		[
+			"Param15",
+			"Param16"
+		],
+		[
+			"Param18",
+			"Param19"
+		],
+		[
+			"Param20",
+			"Param21"
+		],
+		[
+			"Param22",
+			"Param23"
+		],
+		[
+			"Param24",
+			"Param25"
+		],
+		[
+			"Param26",
+			"Param27"
+		],
+		[
+			"Param28",
+			"Param29"
+		]
+	]
+}
