@@ -464,11 +464,49 @@
 											<div class="modula-items">
 												<!-- article-main -->
 												<h5>
+													<script>
+														let cati = 1, catc = "llm-1";
+														$(document).ready(function(){
+															$(".lexpression").click(function(){
+                                                                if ($(this)[0].id == catc)
+                                                                    return ;
+                                                                catc = $(this)[0].id;
+                                                                
+                                                                if (catc == "llm-1") cati = 1;
+                                                                if (catc == "llm-2") cati = 2;
+																
+																live2dLoader.changeScene(cati);
+															});
+														});
+													</script>
+													<style>
+														.waifu{
+															text-overflow:ellipsis;
+															white-space:nowrap;
+															-moz-user-select:none; 
+															-webkit-user-select:none;
+															-ms-user-select:none;  
+															-khtml-user-select:none;
+															user-select:none;  
+														}
+														.waifu #lmotions{
+															font-size:12px;
+															position:relative;
+															z-index:100;
+															left:-135px;
+															top:-15px;
+														}
+													</style>
 													<!-- live2d -->
-													<div class="waifu"> <canvas id="live2d" width="740" height="500" class="live2d">
+													<div class="waifu">
+														<canvas id="live2d" width="740" height="500" class="live2d">
 														モデルのロードに失敗しました。ブラウザはcanvasプラグインをサポートしていません。
-													</canvas> </div>
-													
+														</canvas>
+														<span id="lmotions">
+															<input type="radio" class="lexpression" name="cats" id="llm-1" checked><label for="llm-1">略装</label></input>&nbsp;
+															<input type="radio" class="lexpression" name="cats" id="llm-2"><label for="llm-2">旗袍</label></input>
+														</span>
+													</div>
 													<!-- text -->
 													<br> <font size="12">咪亞</font>&nbsp;
 													<a class="channel" href="https://www.bilibili.com/video/BV1iP4y1n7UA" target="_blank">——星圖司史</a>
@@ -532,8 +570,12 @@
 												<!-- Build script -->
 												<script src = "../../index/wp-includes/global/waifu/Samples/TypeScript/Demo/dist/meidou_live2d.js"></script>
 												<script src="../../index/wp-content/rec/live2d/assets/waifu-tips.js"></script>
-												<script type="text/javascript"> loadmd ('mia1'); </script>
-
+												<script type="text/javascript">
+													let modulesPath = "../../index/wp-content/rec/live2d/models/咪亚/"
+													let modelNames = ['mia1', 'mia2']
+													loadModel(modulesPath, modelNames);
+												</script>
+	
 											</div>
 										</div>
 									</div><!-- .entry-content -->
