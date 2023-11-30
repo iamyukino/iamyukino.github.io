@@ -30,7 +30,7 @@
             "link": "",
             "permalink": "https://iamyukino.github.io/work/posts/202311301415",
             "excerpt": "",
-            "text": "这里是正文内容这里是正文内容",
+            "text": "简易剪切板管理系统，复刻小艺输入法剪切板功能。解决了在 Win11 系统中难以查看剪切板历史记录的问题。项目围绕 C语言大作业 要求的 “增、删、改、查” 四个功能",
             "categories": [
                 {
                     "name": "",
