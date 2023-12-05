@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
 
-    <title>雨宮雪乃の作業台</title>
+    <title>C++14 语法学习（二）变量初始化与赋值 | 雨宮雪乃の作業台</title>
     <style>
         * {
             cursor: url("https://iamyukino.github.io/index/wp-content/global/images/mouse.png"), auto;
@@ -13,18 +13,18 @@
     </style>
     <link rel="shortcut icon" href="https://iamyukino.github.io/index/wp-content/global/images/favicon.png" type="image/png">
 
-    <link rel="stylesheet" type="text/css" href="../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu.css"/>
-    <script type="text/javascript" src="../index/wp-includes/index/js/jquery.min.js"></script>
-    <script src="../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/html2canvas.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu.css"/>
+    <script type="text/javascript" src="../../index/wp-includes/index/js/jquery.min.js"></script>
+    <script src="../../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/html2canvas.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="../index/wp-includes/work/css/logo.css">
-    <link rel="stylesheet" type="text/css" href="../index/wp-includes/work/fonts/logo/logo.css">
-    <link rel="stylesheet" id="saukra_css-css" href="../index/wp-includes/work/css/style.css" type="text/css" media="all">
-    <link rel="stylesheet" href="../index/wp-includes/work/css/lib.min.css" type="text/css" media="all">
-    <link rel="stylesheet" href="../index/wp-includes/work/css/font.css" type="text/css" media="all">
-    <link rel="stylesheet" href="../index/wp-includes/work/css/insight.css" type="text/css" media="all">
-    <link rel="stylesheet" href="../index/wp-includes/work/css/jquery.fancybox.min.css" type="text/css" media="all">
-    <link rel="stylesheet" href="../index/wp-includes/work/css/zoom.css" type="text/css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../index/wp-includes/work/css/logo.css">
+    <link rel="stylesheet" type="text/css" href="../../index/wp-includes/work/fonts/logo/logo.css">
+    <link rel="stylesheet" id="saukra_css-css" href="../../index/wp-includes/work/css/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../index/wp-includes/work/css/lib.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../index/wp-includes/work/css/font.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../index/wp-includes/work/css/insight.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../index/wp-includes/work/css/jquery.fancybox.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../index/wp-includes/work/css/zoom.css" type="text/css" media="all">
     <style>
         .emoji-coda {
             display: inline-block!important;
@@ -36,30 +36,30 @@
         }
     </style>
 
-    <link rel="stylesheet" type="text/css" href="../index/wp-includes/work/css/sharejs.css">
-    <script type="text/javascript" src="../index/wp-includes/work/js/Valine.min.js"></script>
-    
+    <link rel="stylesheet" type="text/css" href="../../index/wp-includes/work/css/sharejs.css">
+    <script type="text/javascript" src="../../index/wp-includes/work/js/Valine.min.js"></script>
+
     <script>
         var mashiro_option = new Object
             , mashiro_global = new Object
             , bg =
-                ( "../index/wp-content/work/images/cover/0.webp,"
-                + "../index/wp-content/work/images/cover/1.webp,"
-                + "../index/wp-content/work/images/cover/2.webp,"
-                + "../index/wp-content/work/images/cover/3.webp,"
-                + "../index/wp-content/work/images/cover/4.webp,"
-                + "../index/wp-content/work/images/cover/5.webp,"
-                + "../index/wp-content/work/images/cover/6.webp,"
-                + "../index/wp-content/work/images/cover/7.webp,"
-                + "../index/wp-content/work/images/cover/8.webp,"
-                + "../index/wp-content/work/images/cover/9.webp,"
-                + "../index/wp-content/work/images/cover/10.webp,"
-                + "../index/wp-content/work/images/cover/11.webp,"
-                + "../index/wp-content/work/images/cover/12.webp,"
-                + "../index/wp-content/work/images/cover/13.webp,"
-                + "../index/wp-content/work/images/cover/14.webp,"
-                + "../index/wp-content/work/images/cover/15.webp,"
-                + "../index/wp-content/work/images/cover/16.webp"). split(",")
+                ( "../../index/wp-content/work/images/cover/0.webp,"
+                + "../../index/wp-content/work/images/cover/1.webp,"
+                + "../../index/wp-content/work/images/cover/2.webp,"
+                + "../../index/wp-content/work/images/cover/3.webp,"
+                + "../../index/wp-content/work/images/cover/4.webp,"
+                + "../../index/wp-content/work/images/cover/5.webp,"
+                + "../../index/wp-content/work/images/cover/6.webp,"
+                + "../../index/wp-content/work/images/cover/7.webp,"
+                + "../../index/wp-content/work/images/cover/8.webp,"
+                + "../../index/wp-content/work/images/cover/9.webp,"
+                + "../../index/wp-content/work/images/cover/10.webp,"
+                + "../../index/wp-content/work/images/cover/11.webp,"
+                + "../../index/wp-content/work/images/cover/12.webp,"
+                + "../../index/wp-content/work/images/cover/13.webp,"
+                + "../../index/wp-content/work/images/cover/14.webp,"
+                + "../../index/wp-content/work/images/cover/15.webp,"
+                + "../../index/wp-content/work/images/cover/16.webp"). split(",")
             , bgindex = Math.floor(Math.random() * bg.length);
 
             mashiro_option.NProgressON = !0,
@@ -69,9 +69,9 @@
             mashiro_option.qzone_autocomplete = !1,
             mashiro_option.site_name = "雨宮雪乃のサイト",
             mashiro_option.author_name = "雨宮雪乃",
-            mashiro_option.site_url = "https://iamyukino.github.io/work",
+            mashiro_option.site_url = "https://iamyukino.github.io/work/posts/202110101935.html",
             mashiro_option.v_appId = "Hr0x4YCmviK0H7WMFGDa2bbb-gzGzoHsz",
-            mashiro_option.v_visitor = false,
+            mashiro_option.v_visitor = true,
             mashiro_option.v_appKey = "Woqnw7ir7fohwvS8uk0MKDMP",
             mashiro_option.v_serverURLs = "https://hr0x4ycm.lc-cn-n1-shared.com",
             mashiro_option.mathjax = "0"
@@ -114,7 +114,6 @@
         }
     </style>
     <meta name="generator" content="Hexo 5.2.0">
-    <script async src='../index/wp-includes/work/cdn-cgi/challenge-platform/h/b/scripts/invisible.js'></script>
 </head>
 <body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
     <div class="skin-menu no-select" id="mainskin" style="position:fixed;bottom:65px;right:52px">
@@ -194,6 +193,7 @@
                         border-radius: 20px;
                         box-shadow: 0 3px 8px 0 rgba(0,0,0,.1),0 3px 8px 0 rgba(0,0,0,.1)
                     }
+
                     button#open-skinMenu:hover {
                         transition: all .2s linear 0s;
                         background-color: #ff82ab;
@@ -217,31 +217,24 @@
                         <h1 class="center-text glitch is-glitching Ubuntu-font" data-text="HELLO">HELLO</h1>
                         <h1 class="center-text glitch is-glitching Ubuntu-font" data-text="WORLD">WORLD</h1>
                     </div>
+                    
                     <div class="header-info">
                         <div class="top-social_v2">
                             <li id="bg-pre">
-                                <img class="flipx" src="../index/wp-content/work/images/main/next-b.svg">
+                                <img class="flipx" src="../../index/wp-content/work/images/main/next-b.svg">
                             </li>
                             <li>
                                 <a href="https://github.com/iamyukino" target="_blank" class="social-github" title="Github">
-                                    <img src="../index/wp-content/work/images/main/github.png">
+                                    <img src="../../index/wp-content/work/images/main/github.png">
                                 </a>
                             </li>
                             <li>
                                 <a href="https://gitee.com/iamyukino" target="_blank" class="social-github" title="Gitee">
-                                    <img src="../index/wp-content/work/images/main/gitee.png">
+                                    <img src="../../index/wp-content/work/images/main/gitee.png">
                                 </a>
                             </li>
-                            <!--li class="wechat">
-                                <a href="/#">
-                                    <img src="icon.png">
-                                </a>
-                                <div class="wechatInner">
-                                    <img src="wechat.webp">
-                                </div>
-                            </li-->
                             <li id="bg-next">
-                                <img src="../index/wp-content/work/images/main/next-b.svg">
+                                <img src="../../index/wp-content/work/images/main/next-b.svg">
                             </li>
                         </div>
                     </div>
@@ -364,246 +357,143 @@
                                             </span>
                                         </a>
                                     </li>
-                                </ul>    
+                                </ul> 
                             </nav>
                         </div>
                     </div>
                 </div>
             </header>
-            <div class="blank" style="padding-top:0"></div>
+            <link rel="stylesheet" type="text/css" href="../../index/wp-includes/work/css/sharejs.css">
+            <link rel="stylesheet" href="../../index/wp-includes/work/css/tocbot.css">
+            <div class="pattern-center-blank"></div>
+            <div class="pattern-center single-center">
+                <div class="pattern-attachment-img lazyload" style="background-image:url(../../index/wp-content/work/images/post/202110101935.webp)" src="../../index/wp-content/work/images/global/lazyload1.webp" data-src="../../index/wp-content/work/images/post/202110101935.webp"></div>
+                <header class="pattern-header single-header" style="text-shadow:0 0 7px #000,0 0 7px #000">
+                    <h1 class="entry-title">临时标题</h1>
+                    <p class="entry-census">
+                        <span>
+                            <a href="https://github.com/iamyukino" target="_blank">
+                                <img src="../../index/wp-content/work/images/global/avatar.png">
+                            </a>
+                        </span>
+                        <span>
+                            <a href="https://github.com/iamyukino" target="_blank">雨宮雪乃</a>
+                        </span>
+                        <span class="bull">·</span>
+                        2021-10-10<span class="bull">·</span>
+
+                        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                        <span id="busuanzi_container_page_pv">
+                            <span id="busuanzi_value_page_pv"></span>
+                            次阅读
+                        </span>
+
+                        <span class="bull"></span>
+                        <span class="post-count">本文共计：8字</span>
+                    </p>
+                </header>
+            </div>
             <div id="content" class="site-content">
-                <div class="notice" style="margin-top:60px">
-                    <i class="iconfont icon-notification"></i>
-                    <div class="notice-content">おはようございます！これは雨宮雪乃の作業台で、主にファイリング用です。</div>
-                </div>
-                <div class="top-feature-row">
-                    <h1 class="fes-title" style="font-family:Ubuntu,sans-serif">
-                        <i class="fa fa-anchor" aria-hidden="true"></i>
-                        START:DASH!!
-                    </h1>
-                    <div class="top-feature-v2">
-                        <div class="the-feature square from_left_and_right">
-                            <a href="https://iamyukino.github.io/work/posts">
-                                <div class="img">
-                                    <img src="../index/wp-content/work/images/features/cdn.min.webp">
-                                </div>
-                                <div class="info">
-                                    <h3>博客</h3>
-                                    <p>记录Yukino的学习历程</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="top-feature-v2">
-                        <div class="the-feature square from_left_and_right">
-                            <a href=javascript:;>
-                                <div class="img">
-                                    <img src="../index/wp-content/work/images/features/bilibili.min.webp">
-                                </div>
-                                <div class="info">
-                                    <h3>小游戏</h3>
-                                    <p>好耶！rua！</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="top-feature-v2">
-                        <div class="the-feature square from_left_and_right">
-                            <a href="https://iamyukino.github.io/work/comment">
-                                <div class="img">
-                                    <img src="../index/wp-content/work/images/features/jjie.min.webp">
-                                </div>
-                                <div class="info">
-                                    <h3>留言板</h3>
-                                    <p>汝可在此畅所欲言！</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
                 <div id="primary" class="content-area">
                     <main id="main" class="site-main" role="main">
-                        <h1 class="main-title" style="font-family:Ubuntu,sans-serif">
-                            <i class="fa fa-envira" aria-hidden="true"></i>
-                            Discovery
-                        </h1>
-                        
-                        <article class="post post-list-thumb">
-                            <div class="post-thumb">
-                                <a href="./posts/202311301415.html">
-                                    <img class="lazyload" onerror="imgError(this,3)" src="../index/wp-content/work/images/global/lazyload1.webp" data-src="../index/wp-content/work/images/post/202311301415.webp">
-                                </a>
+                        <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+                            <div class="toc"></div>
+                            <div class="entry-content">
+                        <!-- start of article.md -->
+                        <!---->
+                        <!---->
+                        <!---->
+                        <!---->
+                        <!---->
+                        <!---->
+                        <p>content1</p>
+                        <!---->
+                        <!---->
+                        <!---->
+                        <!---->
+                        <!---->
+                        <!---->
+                        <!-- end of article.md -->
                             </div>
-                            <div class="post-content-wrap">
-                                <div class="post-content">
-                                    <div class="post-date">
-                                        <i class="iconfont icon-time"></i>
-                                        2023-11-30 14:15
-                                    </div>
-                                    <a href="./posts/202311301415.html" class="post-title">
-                                        <h3>基于 mclib 的剪切板管理器 clipboard-master</h3>
+                            <div style="text-align:center;width:100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+                            <footer class="post-footer">
+                                <div class="post-lincenses">
+                                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow">
+                                        <i class="fa fa-creative-commons" aria-hidden="true"></i>
+                                        知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议
                                     </a>
-                                    <div class="post-meta">
-                                        <span>
-                                            <i class="fa fa-tags"></i>
-                                        </span>
-                                        <span>
-                                            <!--i class="iconfont icon-file"></i-->
-                                            工具
-                                        </span>
-                                    </div>
-                                    <div class="float-content">
-                                        <p>想要在电脑上复制多段文字却又无能为力？学校 C++ 课程作业，向您展现 mclib 的基础用法。</p>
-                                        <div class="post-bottom">
-                                            <a href="./posts/202311301415.html" class="button-normal">
-                                                <i class="iconfont icon-caidan"></i>
-                                            </a>
-                                        </div>
-                                    </div>
                                 </div>
-                            </div>
-                        </article>
-                        <article class="post post-list-thumb post-list-thumb-left" class="post post-list-thumb">
-                            <div class="post-thumb">
-                                <a href="./posts/202204011546.html">
-                                    <img class="lazyload" onerror="imgError(this,3)" src="../index/wp-content/work/images/global/lazyload1.webp" data-src="../index/wp-content/work/images/post/202204011546.webp">
-                                </a>
-                            </div>
-                            <div class="post-content-wrap">
-                                <div class="post-content">
-                                    <div class="post-date">
-                                        <i class="iconfont icon-time"></i>
-                                        2022-4-1 15:46
-                                    </div>
-                                    <a href="./posts/202204011546.html" class="post-title">
-                                        <h3>如何将本地项目同时上传到 Github/Gitee 并使用 GPG 验证</h3>
-                                    </a>
-                                    <div class="post-meta">
-                                        <span>
-                                            <i class="fa fa-tags"></i>
-                                        </span>
-                                        <span>笔记</span>
-                                    </div>
-                                    <div class="float-content">
-                                        <p>如何配置 GPG 密钥？如何一次提交就能同时上传 Github 和 Gitee？本文主要讲述了 Git 的配置流程，并配有相关图片。</p>
-                                        <div class="post-bottom">
-                                            <a href="./posts/202204011546.html" class="button-normal">
-                                                <i class="iconfont icon-caidan"></i>
-                                            </a>
-                                        </div>
-                                    </div>
+                                <div class="post-tags"></div>
+                                <div class="post-share">
+                                    <div class="social-share sharehidden share-component"></div>
+                                    <i class="iconfont show-share icon-forward"></i>
                                 </div>
-                            </div>
+                            </footer>
                         </article>
-                        <article class="post post-list-thumb">
-                            <div class="post-thumb">
-                                <a href="./posts/202203252029.html">
-                                    <img class="lazyload" onerror="imgError(this,3)" src="../index/wp-content/work/images/global/lazyload1.webp" data-src="../index/wp-content/work/images/post/202203252029.webp">
-                                </a>
-                            </div>
-                            <div class="post-content-wrap">
-                                <div class="post-content">
-                                    <div class="post-date">
-                                        <i class="iconfont icon-time"></i>
-                                        2022-3-25 20:29
+                        <div class="toc" style="background:0 0"></div>
+                        <section class="post-squares nextprev">
+                            <div class="post-nepre half previous">
+                                <a href="./202110041759.html" rel="prev">
+                                    <div class="background">
+                                        <img class="lazyload" src="../../index/wp-content/work/images/global/lazyload1.webp" data-src="../../index/wp-content/work/images/post/202110041759.webp" style="width:100%;height:100%;object-fit:cover;pointer-events:none" onerror="imgError(this,3)" src="../../index/wp-content/work/images/post/202110041759.webp">
                                     </div>
-                                    <a href="./posts/202203252029.html" class="post-title">
-                                        <h3>Python 元组 在 C++ 中的简易实现</h3>
-                                    </a>
-                                    <div class="post-meta">
-                                        <span>
-                                            <i class="fa fa-tags"></i>
-                                        </span>
-                                        <span>
-                                            <!--i class="iconfont icon-file"></i-->
-                                            笔记
-                                        </span>
-                                    </div>
-                                    <div class="float-content">
-                                        <p>运行时期C++如何按下标索引元组？如何遍历输出元组？本文主要讲述了Python元组在C++中的简单实现，并给出了详细代码。</p>
-                                        <div class="post-bottom">
-                                            <a href="./posts/202203252029.html" class="button-normal">
-                                                <i class="iconfont icon-caidan"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="post post-list-thumb post-list-thumb-left" class="post post-list-thumb">
-                            <div class="post-thumb">
-                                <a href="./posts/202110101935.html">
-                                    <img class="lazyload" onerror="imgError(this,3)" src="../index/wp-content/work/images/global/lazyload1.webp" data-src="../index/wp-content/work/images/post/202110101935.webp">
-                                </a>
-                            </div>
-                            <div class="post-content-wrap">
-                                <div class="post-content">
-                                    <div class="post-date">
-                                        <i class="iconfont icon-time"></i>
-                                        2021-10-10 19:35
-                                    </div>
-                                    <a href="./posts/202110101935.html" class="post-title">
-                                        <h3>临时标题</h3>
-                                    </a>
-                                    <div class="post-meta">
-                                        <span>
-                                            <i class="fa fa-tags"></i>
-                                        </span>
-                                        <span>
-                                            <!--i class="iconfont icon-file"></i-->
-                                            教程
-                                        </span>
-                                    </div>
-                                    <div class="float-content">
-                                        <p>demo1</p>
-                                        <div class="post-bottom">
-                                            <a href="./posts/202110101935.html" class="button-normal">
-                                                <i class="iconfont icon-caidan"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="post post-list-thumb">
-                            <div class="post-thumb">
-                                <a href="./posts/202110041759.html">
-                                    <img class="lazyload" onerror="imgError(this,3)" src="../index/wp-content/work/images/global/lazyload1.webp" data-src="../index/wp-content/work/images/post/202110041759.webp">
-                                </a>
-                            </div>
-                            <div class="post-content-wrap">
-                                <div class="post-content">
-                                    <div class="post-date">
-                                        <i class="iconfont icon-time"></i>
-                                        2021-10-4 17:59
-                                    </div>
-                                    <a href="./posts/202110041759.html" class="post-title">
+                                    <span class="label">Previous Post</span>
+                                    <div class="info">
                                         <h3>C++14 语法学习（一）引言</h3>
-                                    </a>
-                                    <div class="post-meta">
-                                        <span>
-                                            <i class="fa fa-tags"></i>
-                                        </span>
-                                        <span>
-                                            <!--i class="iconfont icon-file"></i-->
-                                            教程
-                                        </span>
+                                        <hr>
                                     </div>
-                                    <div class="float-content">
-                                        <p>本文内容遵循 Effective C++ 所提及的代码规范，供社团课备课所用，禁止转载或摘编。</p>
-                                        <div class="post-bottom">
-                                            <a href="./posts/202110041759.html" class="button-normal">
-                                                <i class="iconfont icon-caidan"></i>
-                                            </a>
-                                        </div>
+                                </a>
+                            </div>
+                            <div class="post-nepre half next">
+                                <a href="./202203252029.html" rel="prev">
+                                    <div class="background">
+                                        <img class="lazyload" src="../../index/wp-content/work/images/global/lazyload1.webp" data-src="../../index/wp-content/work/images/post/202203252029.webp" style="width:100%;height:100%;object-fit:cover;pointer-events:none" onerror="imgError(this,3)" src="../../index/wp-content/work/images/post/202203252029.webp">
                                     </div>
+                                    <span class="label">Next Post</span>
+                                    <div class="info">
+                                        <h3>Python 元组 在 C++ 中的简易实现</h3>
+                                        <hr>
+                                    </div>
+                                </a>
+                            </div>
+                        </section>
+                        <div id="vcomments"></div>
+                        <script data-cfasync="false" src="../../index/wp-includes/work/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+                        <script>
+                            window.onload = function() {
+                                (new Valine).init({
+                                    el: "#vcomments",
+                                    appId: "Hr0x4YCmviK0H7WMFGDa2bbb-gzGzoHsz",
+                                    appKey: "Woqnw7ir7fohwvS8uk0MKDMP",
+                                    enableQQ: "true",
+                                    serverURLs: "https://hr0x4ycm.lc-cn-n1-shared.com",
+                                    recordIP: "true",
+                                    requiredFields: ["nick", "mail"],
+                                    path: window.location.pathname,
+                                    placeholder: "你是理所当然的奇迹...",
+                                    visitor: true
+                                })
+                            }
+                        </script>
+                        <section class="author-profile">
+                            <div class="info" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                <a href="https://github.com/iamyukino" target="_blank" class="profile gravatar">
+                                    <img src="../../index/wp-content/work/images/global/avatar.png" itemprop="image" alt="雨宮雪乃" height="70" width="70">
+                                </a>
+                                <div class="meta">
+                                    <span class="title">Author</span>
+                                    <h3 itemprop="name">
+                                        <a href="https://github.com/iamyukino" target="_blank" itemprop="url" rel="author">iamyukino</a>
+                                    </h3>
                                 </div>
                             </div>
-                        </article>
+                            <hr>
+                            <p>
+                                <i class="iconfont icon-write"></i>
+                                Hello, World!
+                            </p>
+                        </section>
                     </main>
-                </div>
-                <div id="pagination">
-                    <a href=".?page=2">Previous</a>
                 </div>
             </div>
         </div>
@@ -629,14 +519,14 @@
                     TAGS: "标签"
                 },
                 ROOT_URL: "/",
-                CONTENT_URL: "../index/wp-content/work/content.json"
+                CONTENT_URL: "../../index/wp-content/work/content.json"
             }
         </script>
         <footer id="colophon" class="site-footer" role="contentinfo">
             <div class="site-info">
                 <div class="footertext">
                     <div class="img-preload">
-                        <img src="../index/wp-content/work/images/global/loading-p.gif">
+                        <img src="../../index/wp-content/work/images/global/loading-p.gif">
                     </div>
                     <p style="color:#666">&copy 2023 | iamYukino</p>
                 </div>
@@ -650,19 +540,19 @@
                 </div>
             </div>
         </footer>
-        <script type="text/javascript" src="../index/wp-includes/work/js/lib.min.js"></script>
-        <script src="../index/wp-includes/work/js/clipboard.min.js"></script>
-        <script type="text/javascript" src="../index/wp-includes/work/js/InsightSearch.js"></script>
-        <script type="text/javascript" src="../index/wp-includes/work/js/jquery.fancybox.min.js"></script>
-        <script type="text/javascript" src="../index/wp-includes/work/js/zoom.min.js"></script>
-        <script type="text/javascript" src="../index/wp-includes/work/js/sakura-app.js"></script>
-        <script type="text/javascript" src="../index/wp-includes/work/js/tocbot.min.js"></script>
+        <script type="text/javascript" src="../../index/wp-includes/work/js/lib.min.js"></script>
+        <script src="../../index/wp-includes/work/js/clipboard.min.js"></script>
+        <script type="text/javascript" src="../../index/wp-includes/work/js/InsightSearch.js"></script>
+        <script type="text/javascript" src="../../index/wp-includes/work/js/jquery.fancybox.min.js"></script>
+        <script type="text/javascript" src="../../index/wp-includes/work/js/zoom.min.js"></script>
+        <script type="text/javascript" src="../../index/wp-includes/work/js/sakura-app.js"></script>
+        <script type="text/javascript" src="../../index/wp-includes/work/js/tocbot.min.js"></script>
         <script type="text/javascript">
             var Poi;
             Poi = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? {
                 pjax: "1",
                 movies: {
-                    url: "../index/wp-content/work/images/cover",
+                    url: "../../index/wp-content/work/images/cover",
                     name: "miao3.mp4",
                     live: "close"
                 },
@@ -674,7 +564,7 @@
             } : {
                 pjax: "1",
                 movies: {
-                    url: "../index/wp-content/work/images/cover",
+                    url: "../../index/wp-content/work/images/cover",
                     name: "miao3.mp4",
                     live: "open"
                 },
@@ -723,15 +613,15 @@
 
     <div id="mo-nav">
         <div class="m-avatar">
-            <img src="../index/wp-content/work/images/global/avatar.png">
+            <img src="../../index/wp-content/work/images/global/avatar.png">
         </div>
         <p style="text-align:center;color:#333;font-weight:900;font-family:Ubuntu,sans-serif;letter-spacing:1.5px">雨宮雪乃の作業台</p>
         <p style="text-align:center;word-spacing:15px">
             <a href="https://github.com/iamyukino" target="_blank">
-                <img src="../index/wp-content/work/images/main/github.png" style="width:10%;">
+                <img src="../../index/wp-content/work/images/main/github.png" style="width:10%;">
             </a>
             <a href="https://gitee.com/iamyukino" target="_blank">
-                <img src="../index/wp-content/work/images/main/gitee.png" style="width:10%;">
+                <img src="../../index/wp-content/work/images/main/gitee.png" style="width:10%;">
             </a>
         </p>
         <ul id="menu-new-1" class="menu">
@@ -771,7 +661,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://iamyukino.github.io/work/posts/note">
+                        <a href="https://iamyukino.github.io/work/blog/note">
                             <i class="fa fa-sticky-note-o" aria-hidden="true"></i>
                             笔记
                         </a>
@@ -811,13 +701,12 @@
         </ul>
         <p style="text-align:center;font-size:13px;color:#b9b9b9">&copy 2023 iamYukino</p>
     </div>
-
     <button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display:none">
         <i class="fa fa-chevron-up" aria-hidden="true"></i>
     </button>
-    <link rel="stylesheet" href="../index/wp-includes/work/npm/aplayer/dist/APlayer.min.css">
-    <script src="../index/wp-includes/work/npm/aplayer/dist/APlayer.min.js"></script>
-    <script src="../index/wp-includes/work/npm/meting@2/dist/Meting.min.js"></script>
+    <link rel="stylesheet" href="../../index/wp-includes/work/npm/aplayer/dist/APlayer.min.css">
+    <script src="../../index/wp-includes/work/npm/aplayer/dist/APlayer.min.js"></script>
+    <script src="../../index/wp-includes/work/npm/meting@2/dist/Meting.min.js"></script>
     <style>
         .aplayer .aplayer-lrc {
             height: 35px
@@ -859,10 +748,10 @@
         })
     </script>
     <canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:1;pointer-events:none"></canvas>
-    <script type="text/javascript" src="../index/wp-includes/work/js/anime.min.js" async></script>
-    <script type="text/javascript" src="../index/wp-includes/work/js/mouse-click-n-tag.js" async></script>
-    <script src="../index/wp-includes/work/js/fly-engine.js" type="module" async></script>
-    
+    <script type="text/javascript" src="../../index/wp-includes/work/js/anime.min.js" async></script>
+    <script type="text/javascript" src="../../index/wp-includes/work/js/mouse-click-n-tag.js" async></script>
+    <script src="../../index/wp-includes/work/js/fly-engine.js" type="module" async></script>
+
     <!-- live2d -->
     <div class="waifu" style="z-index:9;">
         <div class="waifu-tips"></div>
@@ -878,14 +767,14 @@
         </div>
     </div>
     <!-- Live2DCubismCore script -->
-    <script src="../index/wp-includes/global/waifu/Core/live2dcubismcore.js"></script>
+    <script src="../../index/wp-includes/global/waifu/Core/live2dcubismcore.js"></script>
     <!-- Build script -->
-    <script src = "../index/wp-includes/global/waifu/Samples/TypeScript/Demo/dist/meidou_live2d.js"></script>
-    <script src="../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.js"></script>
+    <script src = "../../index/wp-includes/global/waifu/Samples/TypeScript/Demo/dist/meidou_live2d.js"></script>
+    <script src="../../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.js"></script>
     <script type="text/javascript">    
-        let modulesPath = "../index/wp-content/global/waifu/"
+        let modulesPath = "../../index/wp-content/global/waifu/"
         let modelNames = ['TaoHua', 'mia1', 'live2d_free1.1', 'Orangesweet2.1', 'Hiyori']
-        let waifuTipsUrl = "../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.json"
+        let waifuTipsUrl = "../../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.json"
         initModel(modulesPath, modelNames, waifuTipsUrl);
     </script>
 

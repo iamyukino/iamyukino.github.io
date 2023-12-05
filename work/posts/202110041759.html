@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+
+    <title>C++14 语法学习（一）引言 | 雨宮雪乃の作業台</title>
+    <style>
+        * {
+            cursor: url("https://iamyukino.github.io/index/wp-content/global/images/mouse.png"), auto;
+        }
+    </style>
+    <link rel="shortcut icon" href="https://iamyukino.github.io/index/wp-content/global/images/favicon.png" type="image/png">
+
+    <link rel="stylesheet" type="text/css" href="../../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu.css"/>
+    <script type="text/javascript" src="../../index/wp-includes/index/js/jquery.min.js"></script>
+    <script src="../../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/html2canvas.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../index/wp-includes/work/css/logo.css">
+    <link rel="stylesheet" type="text/css" href="../../index/wp-includes/work/fonts/logo/logo.css">
+    <link rel="stylesheet" id="saukra_css-css" href="../../index/wp-includes/work/css/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../index/wp-includes/work/css/lib.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../index/wp-includes/work/css/font.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../index/wp-includes/work/css/insight.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../index/wp-includes/work/css/jquery.fancybox.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../index/wp-includes/work/css/zoom.css" type="text/css" media="all">
+    <style>
+        .emoji-coda {
+            display: inline-block!important;
+            position: relative;
+            width: 45px;
+            top: 2px;
+            margin: -3px 3px!important;
+            padding: 0
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../../index/wp-includes/work/css/sharejs.css">
+    <script type="text/javascript" src="../../index/wp-includes/work/js/Valine.min.js"></script>
+
+    <script>
+        var mashiro_option = new Object
+            , mashiro_global = new Object
+            , bg =
+                ( "../../index/wp-content/work/images/cover/0.webp,"
+                + "../../index/wp-content/work/images/cover/1.webp,"
+                + "../../index/wp-content/work/images/cover/2.webp,"
+                + "../../index/wp-content/work/images/cover/3.webp,"
+                + "../../index/wp-content/work/images/cover/4.webp,"
+                + "../../index/wp-content/work/images/cover/5.webp,"
+                + "../../index/wp-content/work/images/cover/6.webp,"
+                + "../../index/wp-content/work/images/cover/7.webp,"
+                + "../../index/wp-content/work/images/cover/8.webp,"
+                + "../../index/wp-content/work/images/cover/9.webp,"
+                + "../../index/wp-content/work/images/cover/10.webp,"
+                + "../../index/wp-content/work/images/cover/11.webp,"
+                + "../../index/wp-content/work/images/cover/12.webp,"
+                + "../../index/wp-content/work/images/cover/13.webp,"
+                + "../../index/wp-content/work/images/cover/14.webp,"
+                + "../../index/wp-content/work/images/cover/15.webp,"
+                + "../../index/wp-content/work/images/cover/16.webp"). split(",")
+            , bgindex = Math.floor(Math.random() * bg.length);
+
+            mashiro_option.NProgressON = !0,
+            mashiro_option.email_domain = "iamyukino.github.io",
+            mashiro_option.email_name = "me",
+            mashiro_option.cookie_version_control = "",
+            mashiro_option.qzone_autocomplete = !1,
+            mashiro_option.site_name = "雨宮雪乃のサイト",
+            mashiro_option.author_name = "雨宮雪乃",
+            mashiro_option.site_url = "https://iamyukino.github.io/work/posts/202110041759.html",
+            mashiro_option.v_appId = "Hr0x4YCmviK0H7WMFGDa2bbb-gzGzoHsz",
+            mashiro_option.v_visitor = true,
+            mashiro_option.v_appKey = "Woqnw7ir7fohwvS8uk0MKDMP",
+            mashiro_option.v_serverURLs = "https://hr0x4ycm.lc-cn-n1-shared.com",
+            mashiro_option.mathjax = "0"
+    </script>
+    <style type="text/css">
+        .hljs-ln {
+            border-collapse: collapse
+        }
+        .hljs-ln td {
+            padding: 0
+        }
+        .hljs-ln-n:before {
+            content: attr(data-line-number)
+        }
+    </style>
+    <style type="text/css">
+        .site-top .lower nav {
+            display: block!important
+        }
+        #pagination a:hover,.author-profile i,.float-content i:hover,.post-content a:hover,.post-like a,.post-more i:hover,.post-share .show-share,.sub-text,.we-info a,span.sitename {
+            color: #ff82ab
+        }
+        .ar-time i,.comment .comment-reply-link,.download,.feature i,.links ul li:before,.navigator i:hover,.object,.siren-checkbox-radio:checked+.siren-checkbox-radioInput:after,span.ar-circle {
+            background: #ff82ab
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff82ab
+        }
+        #pagination a:hover,.comment-respond input[type=submit]:hover,.download,.link-title,.links ul li:hover,.navigator i:hover {
+            border-color: #ff82ab
+        }
+        #archives-temp h3,#comments-navi a.next,#comments-navi a.prev,.comment h4 a,.comment h4 a:hover,.comment-respond input[type=submit]:hover,.entry-content a:hover,.entry-title a:hover,.site-info a:hover,.site-title a:hover,.site-top ul li a:hover,.sorry li a:hover,i.iconfont.js-toggle-search.iconsearch:hover,span.page-numbers.current {
+            color: #ff82ab
+        }
+        .comments .comments-main {
+            display: block!important
+        }
+        .comments .comments-hidden {
+            display: none!important
+        }
+    </style>
+    <meta name="generator" content="Hexo 5.2.0">
+</head>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+    <div class="skin-menu no-select" id="mainskin" style="position:fixed;bottom:65px;right:52px">
+        <div class="theme-controls row-container">
+            <p style="text-align:center;font-family:Monaco;font-weight:700;color:#444">
+                <i style="color:grey" class="fa fa-chevron-left"></i>
+                background <i style="color:grey" class="fa fa-chevron-right"></i>
+            </p>
+            <ul class="menu-list">
+                <li id="white-bg">
+                    <i class="fa fa-television" aria-hidden="true"></i>
+                </li>
+                <li id="bing-bg">
+                    <i class="iconfont icon-pixiv"></i>
+                </li>
+                <li id="dark-bg">
+                    <i class="fa fa-moon-o" aria-hidden="true"></i>
+                </li>
+            </ul>
+        </div>
+        <hr>
+        <p style="text-align:center;font-family:Monaco;font-weight:700;color:#444">
+            <i style="color:grey" class="fa fa-chevron-left"></i>
+            font <i style="color:grey" class="fa fa-chevron-right"></i>
+        </p>
+        <div class="font-family-controls row-container">
+            <button type="button" class="control-btn-serif" data-mode="serif" onclick="mashiro_global.font_control.change_font()">Serif</button>
+            <button type="button" class="control-btn-sans-serif" data-mode="sans-serif" onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
+        </div>
+        <hr>
+        <p style="text-align:center;font-family:Monaco;font-weight:700;color:#444">
+            <i style="color:grey" class="fa fa-chevron-left"></i>
+            script <i style="color:grey" class="fa fa-chevron-right"></i>
+        </p>
+        <div class="theme-controls row-container">
+            <ul class="menu-list">
+                <li id="empty-effect">
+                    <i class="fa fa-ban"></i>
+                </li>
+                <li id="sakura-rain-effect">
+                    <i class="iconfont icon-sakura"></i>
+                </li>
+                <li id="snowy-effect">
+                    <i class="fa fa-snowflake-o"></i>
+                </li>
+                <li id="lines-effect">
+                    <i class="fa fa-chevron-left"></i>
+                </li>
+                <li id="colorful-belts-effect">
+                    <i class="fa fa-map"></i>
+                </li>
+                <li id="words-rain-effect">
+                    <i class="fa fa-font"></i>
+                </li>
+                <li id="point-rain-effect">
+                    <i class="iconfont icon-dots"></i>
+                </li>
+                <li id="rain-drop-effect">
+                    <i class="fa fa-tint"></i>
+                </li>
+            </ul>
+        </div>
+        <canvas id="night-mode-cover"></canvas>
+    </div>
+    <div class="changeSkin-gear no-select" style="background:rgba(0,0,0,0) none repeat scroll 0 0;visibility:visible;bottom:0">
+        <div class="keys" id="setbtn">
+            <button id="open-skinMenu">
+                <style>
+                    button#open-skinMenu {
+                        transition: all .2s linear 0s;
+                        outline: 0;
+                        position: fixed;
+                        bottom: 13px;
+                        right: 40px;
+                        font-size: 16px;
+                        background-color: rgba(255,255,255,.95);
+                        border-radius: 20px;
+                        box-shadow: 0 3px 8px 0 rgba(0,0,0,.1),0 3px 8px 0 rgba(0,0,0,.1)
+                    }
+
+                    button#open-skinMenu:hover {
+                        transition: all .2s linear 0s;
+                        background-color: #ff82ab;
+                        color: rgba(255,255,255)
+                    }
+                </style>
+                <i class="iconfont icon-gear inline-block rotating"></i>
+                SCHEME TOOL | 主题工具
+            </button>
+        </div>
+    </div>
+    <div class="scrollbar" id="bar"></div>
+    <a href="#" class="cd-top faa-float animated"></a>
+    <section id="main-container">
+        <div class="headertop filter-dot">
+            <div id="banner_wave_1"></div>
+            <div id="banner_wave_2"></div>
+            <figure id="centerbg" class="centerbg">
+                <div class="focusinfo no-select">
+                    <div class="header-tou">
+                        <h1 class="center-text glitch is-glitching Ubuntu-font" data-text="HELLO">HELLO</h1>
+                        <h1 class="center-text glitch is-glitching Ubuntu-font" data-text="WORLD">WORLD</h1>
+                    </div>
+                    
+                    <div class="header-info">
+                        <div class="top-social_v2">
+                            <li id="bg-pre">
+                                <img class="flipx" src="../../index/wp-content/work/images/main/next-b.svg">
+                            </li>
+                            <li>
+                                <a href="https://github.com/iamyukino" target="_blank" class="social-github" title="Github">
+                                    <img src="../../index/wp-content/work/images/main/github.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://gitee.com/iamyukino" target="_blank" class="social-github" title="Gitee">
+                                    <img src="../../index/wp-content/work/images/main/gitee.png">
+                                </a>
+                            </li>
+                            <li id="bg-next">
+                                <img src="../../index/wp-content/work/images/main/next-b.svg">
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </figure>
+            <div id="video-container">
+                <video style="object-fit:fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto"></video>
+                <div id="video-btn" class="loadvideo videolive"></div>
+                <div id="video-add"></div>
+                <div class="video-stu"></div>
+            </div>
+            <div class="headertop-down faa-float animated" onclick="headertop_down()">
+                <span>
+                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                </span>
+            </div>
+        </div>
+        <div id="page" class="site wrapper">
+            <header class="site-header no-select gizle sabit" role="banner">
+                <div class="site-top">
+                    <div class="site-branding">
+                        <span class="site-title">
+                            <span class="logolink logo">
+                                <a href="https://iamyukino.github.io/work">
+                                    <ruby>
+                                        <span class="sakuraso">雨宮雪乃</span>
+                                        <span class="no">の</span>
+                                        <span class="shironeko">作業台</span>
+                                        <rp></rp>
+                                        <rt class="logo">展示・収集</rt>
+                                        <rp></rp>
+                                    </ruby>
+                                </a>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="searchbox search-form-submit">
+                        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+                    </div>
+                    <div id="show-nav" class="showNav mobile-fit">
+                        <div class="line line1"></div>
+                        <div class="line line2"></div>
+                        <div class="line line3"></div>
+                    </div>
+                    <div class="lower-cantiner">
+                        <div class="lower">
+                            <nav class="mobile-fit-control hide">
+                                <ul id="menu-new" class="menu">
+                                    <li>
+                                        <a href="https://iamyukino.github.io/">
+                                            <span class="faa-parent animated-hover">
+                                                <i class="fa fa-home faa-shake" aria-hidden="true"></i>
+                                                主站
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://iamyukino.github.io/work">
+                                            <span class="faa-parent animated-hover">
+                                                <i class="fa fa-list-ul faa-vertical" aria-hidden="true"></i>
+                                                首页
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://iamyukino.github.io/work/posts">
+                                            <span class="faa-parent animated-hover">
+                                                <i class="fa fa-archive faa-shake" aria-hidden="true"></i>
+                                                归档
+                                            </span>
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="https://iamyukino.github.io/work/posts/tec">
+                                                    <i class="fa fa-codepen" aria-hidden="true"></i>
+                                                    技术
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://iamyukino.github.io/work/posts/misc">
+                                                    <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                                    杂谈
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://iamyukino.github.io/work/posts/note">
+                                                    <i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+                                                    笔记
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href=javascript:;>
+                                            <span class="faa-parent animated-hover">
+                                                <i class="fa fa-gamepad faa-shake" aria-hidden="true"></i>
+                                                游戏
+                                            </span>
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="https://iamyukino.github.io/work/game/chat-noir">
+                                                    <i class="fa fa-music" aria-hidden="true"></i>
+                                                    猫捕
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://iamyukino.github.io/work/game/leaves-in-wind">
+                                                    <i class="fa fa-music" aria-hidden="true"></i>
+                                                    風切
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="https://iamyukino.github.io/work/comment">
+                                            <span class="faa-parent animated-hover">
+                                                <i class="fa fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                                                留言板
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul> 
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <link rel="stylesheet" type="text/css" href="../../index/wp-includes/work/css/sharejs.css">
+            <link rel="stylesheet" href="../../index/wp-includes/work/css/tocbot.css">
+            <div class="pattern-center-blank"></div>
+            <div class="pattern-center single-center">
+                <div class="pattern-attachment-img lazyload" style="background-image:url(../../index/wp-content/work/images/post/202110041759.webp)" src="../../index/wp-content/work/images/global/lazyload1.webp" data-src="../../index/wp-content/work/images/post/202110041759.webp"></div>
+                <header class="pattern-header single-header" style="text-shadow:0 0 7px #000,0 0 7px #000">
+                    <h1 class="entry-title">C++14 语法学习（一）引言</h1>
+                    <p class="entry-census">
+                        <span>
+                            <a href="https://github.com/iamyukino" target="_blank">
+                                <img src="../../index/wp-content/work/images/global/avatar.png">
+                            </a>
+                        </span>
+                        <span>
+                            <a href="https://github.com/iamyukino" target="_blank">雨宮雪乃</a>
+                        </span>
+                        <span class="bull">·</span>
+                        2021-10-04<span class="bull">·</span>
+                        
+                        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                        <span id="busuanzi_container_page_pv">
+                            <span id="busuanzi_value_page_pv"></span>
+                            次阅读
+                        </span>
+                        <!--span id="https://iamyukino.github.io/work/posts/202110041759.html" class="leancloud_visitors" data-flag-title="C++14 语法学习（一）引言">
+                            <a class="leancloud-visitors-count">加载中···</a>
+                            <a class="post-meta-item-text">次阅读</a>
+                        </span-->
+                        
+                        <span class="bull"></span>
+                        <span class="post-count">本文共计：4608字</span>
+                    </p>
+                </header>
+            </div>
+            <div id="content" class="site-content">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+                        <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+                            <div class="toc"></div>
+                            <div class="entry-content">
+                                <!-- start of article.md -->
+                          <p><strong><em>本文内容遵循 Effective C++ 所提及的代码规范，供(高中)社团课备课所用，禁止转载或摘编。</em></strong></p>
+                          <p>由于各种原因，我最终还是决定以后的社团课主要以 C++ 语言的学习为主，而且大部分时间都会由我来讲课而不是像之前一样放相关教学视频。现在学校电脑上还没有装环境，今天我准备是单纯以我讲为主。</p>
+                          <p>嗯我们来看一下屏幕。</p>
+                          <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++11 hljs" data-rel="C++" id="hljs-0"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-comment">/* 引用"万能"头文件（C++20 新增 modules 尚未成熟，暂不推荐使用） */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;     <span class="hljs-comment">/* using声明，当找不到时，尝试从命名空间std::中获取它 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>{            <span class="hljs-comment">/* 主函数，这是程序开始的地方 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Hello, World!"</span> &lt;&lt; <span class="hljs-built_in">endl</span>; <span class="hljs-comment">/* 输出流向控制台输出 “你好世界” */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;            <span class="hljs-comment">/* 主函数结束，并向调用进程该主函数的进程返回 0 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">}</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-0" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                          <p>屏幕上这个是 C++ 语言代码的基本框架。我们现在还不必详细一一探究每一行分别是什么意思，只需要把它当作是一个模板，每次写代码时复制上去即可。我们现在来运行一下代码。</p>
+                          <p>可以看到，程序向控制台输出了 <code>Hello, World!</code> 这一行字符串，说明我们的代码运行成功了。在这个社团课中，我所讲的都是在 C++14 标准下的代码。C++ 是一门中级语言，她综合了高级语言和低级语言的许多特点，但她不是像 python 那样的解释型语言，而是一门编译式的语言，所以它从你编写的代码到可以直接运行的可执行文件往往需要进行四个步骤：</p>
+                          <ul>
+                          <li>第一步，预处理。预处理负责处理头文件和注释，她本质上是一些指令，用以指示编译器在实际编译之前所需完成的预处理内容。预处理语句不属于C++语句，不同编译器的预处理指令规则可能有所不同。</li>
+                          <li>第二步，编译。编译器将生成汇编代码文件。因为她是使用静态类型的编程语言，所以类型检查就是在这里进行。</li>
+                          <li>第三步，汇编。对汇编代码文件进行汇编，以转成机器指令，从而生成目标文件。</li>
+                          <li>第四步，链接。一些动态链接库在这里合并到你的文件中。</li>
+                          </ul>
+                          <p>这样，你的代码就成功变为了可执行文件。</p>
+                          <p>学习编程是一回事，学习如何以某种语言设计并实现你所预期的程序则是另一回事。这种说法对 C++ 尤其适用。C++ 是在完全保留 C语言 语法之上对 C语言 许多不足之处进行扩充的一门编程语言，多种编程风格都被 C++ 所支持，巨大而变化多端的设计可以被直接表现出来，并且被有效实现出来。</p>
+                          <p>一组明智选择并被精心设计的 <code>classes</code>，<code>functions</code> 和 <code>templates</code> 可使程序编写容易、直观、高效并且远离错误。我们来看一下这两段代码。（以下代码仅作演示，不必记忆或理解。）</p>
+                          <p>第一段代码是用 C语言 编写的。 </p>
+                          <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C11 hljs" data-rel="C" id="hljs-1"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-comment">/* 引用C语言标准输入输出头文件（万能头只在 C++ 有）     */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">add</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>{ <span class="hljs-comment">/* 定义函数 add int(int, int)*/</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">return</span> a + b；       <span class="hljs-comment">/* 函数返回 a + b 计算结果    */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">}</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">int</span> main() {     <span class="hljs-comment">/* 定义主函数，这是C语言程序开始的地方 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">printf</span> ( <span class="hljs-string">"1 + 1 = %d\n"</span>, add (<span class="hljs-number">1</span>, <span class="hljs-number">1</span>) );</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">                 <span class="hljs-comment"><span class="hljs-comment">/* 调用格式化输出函数 printf 向控制台输出</span></span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-comment">                    函数 add (1, 1) 的返回值。         */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;                  <span class="hljs-comment">/* 主函数回调正常返回 0 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">}</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-1" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                          <p>这段代码暂且先不管每句语句是什么意思。我希望让程序计算 1 + 1，程序输出了 2，说明确实能计算 1 + 1 = 2 的功能。现在我们将代码中的 1 改为小数，来计算 0.3 + 1.6，看看会发生什么。</p>
+                          <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="CON hljs" data-rel="C++" id="hljs-2"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-number">1</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"> </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">--------------------------------  </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">Process exited after <span class="hljs-number">0.01506</span> seconds with <span class="hljs-keyword">return</span> value <span class="hljs-number">0</span></div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-2" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                          <p>可以看到，原本应该返回 1.9 的代码返回了 1，在背后偷偷发生了隐式类型转换，这不是我们所想要的。换一个数据类型就要重写函数，十分不方便。而在 C++ 中，我们可以将这些 <code>int</code> 改为 <code>auto</code>，让编译器自动识别类型，就像这样。 </p>
+                          <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++11 hljs" data-rel="C++" id="hljs-3"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-comment">/* 引用 C++ 标准输入输出流库  */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> _ta, <span class="hljs-keyword">typename</span> _tb&gt; <span class="hljs-comment">/* 声明模板，在C++20之后可省略 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">auto</span>                    <span class="hljs-comment">/* 利用 auto 关键字和返回值后置语法，让编译器 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">add (_ta <span class="hljs-keyword">const</span>&amp; a, _tb <span class="hljs-keyword">const</span>&amp; b) <span class="hljs-comment">/* 对函数返回值类型进行自动推导（若  */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">-&gt; <span class="hljs-keyword">decltype</span> (a + b) {   <span class="hljs-comment">/* 返回值不进行隐式类型转换，可省略 decltype）*/</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">return</span> a + b;       <span class="hljs-comment">/* 这样，对返回值类型的推导就可以通过直观清晰  */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">}                       <span class="hljs-comment">/* 的方式描述。 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>{  <span class="hljs-comment">/* C++ 中静态构造函数优先于主函数，不再是程序开始的地方 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"0.3 + 1.6 = "</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">              &lt;&lt; add (<span class="hljs-number">0.3</span>, <span class="hljs-number">1.6</span>) &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">               <span class="hljs-comment"><span class="hljs-comment">/* 引用 std:: 标准输出函数向控制台输出 add() 函数返回值。</span></span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-comment">                  编译器通过模板对 rhs 的参数类型自动解析，其中，endl</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="14"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-comment">                  表示换行并刷新缓冲区。可通过 cin.tie 等方式提高效率  */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="15"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="16"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">}</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-3" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                          <p>程序成功输出了 1.9。当然，C++ 所提供的语法糖或强大功能还有很多，比如刚才这段程序，我们也可以用 Lambda 匿名函数，就像这样。 </p>
+                          <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++11 hljs" data-rel="C++" id="hljs-4"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">auto</span> add = [](<span class="hljs-keyword">auto</span> a, <span class="hljs-keyword">auto</span> b) {</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">return</span> a + b;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">};</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>{</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"0.3 + 1.6 = "</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">        &lt;&lt; add (<span class="hljs-number">0.3</span>, <span class="hljs-number">1.6</span>) &lt;&lt; <span class="hljs-built_in">endl</span>;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">}</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-4" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                          <p>有个广为流传的笑话，<del>C++ 最后的程序会像这样</del>：</p>
+                          <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++11 hljs" data-rel="C++" id="hljs-5"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">auto</span> <span class="hljs-keyword">auto</span>; <span class="hljs-comment">/* auto 自动推导 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function"><span class="hljs-keyword">auto</span> <span class="hljs-title">auto</span> <span class="hljs-params">(<span class="hljs-keyword">auto</span>)</span> </span>= { <span class="hljs-keyword">auto</span> + <span class="hljs-keyword">auto</span>; };</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function"><span class="hljs-keyword">auto</span> <span class="hljs-title">auto</span> <span class="hljs-params">()</span> </span>= {</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">auto</span> (<span class="hljs-keyword">auto</span>(<span class="hljs-number">0.3</span> + <span class="hljs-number">1.6</span>));</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">auto</span> <span class="hljs-keyword">auto</span>;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">}</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-5" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                          <p>这个社团课不是单纯告诉你编程算法，而是让你了解到 C++ 的许多语法特性。你可能曾经并不知道 C++ 是个编程语言或对它有某些使用经验，但我相信，在座的各位对数学上的公式等内容肯定都已经有了很高的掌握程度，于是我主要还是讲解这个语言本身，使你以后写出的软件易理解，易维护，可扩充，高效并且有着你所预期的行为。虽然你们下学期要学的是 python 而不是 C++，但是，可要知道，python 的第一个发行版本就是由 C 编写的，且里边的很多语法都与 C++ 有着很高的相似度。</p>
+                          <p>之前提到，C++ 完全保留了 C语言 的语法。其实，最开始的 C++ 只是在 C 的基础上加上了最基本的面向对象概念中的 class 类，并取名为 “带类的C”，而后才慢慢发展成为一门强大的编程语言，一门多重范式的编程语言，一个同时支持过程形式、面向对象形式、元编程形式、泛型形式和函数形式的编程语言。它的名字 C++ 也是用的 C 中的自增运算符 ++ 命名的。其实，如果 C++ 抛弃 C 的语法，不需要支持例如 C语言 八种整数类型等，那么 C++ 将远比现在简单。我最开始也是学 C ，但当我开始自己写图形库之后，才意识到在 C 中很多想要的都很难去实现，便转战 C++。当然，C++ 的成功也有 C语言 不小的功劳，比如 C++ 适合写底层，是因为 C语言 从内存模型等方面对底层操作提供了很多支持。</p>
+                          <p>不过，即使强大，但反而可能导致了不易入门。你需要学习掌握很多专业术语，这我也会在以后的社团课上逐一说明。比如在《Effective C++》书中提到的一些问题：你该选择 <code>inheritance</code> 继承还是 <code>templates</code> 模板，该选择 <code>public</code> 继承还是 <code>private</code> 继承还是 <code>composition</code> 复合？该选择 <code>pass_by_value</code> 以值传递，还是 <code>pass_by_reference</code> 以指针传递？等等。即使在面试中，有人可能会说熟练使用 C++，但除了标准制定者之外，只有极少聪明人敢说精通。即使你完全知道该做什么，完全进入正轨，还是可能有些棘手。什么是 <code>assignment</code> 操作符的适当返回型？什么是 <code>bind</code> 绑定器？何时该令析构函数为 <code>virtual</code> 虚拟？当 <code>operator new</code> 无法找到足够内存空间时该如何行事？等等。</p>
+                          <p>我之前也说过，我所讲的内容都是基于 C++1y（C++14）也就是14年指定的 C++ 标准。这是一个比较新的标准，可能有些编译器比如 VC6.0 等不能很好的支持。我这里主要用 Dev-C++，一个极为简陋但对初学者十分友好的编译器。我这里有这个编译器的安装包，如果想要可以下课后直接上来拷贝。我也会把这个编译器的安装包放群里，大家回去记得加一下群。</p>
+                          <p>现在我先来简单说一下输出吧。而对输出语句中符号各自含义什么的我会放到后面去讲，详细的输出语法我也会放在第二节课讲。在 C++ 中，在控制台输入的语句格式是:</p>
+                          <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++11 hljs" data-rel="C++" id="hljs-6"><span class="hljs-built_in">cout</span> &lt;&lt; 要输出的内容;</code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-6" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                          <p>每个输出的内容之间用两个小于号分隔开。比如要输出数字 256 ，就写成这样: </p>
+                          <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++11 hljs" data-rel="C++" id="hljs-7"><span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-number">256</span>;</code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-7" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                          <p>换行最好用 <code>std::endl</code>。当然也可以输出文字。输出常量字符串时要在输出的内容两边加上两个双引号。注意一定要用英文的双引号，不然电脑可不能识别。而且，只要是在 C 或 C++ 中，每句语句末尾都需要加上一个分号 ‘ ; ‘，这代表语句的结束。</p>
+                          <p>嗯，输出暂且先说这么多，接下来我们来简单讲讲变量。这里的内容可能有点难，不过请不要担心，在第二课，对于这一部分，我会从最基础的和你讲起。</p>
+                          <p>在 C++ 中，一个变量就好比一个容器，你可以在这个容器里存放一些东西。你首先需要给她命名，这样你在需要她的时候就可以直接引用这个名字去访问容器。你只能给她取英文名，下划线或是数字，而且要保证不能有重名。（ ‘$’ 往往也被允许作为变量的名字，但我并不推荐你这么做，因为这可能并不具备可移植性 ）否则，计算机就不知道你是要叫谁。命名空间，便是为了解决这一问题而生。</p>
+                          <p>不过，这个容器是有一定限制的。变量，其实就是在内存中申请分配的一段连续的内存空间的名称，这个空间不可能做到无限大，所以你必须要指定她所占用的空间大小，或应该存放什么样的数据。当然，C++ 提供了 <code>new</code> 关键字或可变长数组等，可以动态分配内存，在这里就暂且不提。（ 注意区别 Python 这样的动态类型语言 ）</p>
+                          <p>抛开 C语言 本身的语法，C++ 就和 Python 很像了。在她的世界里，几乎一切皆对象。其中，你指定变量的语句叫声明式。你通过声明式告诉编译器某个变量的名称和类型，但略去细节。注意对于 int 这样的内置类型，除非是 <code>extern</code>，否则都不是声明式。声明式的语法是：</p>
+                          <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++11 hljs" data-rel="C++" id="hljs-8">（模板 限制符）类型 变量名 (: 继承类) ; </code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-8" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                          <p>就像这样：</p>
+                          <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++11 hljs" data-rel="C++" id="hljs-9"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> x;             <span class="hljs-comment">/* 对象声明式 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span></span>;        <span class="hljs-comment">/* 函数声明式 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">point3d</span>;</span>            <span class="hljs-comment">/* 类声明式   */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;     <span class="hljs-comment">/* 模板声明式 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">canvas</span>;</span></div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-9" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                          <p>学过一点 C++ 的可能会问，<code>int</code> 整型不是一个内置类型吗？为什么是一个对象？可能有些人会把“对象”一词保留给用户自定义类型，但并不如此。当然，现在还不必深究。</p>
+                          <p>而定义式的任务是提供给编译器一些声明式所遗漏的细节。对对象而言，定义式是编译器为对象分配内存的起点。定义式的语法是：</p>
+                          <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++11 hljs" data-rel="C++" id="hljs-10"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">(模板)</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">(限制符）类型</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">变量名 (: 继承类)</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">(函数或结构体) </div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-10" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                          <p>比如：</p>
+                          <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++11 hljs" data-rel="C++" id="hljs-11"><span class="hljs-keyword">int</span> num;</code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-11" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                          <p>特别地，类型的定义式语法是：</p>
+                          <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++11 hljs" data-rel="C++" id="hljs-12"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">using</span> 类型别名 = 原类型; <span class="hljs-comment">/* C++ 新增类型别名定义式语法 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">typedef</span> 原类型 类型别名; <span class="hljs-comment">/* C/C++ 旧式类型别名定义式 */</span></div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-12" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                          <p>但是，你光是让编译器给你分配内存，你什么也不干，显然没有意义。你往往需要在里面装东西，才能体现出他们的价值。给予对象初值，也就是第一次往里存放数据的过程叫初始化。如果是在说 C语言，我可能会和你讲，初始化的方法是在定义式后写上赋值语句，但 C++ 并不完全是这么实现的。在 C++ 中，初始化由构造函数执行。每个类型编译器已经为你提供了对应的 default 构造函数（ [注] 所谓 default 构造函数是一个可被调用而不带任何实参的构造函数，这样的构造函数要不是没有参数，要不是就是每个参数就有缺省值）。姑且先不管函数是什么，就当她是很多语句的组合，及构造函数就当她是赋值语句的组合。我们先来看看代码长什么样。</p>
+                          <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++11 hljs" data-rel="C++" id="hljs-13">fruit apple{<span class="hljs-number">6.5</span>};</code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-13" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                          <p>在这句语句中，我将 “apple” 作为了变量的名字，并告诉编译器其类型是 “fruit”。然后我在名字后边写了一对大括号，里面写了一个数字 6.5，也就是我要将 6.5 作为 apple 的初值。这个花括号的专业术语是初始化列表。当然，你也可以用小括号，直接表面要调用构造函数，或是直接用 C语言 的语法，即赋值，就像这样：</p>
+                          <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++11 hljs" data-rel="C++" id="hljs-14"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-number">5</span>)</span></span>; <span class="hljs-comment">/* C++语法，调用 int 的构造函数 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">double</span> a = <span class="hljs-number">3.14</span>; <span class="hljs-comment">/* C 语法，对 a 进行赋值。*/</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-comment">/* 在 C++ 中，对于类类型为调用拷贝构造函数 */</span></div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-14" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                          <p>其中，int 表示整型，即可以存储从 -2^31 到 2^31-1 的整数。double 表示双精度浮点型，即可以存储小数（double 在计算机内部是以科学计数法的形式存储的）。还需要记住两个类型，就是 <code>char</code> 和 <code>string</code>。char 表示字符，表示是一个符号（见 ASCII 编码系统）。string 表示字符串，表示是一段文字。直接写 <code>char</code> 的单个字符时，两边要用英文单引号将其包含在内；直接写 <code>string</code> 的一个字符串时，两边要用双引号包含。注意如果要换多行写同一个字符串，每行的开头和结尾都需要写双引号，就像这样：</p>
+                          <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++11 hljs" data-rel="C++" id="hljs-15"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">string</span> str = <span class="hljs-string">"Welcome "</span>      <span class="hljs-comment">/* 多个常量字符串编译器 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">  <span class="hljs-string">"to Our Programming"</span>       <span class="hljs-comment">/* 会将其自动合并为一个 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">  <span class="hljs-string">" Club!"</span>; </div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-15" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                          <p>C++ 也提供了不必每行都写双引号的多行字符串，不是很常用，就像这样：</p>
+                          <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++11 hljs" data-rel="C++" id="hljs-16"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">string</span> str = <span class="hljs-string">R"</span>(Welcome</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">  to Our Programming</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">  Club!)<span class="hljs-string">"</span>;              <span class="hljs-comment">/* 多行字符串（其实是 raw 原始字符串） */</span></div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-16" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                          <p>我们可以试试输出刚才定义好的变量：</p>
+                          <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="C++11 hljs" data-rel="C++" id="hljs-17"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;          <span class="hljs-comment">/* 将命名空间 std:: 全局放开 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>{                 <span class="hljs-comment">/* 主函数 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">int</span> i { <span class="hljs-number">2021</span> };           <span class="hljs-comment">/* 定义整型变量 i */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-function"><span class="hljs-keyword">char</span> <span class="hljs-title">c</span> <span class="hljs-params">(<span class="hljs-string">'!'</span>)</span></span>;             <span class="hljs-comment">/* 定义字符型变量 c */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">string</span> str = <span class="hljs-string">"Welcome to Our"</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-string">" Programming Club "</span>;     <span class="hljs-comment">/* 定义字符串 str */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">cout</span> &lt;&lt; str &lt;&lt; i &lt;&lt; c &lt;&lt; <span class="hljs-built_in">endl</span>;</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;                 <span class="hljs-comment">/* 主函数返回 */</span></div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">}</div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-17" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                          <p>程序成功输出了以下结果：</p>
+                          <pre class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" design="by hojun"><code class="CON hljs" data-rel="C++" id="hljs-18"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">Welcome to Our Programming Club <span class="hljs-number">2021</span>!</div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line"> </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">--------------------------------  </div></td></tr><tr><td class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-code"><div class="hljs-ln-line">Process exited after <span class="hljs-number">0.01415</span> seconds with <span class="hljs-keyword">return</span> value <span class="hljs-number">0</span></div></td></tr></tbody></table></code><a class="copy-code" href="javascript:" data-clipboard-target="#hljs-18" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a></pre>
+                          <p>今天的社团课我就先上到这里，因为没有环境，暂时就不布置作业了，接下来还有一点时间就留给大家写作业。我上面会放一个社团的宣传视频，你们可以看看。</p>
+                          <p><strong>*参考文献：[ 1 ] Effective C++: 55 Specific Ways to Improve Your Programs and Designs，3 / （美） 梅耶 ( Meyers, S. ) 著</strong></p>
+                                <!-- end of article.md -->
+                            </div>
+                            <div style="text-align:center;width:100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+                            <footer class="post-footer">
+                                <div class="post-lincenses">
+                                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow">
+                                        <i class="fa fa-creative-commons" aria-hidden="true"></i>
+                                        知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议
+                                    </a>
+                                </div>
+                                <div class="post-tags"></div>
+                                <div class="post-share">
+                                    <div class="social-share sharehidden share-component"></div>
+                                    <i class="iconfont show-share icon-forward"></i>
+                                </div>
+                            </footer>
+                        </article>
+                        <div class="toc" style="background:0 0"></div>
+                        <section class="post-squares nextprev">
+                            <div class="post-nepre full next">
+                                <a href="./202110101935.html" rel="next">
+                                    <div class="background">
+                                        <img class="lazyload" src="../../index/wp-content/work/images/global/lazyload1.webp" data-src="../../index/wp-content/work/images/post/202110101935.webp" style="width:100%;height:100%;object-fit:cover;pointer-events:none" onerror="imgError(this,3)" src="../../index/wp-content/work/images/post/202110101935.webp">
+                                    </div>
+                                    <span class="label">Next Post</span>
+                                    <div class="info">
+                                        <h3>临时标题</h3>
+                                        <hr>
+                                    </div>
+                                </a>
+                            </div>
+                        </section>
+                        <div id="vcomments"></div>
+                        <script data-cfasync="false" src="../../index/wp-includes/work/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+                        <script>
+                            window.onload = function() {
+                                (new Valine).init({
+                                    el: "#vcomments",
+                                    appId: "Hr0x4YCmviK0H7WMFGDa2bbb-gzGzoHsz",
+                                    appKey: "Woqnw7ir7fohwvS8uk0MKDMP",
+                                    enableQQ: "true",
+                                    serverURLs: "https://hr0x4ycm.lc-cn-n1-shared.com",
+                                    recordIP: "true",
+                                    requiredFields: ["nick", "mail"],
+                                    path: window.location.pathname,
+                                    placeholder: "你是理所当然的奇迹...",
+                                    visitor: true
+                                })
+                            }
+                        </script>
+                        <section class="author-profile">
+                            <div class="info" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                <a href="https://github.com/iamyukino" target="_blank" class="profile gravatar">
+                                    <img src="../../index/wp-content/work/images/global/avatar.png" target="_blank" itemprop="image" alt="雨宮雪乃" height="70" width="70">
+                                </a>
+                                <div class="meta">
+                                    <span class="title">Author</span>
+                                    <h3 itemprop="name">
+                                        <a href="https://github.com/iamyukino" target="_blank" itemprop="url" rel="author">iamyukino</a>
+                                    </h3>
+                                </div>
+                            </div>
+                            <hr>
+                            <p>
+                                <i class="iconfont icon-write"></i>
+                                Hello, World!
+                            </p>
+                        </section>
+                    </main>
+                </div>
+            </div>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="请输入关键词...">
+                    <span class="ins-close ins-selectable">
+                        <i class="fa fa-times-circle"></i>
+                    </span>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+        <script>
+            window.INSIGHT_CONFIG = {
+                TRANSLATION: {
+                    POSTS: "文章",
+                    CATEGORIES: "分类",
+                    TAGS: "标签"
+                },
+                ROOT_URL: "/",
+                CONTENT_URL: "../../index/wp-content/work/content.json"
+            }
+        </script>
+        <footer id="colophon" class="site-footer" role="contentinfo">
+            <div class="site-info">
+                <div class="footertext">
+                    <div class="img-preload">
+                        <img src="../../index/wp-content/work/images/global/loading-p.gif">
+                    </div>
+                    <p style="color:#666">&copy 2023 | iamYukino</p>
+                </div>
+                <div class="footer-device">
+                    <p style="font-family:Ubuntu,sans-serif">
+                        <span style="color:#b9b9b9">
+                            Powered by Hexo <i class="iconfont icon-sakura rotating" style="color:pink;display:inline-block"></i>
+                            Theme Sakura T
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </footer>
+        <script type="text/javascript" src="../../index/wp-includes/work/js/lib.min.js"></script>
+        <script src="../../index/wp-includes/work/js/clipboard.min.js"></script>
+        <script type="text/javascript" src="../../index/wp-includes/work/js/InsightSearch.js"></script>
+        <script type="text/javascript" src="../../index/wp-includes/work/js/jquery.fancybox.min.js"></script>
+        <script type="text/javascript" src="../../index/wp-includes/work/js/zoom.min.js"></script>
+        <script type="text/javascript" src="../../index/wp-includes/work/js/sakura-app.js"></script>
+        <script type="text/javascript" src="../../index/wp-includes/work/js/tocbot.min.js"></script>
+        <script type="text/javascript">
+            var Poi;
+            Poi = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? {
+                pjax: "1",
+                movies: {
+                    url: "../../index/wp-content/work/images/cover",
+                    name: "miao3.mp4",
+                    live: "close"
+                },
+                windowheight: "fixed",
+                codelamp: "close",
+                ajaxurl: "",
+                order: "asc",
+                formpostion: "bottom"
+            } : {
+                pjax: "1",
+                movies: {
+                    url: "../../index/wp-content/work/images/cover",
+                    name: "miao3.mp4",
+                    live: "open"
+                },
+                windowheight: "auto",
+                codelamp: "close",
+                ajaxurl: "",
+                order: "asc",
+                formpostion: "bottom"
+            }
+        </script>
+        <script>
+            $(document).ready(function() {
+                var o;
+                0 < $(".toc").length && 1200 < document.body.clientWidth && (0 < $(".pattern-center").length ? tocbot.init({
+                    tocSelector: ".toc",
+                    contentSelector: ".entry-content",
+                    scrollSmooth: !0,
+                    headingSelector: "h1, h2, h3, h4, h5",
+                    headingsOffset: -400,
+                    scrollSmoothOffset: -85
+                }) : tocbot.init({
+                    tocSelector: ".toc",
+                    contentSelector: ".entry-content",
+                    scrollSmooth: !0,
+                    headingSelector: "h1, h2, h3, h4, h5",
+                    headingsOffset: -85,
+                    scrollSmoothOffset: -85
+                }),
+                o = $(".toc").offset().top - 95,
+                window.onscroll = function() {
+                    var t = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+                    o <= t ? $(".toc").addClass("toc-fixed") : $(".toc").removeClass("toc-fixed")
+                }
+                )
+            })
+        </script>
+        <div class="openNav no-select" style="height:50px">
+            <div class="iconflat no-select" style="width:50px;height:50px">
+                <div class="icon"></div>
+            </div>
+            <div class="site-branding search-form-submit">
+                <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+            </div>
+        </div>
+    </section>
+
+    <div id="mo-nav">
+        <div class="m-avatar">
+            <img src="../../index/wp-content/work/images/global/avatar.png">
+        </div>
+        <p style="text-align:center;color:#333;font-weight:900;font-family:Ubuntu,sans-serif;letter-spacing:1.5px">雨宮雪乃の作業台</p>
+        <p style="text-align:center;word-spacing:15px">
+            <a href="https://github.com/iamyukino" target="_blank">
+                <img src="../../index/wp-content/work/images/main/github.png" style="width:10%;">
+            </a>
+            <a href="https://gitee.com/iamyukino" target="_blank">
+                <img src="../../index/wp-content/work/images/main/gitee.png" style="width:10%;">
+            </a>
+        </p>
+        <ul id="menu-new-1" class="menu">
+            <li>
+                <a href="https://iamyukino.github.io/">
+                    <span class="faa-parent animated-hover">
+                        <i class="fa fa-home faa-shake" aria-hidden="true"></i>
+                        主站
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://iamyukino.github.io/work" class="faa-parent animated-hover">
+                        <i class="fa fa-list-ul faa-vertical" aria-hidden="true"></i>
+                        首页
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="https://iamyukino.github.io/work/posts">
+                    <span class="faa-parent animated-hover">
+                        <i class="fa fa-archive faa-shake" aria-hidden="true"></i>
+                        归档
+                    </span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="https://iamyukino.github.io/work/posts/tec">
+                            <i class="fa fa-codepen" aria-hidden="true"></i>
+                            技术
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://iamyukino.github.io/work/posts/misc">
+                            <i class="fa fa-comment-o" aria-hidden="true"></i>
+                            杂谈
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://iamyukino.github.io/work/blog/note">
+                            <i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+                            笔记
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href=javascript:;>
+                    <span class="faa-parent animated-hover">
+                        <i class="fa fa-gamepad faa-shake" aria-hidden="true"></i>
+                        游戏
+                    </span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="https://iamyukino.github.io/work/game/chat-noir">
+                            <i class="fa fa-music" aria-hidden="true"></i>
+                            猫捕
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://iamyukino.github.io/work/game/leaves-in-wind">
+                            <i class="fa fa-music" aria-hidden="true"></i>
+                            風切
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="https://iamyukino.github.io/work/comment">
+                    <span class="faa-parent animated-hover">
+                        <i class="fa fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                        留言板
+                    </span>
+                </a>
+            </li>
+        </ul>
+        <p style="text-align:center;font-size:13px;color:#b9b9b9">&copy 2023 iamYukino</p>
+    </div>
+    <button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display:none">
+        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+    </button>
+    <link rel="stylesheet" href="../../index/wp-includes/work/npm/aplayer/dist/APlayer.min.css">
+    <script src="../../index/wp-includes/work/npm/aplayer/dist/APlayer.min.js"></script>
+    <script src="../../index/wp-includes/work/npm/meting@2/dist/Meting.min.js"></script>
+    <style>
+        .aplayer .aplayer-lrc {
+            height: 35px
+        }
+
+        .aplayer .aplayer-lrc p {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 18px!important
+        }
+
+        .aplayer .aplayer-lrc p.aplayer-lrc-current {
+            color: #ff1493
+        }
+
+        .aplayer.aplayer-narrow .aplayer-body {
+            left: -66px!important
+        }
+
+        .aplayer.aplayer-fixed .aplayer-lrc {
+            display: none
+        }
+
+        .aplayer .aplayer-lrc.aplayer-lrc-hide {
+            display: none!important
+        }
+
+        .aplayer.aplayer-fixed .lrc-show {
+            display: block;
+            background: rgba(255,255,255,.8)
+        }
+    </style>
+    <meting-js id="2608803683" server="tencent" type="playlist" fixed="true" autoplay loop order="random" preload="none" volume="0.2" mutex="true"></meting-js>
+    <script>
+        $(function() {
+            $("body").on("click", ".aplayer", function() {
+                $(".aplayer-button").hasClass("aplayer-play") ? $(".aplayer-lrc").removeClass("lrc-show") : $(".aplayer-lrc").addClass("lrc-show")
+            })
+        })
+    </script>
+    <canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:1;pointer-events:none"></canvas>
+    <script type="text/javascript" src="../../index/wp-includes/work/js/anime.min.js" async></script>
+    <script type="text/javascript" src="../../index/wp-includes/work/js/mouse-click-n-tag.js" async></script>
+    <script src="../../index/wp-includes/work/js/fly-engine.js" type="module" async></script>
+    
+    <!-- live2d -->
+    <div class="waifu" style="z-index:9;">
+        <div class="waifu-tips"></div>
+        <canvas id="live2d" width="280" height="250" style="bottom: -10px;"></canvas>
+        <div class="waifu-tool">
+            <span class="fui-home"></span>
+            <span class="fui-chat"></span>
+            <span class="fui-eye"></span>
+            <span class="fui-user"></span>
+            <span class="fui-photo"></span>
+            <span class="fui-info-circle"></span>
+            <span class="fui-cross"></span>
+        </div>
+    </div>
+    <!-- Live2DCubismCore script -->
+    <script src="../../index/wp-includes/global/waifu/Core/live2dcubismcore.js"></script>
+    <!-- Build script -->
+    <script src = "../../index/wp-includes/global/waifu/Samples/TypeScript/Demo/dist/meidou_live2d.js"></script>
+    <script src="../../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.js"></script>
+    <script type="text/javascript">    
+        let modulesPath = "../../index/wp-content/global/waifu/"
+        let modelNames = ['TaoHua', 'mia1', 'live2d_free1.1', 'Orangesweet2.1', 'Hiyori']
+        let waifuTipsUrl = "../../index/wp-includes/global/waifu/Samples/TypeScript/Demo/live2d/assets/waifu-tips.json"
+        initModel(modulesPath, modelNames, waifuTipsUrl);
+    </script>
+
+</body>
+</html>

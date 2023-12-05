@@ -26,9 +26,9 @@
             "date": "2023-11-30T14:15:00.000Z",
             "updated": "2023-11-30T14:15:00.000Z",
             "comments": true,
-            "path": "work/posts/202311301415",
+            "path": "work/posts/202311301415.html",
             "link": "",
-            "permalink": "https://iamyukino.github.io/work/posts/202311301415",
+            "permalink": "https://iamyukino.github.io/work/posts/202311301415.html",
             "excerpt": "",
             "text": "简易剪切板管理系统，复刻小艺输入法剪切板功能。解决了在 Win11 系统中难以查看剪切板历史记录的问题。项目围绕 C语言大作业 要求的 “增、删、改、查” 四个功能",
             "categories": [
@@ -47,16 +47,15 @@
                 }
             ]
         },
-        
         {
             "title": "如何将本地项目同时上传到 Github/Gitee 并使用 GPG 验证",
             "slug": "202204011546",
             "date": "2022-04-01T15:46:00.000Z",
             "updated": "2022-04-01T15:46:00.000Z",
             "comments": true,
-            "path": "work/posts/202204011546",
+            "path": "work/posts/202204011546.html",
             "link": "",
-            "permalink": "https://iamyukino.github.io/work/posts/202204011546",
+            "permalink": "https://iamyukino.github.io/work/posts/202204011546.html",
             "excerpt": "",
             "text": "学习使用 Git 进行版本控制。首先你得有一个 github 仓库（登录注册自己解决）友情提供：Github 官网地址注释：如果访问 github 失败，",
             "categories": [
@@ -81,11 +80,38 @@
             "date": "2022-03-25T20:29:00.000Z",
             "updated": "2022-03-25T20:29:00.000Z",
             "comments": true,
-            "path": "work/posts/202203252029",
+            "path": "work/posts/202203252029.html",
             "link": "",
-            "permalink": "https://iamyukino.github.io/work/posts/202203252029",
+            "permalink": "https://iamyukino.github.io/work/posts/202203252029.html",
             "excerpt": "",
             "text": "Python 的元组与列表类似，区别在于其元素不可修改。C++ 作为编译型语言，往往通过模板（编译期），或通过类似于函数闭包的方法",
+            "categories": [
+                {
+                    "name": "",
+                    "slug": "",
+                    "permalink": ""
+                }
+            ],
+            "tags": [],
+            "keywords": [
+                {
+                    "name": "",
+                    "slug": "",
+                    "permalink": ""
+                }
+            ]
+        },
+        {
+            "title": "C++14 语法学习（一）引言",
+            "slug": "202110041759",
+            "date": "2021-10-04T17:59:00.000Z",
+            "updated": "2021-10-04T17:59:00.000Z",
+            "comments": true,
+            "path": "work/posts/202110041759.html",
+            "link": "",
+            "permalink": "https://iamyukino.github.io/work/posts/202110041759.html",
+            "excerpt": "",
+            "text": "本文内容遵循 Effective C++ 所提及的代码规范，供社团课备课所用，禁止转载或摘编。由于各种原因，我最终还是决定以后的社团课主要以 C++ 语言的学习",
             "categories": [
                 {
                     "name": "",
