@@ -360,6 +360,8 @@ p {
 }
 
 /*===== All Button Style =====*/
+/*
+// old style
 .main-btn {
   display: inline-block;
   font-weight: 500;
@@ -409,6 +411,95 @@ p {
   background-color: #4f8bae;
   color: #fff;
   border-color: #4f8bae;
+}
+*/
+
+.main-btn {
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 0 40px;
+  font-size: 15px;
+  line-height: 48px;
+  border-radius: 50px;
+  color: #fff;
+  z-index: 5;
+  -webkit-transition: all 0.3s ease-out 0s;
+  -moz-transition: all 0.3s ease-out 0s;
+  -ms-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+  -webkit-box-shadow: 2px 5px 8px 0px rgb(79 139 174 / 30%);
+  -moz-box-shadow: 2px 5px 8px 0px rgb(79 139 174 / 30%);
+  box-shadow: 2px 5px 8px 0px rgb(79 139 174 / 30%);
+  background-color: #4f8bae;
+  text-transform: uppercase;
+}
+.main-btn:hover {
+  background-color: #fff;
+  color: #4f8bae;
+}
+.main-btn.main-btn-2 {
+  background-color: transparent;
+  color: #fff;
+  border-color: #fff;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.main-btn.main-btn-2:hover {
+  background-color: #4f8bae;
+  color: #fff;
+  border-color: #4f8bae;
+}
+.sec-btn {
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 0 40px;
+  font-size: 15px;
+  line-height: 48px;
+  border-radius: 50px;
+  color: #4f8bae !important;
+  z-index: 5;
+  -webkit-transition: all 0.3s ease-out 0s;
+  -moz-transition: all 0.3s ease-out 0s;
+  -ms-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+  -webkit-box-shadow: 2px 5px 8px 0px rgb(79 139 174 / 20%);
+  -moz-box-shadow: 2px 5px 8px 0px rgb(79 139 174 / 20%);
+  box-shadow: 2px 5px 8px 0px rgb(79 139 174 / 20%);
+  background-color: #fff;
+  text-transform: uppercase;
+}
+.sec-btn:hover {
+  background-color: #b1d0e3;
+}
+.sec-btn.sec-btn-2 {
+  background-color: transparent;
+  color: #4f8bae;
+  border-color: #4f8bae;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.sec-btn.sec-btn-2:hover {
+  background-color: #fff;
+  color: #4f8bae;
+  border-color: #fff;
 }
 
 /*===== All Section Title Style =====*/

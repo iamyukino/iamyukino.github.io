@@ -1,0 +1,56 @@
+@font-face{
+    font-family:ziti;
+    src: url("./cjkFonts_allseto_v1.11.ttf");
+}
+#Clock{
+    background-image:url("./Clock.png");
+    background-size:397px 249px;
+    width:397px;
+    height:249px;
+    margin:auto;
+    z-index:1;
+    background-repeat:no-repeat;
+    position:relative;
+    left: 50%;
+    top: 0px;/*-55px;*/
+    transform: translateX(-50%);
+}
+.time{
+    font-family:"ziti";
+    position:absolute;
+    left:0px;
+    top:50px;
+    z-index:2;
+    width:100%;
+    padding:10px;
+    display:flex;
+    flex-direction: column-reverse;
+}
+#time{
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    font-size:25px;
+    line-height:1.5;
+    font-weight:bold;
+    color:#b7beff!important; /*ccabab*/
+    font-weight:bolder!important;
+    text-shadow:
+    2px 2px 2px #ffedf3, -2px 2px 2px #ffedf3,
+    2px -2px 2px #ffedf3, -2px -2px 2px #ffedf3,
+    2px 2px 2px #ffedf3, -2px 2px 2px #ffedf3,
+    2px -2px 2px #ffedf3, -2px -2px 2px #ffedf3,
+    2px 2px 2px #ffedf3, -2px 2px 2px #ffedf3, 
+    2px -2px 2px #ffedf3, -2px -2px 2px #ffedf3,
+    2px 2px 2px #ffedf3, -2px 2px 2px #ffedf3,
+    2px -2px 2px #ffedf3, -2px -2px 2px #ffedf3;
+}
+#date{
+    color:#b7beb7!important;
+    font-size:15px;
+    line-height:1;
+    font-weight:bold;
+    letter-spacing:5px;
+    font-weight:bolder!important;
+    display:-webkit-box;
+    -webkit-box-pack:center;
+}

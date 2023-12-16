@@ -39,6 +39,7 @@
     <link href="./index/wp-includes/index/css/jq22.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="./index/wp-includes/index/css/layerslider.css">
     <link rel="stylesheet" href="./index/wp-includes/index/css/qa.css">
+    <link rel="stylesheet" type="text/css" href="./index/wp-content/index/footer/clock.css">
     
     <script src="./index/wp-includes/index/js/swiper.min.js" charset="utf-8"></script>
     <script src="./index/wp-includes/index/js/vue.min.js"></script>
@@ -59,9 +60,14 @@
                                 <span class="toggler-icon"></span>
                                 <span class="toggler-icon"></span>
                             </button>
-
+                            <style>
+                                @font-face{
+                                    font-family:XiaolaiSC;
+                                    src: url("./index/wp-content/index/head/XiaolaiSC.woff2");
+                                }
+                            </style>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav ml-auto">
+                                <ul class="navbar-nav ml-auto" style="font-family:'XiaolaiSC';">
                                     <li class="nav-item active"><a class="page-scroll" href="#home">ホーム</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="#rec">休憩所</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="#about">自己紹介</a></li>
@@ -93,14 +99,21 @@
                     <div class="col-xl-5 col-lg-6">
                         <div class="header-content-right" style="top: -50px;">
                             <h4 class="sub-title">Welcome</h4>
-                            <h1 class="title">雨宮雪乃</h1>
-                            <p id="noword">の</p>
+                            <h1 class="title">雨雪の氷室<a href="./zh-CN"><span class="badge badge-info" style="font-size: 15px;" lang="zh-CN">回到中文</span></a></h1>
+                            <p id="noword">のホームページへ</p>
                             <div class="3to1">
-                                <h4 class="div-inline">サイトへ!</h4>
+                                <h4 class="div-inline">期末試験、頑張ってね!</h4>
                             </div>
                             <div>&nbsp;</div>
-                            <a class="main-btn" href="./rec/live2d">休憩所</a>
-                            &nbsp; &nbsp;<a class="main-btn" href="./work">作業台</a>
+                            <div class="btn-group ork-more text-center mt-10" role="group" style="float: left;">
+                                <a class="btn sec-btn main-btn triple-btn " href="./work" type="button" style="padding-left: 25px;padding-right: 20px;">作業台</a>
+                                <a class="sec-btn btn main-btn triple-btn" href="./rec/live2d" type="button" style="padding-left: 20px;padding-right: 25px;">休憩所</a>
+                            </div>
+                            <div style="float: left;margin-left: 10px;margin-top: 10px;">
+                                <a class="sec-btn main-btn page-scroll" href="./work">ブログ</a>
+                            </div>
+                            <!--a class="main-btn" href="./rec/live2d">休憩所</a>
+                            &nbsp; &nbsp;<a class="main-btn" href="./work">作業台</a-->
                         </div>
                     </div>
                     <div class="col-lg-6 offset-xl-1">
@@ -705,11 +718,18 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-7">
-                    <div class="contact-box text-center mt-30">
+                    <div class="text-center mt-40">
                         <div class="contact-content">
-                            <h6 class="contact-title">本サイトの統計情報&nbsp;</h6>
-                            運営期間<p id="runtime_span"></p>
-                            ページビュー &amp; 訪問者数<p><span id="busuanzi_value_site_pv"></span>回 <span id="busuanzi_value_site_uv"></span>人</p>
+                            <h6 class="contact-title">本サイトの統計情報</h6>
+                            <div id="Clock">
+                                <div class="time">
+                                    <span id="time" name="runtime_span"><span id="busuanzi_value_site_uv"></span>人 <span id="busuanzi_value_site_pv"></span>回</span>
+                                    <span id="date" name="runtime_span">訪問者数&amp;ページビュー</span>
+                                    <br>
+                                    <span id="time" name="runtime_span"></span>
+                                    <span id="date" name="runtime_span">運営期間</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -728,14 +748,13 @@
                         Y = new Date();
                         T = (Y.getTime() - X.getTime());
                         M = 24 * 60 * 60 * 1000;
-                        a = T / M;
-                        A = Math.floor(a);
-                        b = (a - A) * 24;
-                        B = Math.floor(b);
-                        c = (b - B) * 60;
-                        C = Math.floor((b - B) * 60);
+                        a = T / M;        A = Math.floor(a);
+                        b = (a - A) * 24; B = Math.floor(b);
+                        c = (b - B) * 60; C = Math.floor((b - B) * 60);
                         D = Math.floor((c - C) * 60);
-                        runtime_span.innerHTML = A + "日" + B + "時" + C + "分" + D + "秒"
+                        // runtime_span.innerHTML = A + "日" + B + "時" + C + "分" + D + "秒"
+                        var showTime = document.getElementsByName('runtime_span')[2];
+                        showTime.innerHTML = A + "日" + B + "時" + C + "分" + (D >= 10 ? D : "0" + D) + "秒";
                     }
                     show_runtime ();
                 </script>
@@ -749,16 +768,16 @@
                 <div class="row">
                     <div class="col-12 col-md footer-main">
                         <img class="mb-2" src="./index/wp-content/index/footer/footer-logo.png" alt="footer logo" style="width: 150px;height: auto;">
-                        <small class="d-block mb-2">Copyright © 2022 iamYukino</small>
+                        <small class="d-block mb-2">Copyright © 2023 iamYukino</small>
                     </div>
                     <div class="col-6 col-md">
                         <small style="color: white;">サイトマップ</small>
                         <ul class="list-unstyled">
                             <li>
-                                <a href="./rec/live2d" class="link-footer">休憩所</a>
+                                <a href="./work" class="link-footer">作業台（ブログ）</a>
                             </li>
                             <li>
-                                <a href="./work" class="link-footer">作業台</a>
+                                <a href="./rec/live2d" class="link-footer">休憩所（資源）</a>
                             </li>
                             <li>
                                 <a href="./api" class="link-footer">雨雪 API</a>
@@ -769,13 +788,16 @@
                         <small style="color: white;">伝送門</small>
                         <ul class="list-unstyled">
                             <li>
-                                <a href="https://gitee.com/iamyukino" class="link-footer" target="_blank">Gitee</a>
+                                <a href="https://space.bilibili.com/523834694" class="link-footer" target="_blank" lang="zh-CN">Bilibili（哔哩哔哩）</a>
+                            </li>
+                            <li>
+                                <a href="https://gitee.com/iamyukino" class="link-footer" target="_blank" lang="zh-CN">Gitee（碼雲）</a>
                             </li>
                             <li>
                                 <a href="https://github.com/iamyukino" class="link-footer" target="_blank">Github</a>
                             </li>
                             <li>
-                                <a href="https://www.cnblogs.com/iamyukino" class="link-footer" target="_blank">cnblogs</a>
+                                <a href="https://stackoverflow.com/users/17816073" class="link-footer" target="_blank">StackOverFlow</a>
                             </li>
                         </ul>
                     </div>
@@ -783,13 +805,13 @@
                         <small style="color: white;">友情リンク先</small>
                         <ul class="list-unstyled">
                             <li>
-                                <a href="https://ovooa.com/" class="link-footer" target="_blank">Unicorn API</a>
-                            </li>
-                            <li>
-                                <a href="https://miroox.github.io/" class="link-footer" target="_blank">miRoox' Blog</a>
-                            </li>
-                            <li>
                                 <a href="https://www.ainav.cn/" class="link-footer" target="_blank">AI サイトマップ</a>
+                            </li>
+                            <li>
+                                <a href="https://blog.nekoorange.cn/" class="link-footer" target="_blank" lang="zh-CN">橘橘博客</a>
+                            </li>
+                            <li>
+                                <a href="https://www.virustotal.com/" class="link-footer" target="_blank">VIRUS TOTAL</a>
                             </li>
                         </ul>
                     </div>
